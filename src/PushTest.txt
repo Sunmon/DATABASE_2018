@@ -1,0 +1,18 @@
+여기에 아무거나 써 놓고
+push / pull / commit 테스트 해보시면 됩니다.
+
+1. push (ctrl + shift + k)
+push후 제대로 변경이 되었는지는
+https://github.com/Sunmon/Database_2018
+여기서 확인 가능합니다.
+
+2. pull
+만약 다른 팀원이 이 파일을 수정했을경우
+pull을 하면 여기에 수정된 사항이 적용되겠죠
+
+3.commit (ctrl+k)
+커밋 메세지를 써 주세요.
+커밋만 하고 push를 안 하면 변경내용이 깃허브에 저장되지 않습니다!
+다른 팀원들은 뭐가 바뀌었는지 몰라요!
+
+
