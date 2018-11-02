@@ -24,4 +24,6 @@ readMe.md파일을 참고하세요 (github페이지 설명에 업데이트 해 �
 
 branch test : explanation
 
-
+written in local::master branch
+written in local::explanation branch
+checkout with master
