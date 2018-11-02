@@ -22,7 +22,16 @@ test 이세웅
 Annotation 보기를 하면 언제 어떻게 코드가 변경되었는지 알 수 있습니다.
 readMe.md파일을 참고하세요 (github페이지 설명에 업데이트 해 놨습니다)
 
+Branch 개념은 각자 찾아보시길 바랍니다.(필요하다고 생각될 시)
+여러 저장장소를 만드는 건데, master에 바로 적용하기 어려울 시, branch에 저장 후, 나중에 합치는 개념이라고 생각하시면 됩니다.
+각자 작업 영역이 겹치지 않는다면 딱히 사용할 필요는 없으나,
+혹시 mater에서 동시에 같은 부분을 작업하면 문제가 될 수 있습니다.
+
+
+
 branch test : explanation
+
+
 
 written in local::master branch
 written in local::explanation branch
