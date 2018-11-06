@@ -1,5 +1,12 @@
 # 프로젝트를 시작하기 전에
 
+```
+2018-10-27 최초 작성
+2018-11-02 기능 설명 추가(Annotatation, Alt+`)
+```
+
+
+
 project를 만들었습니다.
 
 jdbc연결 코드도 작성했습니다. 각자 db에 맞도록 id/ password/ db이름을 변경하셔서 쓰시면 됩니다.
@@ -9,19 +16,20 @@ fetch/ pull / push/ commit이 잘 되는지 확인해주세요.
 
 
 ### 간단한 기능 설명
+
 1. fetch : github에서 local로 프로젝트를 받아옵니다.
 2. pull : repository에 변경사항이 있는지 확인하고 변경된 점을 적용합니다.
 3. push : 프로젝트를 github에 올립니다. github에 동기화시킵니다.
 4. commit : 중간 작업 단계를 저장하고 어떤 점이 바뀌었는지를 서술합니다. 커밋 메세지 제목은 한 줄로, 그리고 두 줄 띄운 후 상세정보를 입력해 주세요.
 
-* 프로젝트는 commit후 push 할 수 있습니다.
+- 프로젝트는 commit후 push 할 수 있습니다.
 
-* commit - pull - push 순서를 권장합니다.
+- commit - pull - push 순서를 권장합니다.
 
-* github 간단한 설명 :
+- github 간단한 설명 :
   https://github.com/sejong-interface/Interface_Manual/wiki/Git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%232--%EC%BB%A4%EB%B0%8B,-Pull,-Push,-%ED%8E%98%EC%B9%98%ED%95%B4%EB%B3%B4%EA%B8%B0
 
-* intelliJ에서 git쓰기: 
+- intelliJ에서 git쓰기: 
 
   https://www.jetbrains.com/help/idea/using-git-integration.html
 
@@ -31,7 +39,13 @@ fetch/ pull / push/ commit이 잘 되는지 확인해주세요.
 
 
 
----
+
+
+
+
+
+
+------
 
 
 
@@ -71,7 +85,7 @@ alt+shift+f10누른 후 Edit configuration...
 
 Application 이름 / Main class에 메인 클래스 이름 넣어주기(public static void main()있는 클래스)
 
-![실행이 안 될 경우](assets/실행안되면.png)
+![실행이 안 될 경우](assets/%EC%8B%A4%ED%96%89%EC%95%88%EB%90%98%EB%A9%B4.png)
 
 
 
@@ -153,7 +167,7 @@ branch는 master외에도 다른 버전?같은것들을 만들어 주는건데, 
 
 실행 결과(단축키 Alt + Shift+ f10)가 아래 사진처럼 오류 없이 잘 돌아가는지 확인해주세요.
 
-![test result](assets/test result.PNG)
+![test result](assets/test%20result.PNG)
 
 혹시 `java.sql.SQLIntegrityConstraintViolationException: (conn=74) Duplicate entry '23411' for key 'PRIMARY'` 오류가 뜬다면
 
@@ -161,6 +175,29 @@ makeStatmet의 `String sql = "INSERT INTO instructor " + "VALUES ('23411', 'test
 
 
 
----
+## 고급 기능
 
-written by sun_jung 2018-10-27
+### Annotate
+
+누가 언제 어디를 수정했는지 보여줍니다. 마우스를 가져다대거나 클릭하면 상세 설명이 나옵니다.
+
+![1541164969820](assets/1541164969820.png)
+
+
+
+![1541165005126](assets/1541165005126.png)
+
+![1541165277219](assets/1541165277219.png)
+
+
+
+
+
+### Alt + ` :: VCS Operation
+
+`Alt`+ `` ` 키를 누르면 VCS 옵션들을 한번에 볼 수 있습니다.
+
+
+
+
+

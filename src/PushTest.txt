@@ -29,3 +29,4 @@ Branch 개념은 각자 찾아보시길 바랍니다.(필요하다고 생각될 
 여러 저장장소를 만드는 건데, master에 바로 적용하기 어려울 시, branch에 저장 후, 나중에 합치는 개념이라고 생각하시면 됩니다.
 각자 작업 영역이 겹치지 않는다면 딱히 사용할 필요는 없으나,
 혹시 mater에서 동시에 같은 부분을 작업하면 문제가 될 수 있습니다.
+https://www.jetbrains.com/help/idea/manage-branches.html
