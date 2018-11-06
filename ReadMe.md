@@ -1,5 +1,12 @@
 # 프로젝트를 시작하기 전에
 
+```
+2018-10-27 최초 작성
+2018-11-02 기능 설명 추가(Annotatation, Alt+`)
+```
+
+
+
 project를 만들었습니다.
 
 jdbc연결 코드도 작성했습니다. 각자 db에 맞도록 id/ password/ db이름을 변경하셔서 쓰시면 됩니다.
@@ -28,6 +35,12 @@ fetch/ pull / push/ commit이 잘 되는지 확인해주세요.
 
 
 ![git대략](assets/1540975978626.png)
+
+
+
+
+
+
 
 
 
@@ -161,6 +174,29 @@ makeStatmet의 `String sql = "INSERT INTO instructor " + "VALUES ('23411', 'test
 
 
 
----
+## 고급 기능
 
-written by sun_jung 2018-10-27
+### Annotate
+
+누가 언제 어디를 수정했는지 보여줍니다. 마우스를 가져다대거나 클릭하면 상세 설명이 나옵니다.
+
+![1541164969820](assets/1541164969820.png)
+
+
+
+![1541165005126](assets/1541165005126.png)
+
+![1541165277219](assets/1541165277219.png)
+
+
+
+
+
+### Alt + ` :: VCS Operation
+
+`Alt`+ `` ` 키를 누르면 VCS 옵션들을 한번에 볼 수 있습니다.
+
+
+
+
+
