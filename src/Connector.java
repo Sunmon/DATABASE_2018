@@ -41,7 +41,7 @@ public class Connector implements ConnectService, StatementService{
         return con;
     }
 
-        @Override
+    @Override
     public Statement makeStatement(Connection con) {
     {
             Statement stmt = null;
@@ -77,4 +77,29 @@ public class Connector implements ConnectService, StatementService{
             return stmt;
             }
         }
+
+    //test for prestsmt
+    public void insertData()
+    {//예시로 맘대로 하나 넣게 만들었음. 이거 고쳐서 써야지.
+        //여기 attributes 이름은 실제 table에 있는 attributes이름으로 해야 함..
+        //metadata에서 attribute이름들 가져와서 넣을 수도 있지 않을까?
+        String sql = "INSERT INTO instructor (ID, name, dept_name, salary)";
+        sql = sql + "VALUES (?, ?, ?, ?)";
+        String ID = "29384";
+        String name = "test1112";
+        String dept_name = "Comp. Sci.";
+        int salary = 50000;
+
+        try {
+            pstmt    = con.prepareStatement(sql);
+            pstmt.setString(1, ID);
+            pstmt.setString(2, name);
+            pstmt.setString(3, dept_name);
+            pstmt.setInt(4, salary);
+            int i = pstmt.executeUpdate();
+            System.out.println("InsertP 쿼리 수행" + i);
+            pstmt.close();
+        } catch (SQLException e) { System.out.println("Insert 쿼리 수행 실패");
+        e.printStackTrace();}
+    }
 }
