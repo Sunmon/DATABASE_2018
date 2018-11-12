@@ -1,18 +1,18 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Connector implements ConnectService, StatementService{
-    Connection con;
-    Statement stmt;
+    Connection              con;
+    Statement               stmt;
+    PreparedStatement       pstmt;
+    ResultSet               rs;
 
     //Constructor
     public Connector(){};
     public Connector(String portNum, String dbName, String id, String password)
-    {
+    {   //Connector 생성자.
         con = makeConnection(portNum, dbName,id,password);
-        stmt = makeStatement(con);
+//        stmt = makeStatement(con);
+//        pstmt = makePreStatement(con);
     }
 
 
