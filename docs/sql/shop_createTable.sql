@@ -70,8 +70,8 @@ CREATE TABLE `person`
 (
     `ID`    VARCHAR(20) NOT NULL
  COMMENT 'ID',
-    `password`    VARCHAR(20) NOT NULL
- COMMENT 'password',
+    `pw`    VARCHAR(20) NOT NULL
+ COMMENT 'pw',
     `name`    VARCHAR(20) NOT NULL
  COMMENT 'name',
     `age`    DECIMAL NOT NULL
@@ -86,8 +86,8 @@ CREATE TABLE `person`
  COMMENT 'height',
     `weight`    DECIMAL DEFAULT 0
  COMMENT 'weight',
-    `point`    DECIMAL DEFAULT 0
- COMMENT 'point',
+    `points`    DECIMAL DEFAULT 0
+ COMMENT 'points',
     `shop_name`    VARCHAR(20)
  COMMENT 'shop_name',
     `revenue`    DECIMAL
