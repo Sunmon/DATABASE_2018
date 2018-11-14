@@ -2,7 +2,10 @@
 2018-10-27 최초 작성
 2018-11-02 기능 설명 추가(Annotatation, Alt+`)
 2018-11-14 폴더 설명 추가
+2018-11-14 업데이트 노트 추가
 ```
+
+
 
 # git repository 폴더 설명
 
@@ -25,6 +28,12 @@
 
 
 
+
+# 업데이트 노트
+
+2018-11-14 `product` 테이블 컬럼 속성 변경:: 	p_name을 primary-> unique key로 변경
+
+2018-11-14 `customer`테이블 컬럼명 변경 ::​		password -> pw / point -> points로 이름 변경.
 
 
 
