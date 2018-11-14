@@ -18,23 +18,13 @@ ALTER TABLE `favorites`
 
 
 
-ALTER TABLE `log`
- ADD CONSTRAINT `log_FK` FOREIGN KEY ( `seller_ID` )
- REFERENCES person (`ID` ) ON UPDATE CASCADE;
+ALTER TABLE `p_type`
+ ADD CONSTRAINT `type_FK` FOREIGN KEY ( `c_code`,`c_code_sub` )
+ REFERENCES category (`c_code`,`c_code_sub` );
 
-ALTER TABLE `log`
- ADD CONSTRAINT `log_FK1` FOREIGN KEY ( `p_code`,`customer_ID`,`seller_ID` )
- REFERENCES cart (`p_code`,`customer_ID`,`seller_ID` );
-
-
-
-ALTER TABLE `person`
- ADD CONSTRAINT `person_UK` UNIQUE ( `phone` );
-
-
-
-ALTER TABLE `product`
- ADD CONSTRAINT `product_UK1` UNIQUE ( `p_name` );
+ALTER TABLE `p_type`
+ ADD CONSTRAINT `type_FK1` FOREIGN KEY ( `p_code` )
+ REFERENCES product (`p_code` );
 
 
 
@@ -48,12 +38,12 @@ ALTER TABLE `sell_list`
 
 
 
-ALTER TABLE `type`
- ADD CONSTRAINT `type_FK` FOREIGN KEY ( `c_code`,`c_code_sub` )
- REFERENCES category (`c_code`,`c_code_sub` );
+ALTER TABLE `sell_log`
+ ADD CONSTRAINT `log_FK` FOREIGN KEY ( `seller_ID` )
+ REFERENCES person (`ID` ) ON UPDATE CASCADE;
 
-ALTER TABLE `type`
- ADD CONSTRAINT `type_FK1` FOREIGN KEY ( `p_code` )
- REFERENCES product (`p_code` );
+ALTER TABLE `sell_log`
+ ADD CONSTRAINT `log_FK1` FOREIGN KEY ( `p_code`,`customer_ID`,`seller_ID` )
+ REFERENCES cart (`p_code`,`customer_ID`,`seller_ID` );
 
 

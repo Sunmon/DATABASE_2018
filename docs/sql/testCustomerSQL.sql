@@ -1,24 +1,61 @@
 
--- create account
-INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight, authority) 
-values("sunmon", "1234", "sunjung", 23, "F", "010-4543-5364", "songpa-gu", 168, 0, "customer");
+-- 1. create account	//java
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight) 
+values("sunmon", "1234", "sunjung", 23, "F", "010-4543-5364", "songpa-gu", 168, 0);
 
 
 -- create customer's information view
-CREATE VIEW info_customer
+CREATE OR REPLACE VIEW info_customer
 AS (
 	SELECT  ID, pw, name, age, gender, phone, address, height, points, weight, authority
-	FROM person
-	WHERE ID = "sunmon" );
+	FROM person);
 
 
--- TODO: 여기 실험. 그전에 번호 안겹치게 하고, 기본 권한 customer로.	
--- create account by using 'info_customer' view
+-- 1.1. create account by using 'info_customer' view
 INSERT INTO info_customer
-values("sunmon2", "1234", "sunjung", 23, "F", "010-1231-1231", "songpa-gu", 180, 100, "customer");
+values("sunmon2", "1234", "sunjung", 23, "F", "010-1233-1233", "songpa-gu", 180, 100, 0, "customers");
 
-select *
-from person;
-
+-- 2. show customer's information	//java
 select *
 from info_customer;
+# where id = "sunmon";
+
+
+-- 3. update customer's information	//java
+UPDATE info_customer
+SET height = 160, points = 10
+WHERE id = "sunmon2";
+
+
+-- 4. add points to customer	// java
+UPDATE info_customer
+SET points = points + 100
+#where id = "sunmon2";
+
+-- 5. login	//java
+SELECT id, pw
+FROM person
+#WHERE id = "sunmon";
+
+
+-- 6. show favorites	//java
+SELECT *
+FROM cart
+#WHERE customer_id = "sunmon";
+
+
+-- 7. add favorites	//java
+INSERT INTO favorites
+values("AA-121", "sunmon2", "eiwh");
+
+
+
+
+select *
+from person, category, type, product, log ;
+
+select *
+from category;
+
+INSERT INTO category
+values ("AA", "bb", 

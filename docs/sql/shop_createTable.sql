@@ -21,10 +21,10 @@ CREATE TABLE `category`
 (
     `c_code`    VARCHAR(20) NOT NULL
  COMMENT 'c_code',
-    `c_name`    VARCHAR(20) NOT NULL
- COMMENT 'c_name',
     `c_code_sub`    VARCHAR(20) NOT NULL
- COMMENT 'c_code_sub'
+ COMMENT 'c_code_sub',
+    `c_name`    VARCHAR(20) NOT NULL
+ COMMENT 'c_name'
 ) INSERT_METHOD = FIRST
  COMMENT = 'category';
 
@@ -47,23 +47,19 @@ ALTER TABLE `favorites`
  ADD CONSTRAINT `favorites_PK` PRIMARY KEY ( `p_code`,`customer_ID`,`seller_ID` );
 
 
-CREATE TABLE `log`
+CREATE TABLE `p_type`
 (
     `p_code`    VARCHAR(20) NOT NULL
  COMMENT 'p_code',
-    `seller_ID`    VARCHAR(20) NOT NULL
- COMMENT 'seller_ID',
-    `point`    DECIMAL
- COMMENT 'point',
-    `pay_time`    DATETIME
- COMMENT 'pay_time',
-    `customer_ID`    VARCHAR(20) NOT NULL
- COMMENT 'customer_ID'
+    `c_code`    VARCHAR(20) NOT NULL
+ COMMENT 'c_code',
+    `c_code_sub`    VARCHAR(20) NOT NULL
+ COMMENT 'c_code_sub'
 ) INSERT_METHOD = FIRST
- COMMENT = 'log';
+ COMMENT = 'p_type';
 
-ALTER TABLE `log`
- ADD CONSTRAINT `log_PK` PRIMARY KEY ( `p_code`,`customer_ID`,`seller_ID` );
+ALTER TABLE `p_type`
+ ADD CONSTRAINT `Relation1_PK` PRIMARY KEY ( `p_code`,`c_code`,`c_code_sub` );
 
 
 CREATE TABLE `person`
@@ -100,6 +96,9 @@ CREATE TABLE `person`
 ALTER TABLE `person`
  ADD CONSTRAINT `엔터티1_PK` PRIMARY KEY ( `ID` );
 
+ALTER TABLE `person`
+ ADD CONSTRAINT `person_UK` UNIQUE ( `phone` );
+
 
 CREATE TABLE `product`
 (
@@ -112,6 +111,9 @@ CREATE TABLE `product`
 
 ALTER TABLE `product`
  ADD CONSTRAINT `엔터티1_PK4` PRIMARY KEY ( `p_code` );
+
+ALTER TABLE `product`
+ ADD CONSTRAINT `product_UK1` UNIQUE ( `p_name` );
 
 
 CREATE TABLE `sell_list`
@@ -135,18 +137,22 @@ ALTER TABLE `sell_list`
  ADD CONSTRAINT `sell_list_PK` PRIMARY KEY ( `p_code`,`seller_ID` );
 
 
-CREATE TABLE `type`
+CREATE TABLE `sell_log`
 (
     `p_code`    VARCHAR(20) NOT NULL
  COMMENT 'p_code',
-    `c_code`    VARCHAR(20) NOT NULL
- COMMENT 'c_code',
-    `c_code_sub`    VARCHAR(20) NOT NULL
- COMMENT 'c_code_sub'
+    `seller_ID`    VARCHAR(20) NOT NULL
+ COMMENT 'seller_ID',
+    `point`    DECIMAL
+ COMMENT 'point',
+    `pay_time`    DATETIME
+ COMMENT 'pay_time',
+    `customer_ID`    VARCHAR(20) NOT NULL
+ COMMENT 'customer_ID'
 ) INSERT_METHOD = FIRST
- COMMENT = 'type';
+ COMMENT = 'sell_log';
 
-ALTER TABLE `type`
- ADD CONSTRAINT `Relation1_PK` PRIMARY KEY ( `p_code`,`c_code`,`c_code_sub` );
+ALTER TABLE `sell_log`
+ ADD CONSTRAINT `log_PK` PRIMARY KEY ( `p_code`,`customer_ID`,`seller_ID` );
 
 
