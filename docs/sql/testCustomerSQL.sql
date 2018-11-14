@@ -12,7 +12,7 @@ AS (
 	WHERE ID = "sunmon" );
 
 
-//TODO: 여기 실험. 그전에 번호 안겹치게 하고, 기본 권한 customer로.	
+-- TODO: 여기 실험. 그전에 번호 안겹치게 하고, 기본 권한 customer로.	
 -- create account by using 'info_customer' view
 INSERT INTO info_customer
 values("sunmon2", "1234", "sunjung", 23, "F", "010-1231-1231", "songpa-gu", 180, 100, "customer");
@@ -22,15 +22,3 @@ from person;
 
 select *
 from info_customer;
-
-
-INSERT INTO category
-values("AA-123",null,null);
-
-INSERT INTO category
-values("AA-1234","BC", "round");
-
-INSERT INTO category
-values("AA-123", "AD", "tuttle");
-select *
-from category;

@@ -43,7 +43,7 @@
 
 ​			이제 c_code_sub도 primary key로 설정했기 때문에 위와 같은 예시 삽입 가능
 
-
+​			`customer`테이블 컬럼 속성 변경::	points 기본값 0으로 설정 / authority 기본값 customers로 설정
 
 
 

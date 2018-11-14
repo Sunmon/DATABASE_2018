@@ -9,3 +9,5 @@
 ​			c_code만 primary로 설정하니까 중복된다고 값을 삽입할 수 없었음. (A ad 터틀넥 / A bc 가디건 삽입 불가)
 
 ​			이제 c_code_sub도 primary key로 설정했기 때문에 위와 같은 예시 삽입 가능
+
+​			`customer`테이블 컬럼 속성 변경::	points 기본값 0으로 설정 / authority 기본값 customers로 설정

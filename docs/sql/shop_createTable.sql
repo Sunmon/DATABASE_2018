@@ -92,7 +92,7 @@ CREATE TABLE `person`
  COMMENT 'shop_name',
     `revenue`    DECIMAL
  COMMENT 'revenue',
-    `authority`    VARCHAR(20)
+    `authority`    VARCHAR(20) DEFAULT 'customers'
  COMMENT 'authority'
 ) INSERT_METHOD = FIRST
  COMMENT = 'person';
