@@ -23969,7 +23969,7 @@
 									"top": 789,
 									"width": 200,
 									"height": 13,
-									"text": "Customer"
+									"text": "CustomerTest"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -24494,7 +24494,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFm557LsU1rrhg="
 					},
-					"name": "Customer",
+					"name": "CustomerTest",
 					"columns": [
 						{
 							"_type": "ERDColumn",
