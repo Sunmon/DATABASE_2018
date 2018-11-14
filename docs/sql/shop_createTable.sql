@@ -21,15 +21,15 @@ CREATE TABLE `category`
 (
     `c_code`    VARCHAR(20) NOT NULL
  COMMENT 'c_code',
-    `c_name`    VARCHAR(20)
+    `c_name`    VARCHAR(20) NOT NULL
  COMMENT 'c_name',
-    `c_code_sub`    VARCHAR(20)
+    `c_code_sub`    VARCHAR(20) NOT NULL
  COMMENT 'c_code_sub'
 ) INSERT_METHOD = FIRST
  COMMENT = 'category';
 
 ALTER TABLE `category`
- ADD CONSTRAINT `엔터티7_PK` PRIMARY KEY ( `c_code` );
+ ADD CONSTRAINT `엔터티7_PK` PRIMARY KEY ( `c_code`,`c_code_sub` );
 
 
 CREATE TABLE `favorites`
@@ -141,12 +141,12 @@ CREATE TABLE `type`
  COMMENT 'p_code',
     `c_code`    VARCHAR(20) NOT NULL
  COMMENT 'c_code',
-    `c_code_sub`    VARCHAR(20)
+    `c_code_sub`    VARCHAR(20) NOT NULL
  COMMENT 'c_code_sub'
 ) INSERT_METHOD = FIRST
  COMMENT = 'type';
 
 ALTER TABLE `type`
- ADD CONSTRAINT `Relation1_PK` PRIMARY KEY ( `p_code`,`c_code` );
+ ADD CONSTRAINT `Relation1_PK` PRIMARY KEY ( `p_code`,`c_code`,`c_code_sub` );
 
 

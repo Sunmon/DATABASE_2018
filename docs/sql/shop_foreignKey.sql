@@ -28,8 +28,13 @@ ALTER TABLE `log`
 
 
 
+ALTER TABLE `person`
+ ADD CONSTRAINT `person_UK` UNIQUE ( `phone` );
+
+
+
 ALTER TABLE `product`
- ADD CONSTRAINT `product_UK` UNIQUE ( `p_name` );
+ ADD CONSTRAINT `product_UK1` UNIQUE ( `p_name` );
 
 
 
@@ -44,9 +49,11 @@ ALTER TABLE `sell_list`
 
 
 ALTER TABLE `type`
- ADD CONSTRAINT `type_FK` FOREIGN KEY ( `c_code` )
- REFERENCES category (`c_code` );
+ ADD CONSTRAINT `type_FK` FOREIGN KEY ( `c_code`,`c_code_sub` )
+ REFERENCES category (`c_code`,`c_code_sub` );
 
 ALTER TABLE `type`
  ADD CONSTRAINT `type_FK1` FOREIGN KEY ( `p_code` )
  REFERENCES product (`p_code` );
+
+
