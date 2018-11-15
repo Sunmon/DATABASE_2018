@@ -1,25 +1,20 @@
 import java.sql.*;
 
 public class Connector implements ConnectService, StatementService{
+    //DB와 연결해서 업데이트하거나, 데이터를 가져오는 역할을 해주는 클래스
     Connection              con;
     Statement               stmt;
     PreparedStatement       pstmt;
     ResultSet               rs;
 
     //Constructor
-    public Connector(){};
     public Connector(String portNum, String dbName, String id, String password)
     {   //Connector 생성자.
+        //db 자체에 연결할 이름/비번
         con = makeConnection(portNum, dbName,id,password);
-//        stmt = makeStatement(con);
-//        pstmt = makePreStatement(con);
     }
 
 
-    public Statement makeStatement()
-    {
-        return makeStatement(this.con);
-    }
 
     @Override
     public java.sql.Connection makeConnection(String portNum, String dbName, String id, String password) {
@@ -49,10 +44,11 @@ public class Connector implements ConnectService, StatementService{
                 System.out.println("데이터를 넣으려고 시도중...");
                 stmt = con.createStatement();
 
-                //insert data here
+/*                //insert data here
                 String sql = "INSERT INTO instructor " + "VALUES ('23411', 'test1031', 'Comp. Sci.', 50000)";
                 stmt.executeUpdate(sql);
                 System.out.println("데이터 insert 완료...");
+*/
 
             } catch (SQLException se) {
                 // Handle errors for JDBC
@@ -101,5 +97,22 @@ public class Connector implements ConnectService, StatementService{
             pstmt.close();
         } catch (SQLException e) { System.out.println("Insert 쿼리 수행 실패");
         e.printStackTrace();}
+    }
+
+
+    //update to daatabase
+    public ResultSet select(String sql){
+        try {
+            pstmt                = con.prepareStatement(sql);
+            rs                   = pstmt.executeQuery();
+            while(rs.next()){
+                System.out.print(rs.getInt("s_number")+"\t\t");
+                System.out.print(rs.getString("SS_number")+"\t\t");
+                System.out.print(rs.getString("sex")+"\t\t");
+                System.out.println(rs.getString("mobile")+"\t\t");
+            }
+            pstmt.close();
+        } catch (SQLException e) { System.out.println("select 쿼리 수행 실패"); }
+        return rs;
     }
 }
