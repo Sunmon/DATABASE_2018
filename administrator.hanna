@@ -37,24 +37,33 @@ insert into ('id_hanna', shop_name, revenue)
  values( 'id_hanna', 'pretty_shop',null)
  on update cascade
 
-
+//고객정보 검색
+select *
+from person
+where id = 'id_hanna'
 
 // sell_list 검색 가능
 
 select *
 from sell_list
+where id = 'id_hanna'
 
 //sell_log 검색 가능
 
 select*
 from sell_log
+where id = 'id_hanna'
 
 
 
 
 
 
+//기능사항 명세서
 
-
+1. 어플관리자는 고객을 판매자로 바꿀 수있다.  입력 : id, shop_name
+2. 어플관리자는 판매자를 고객을 바꿀 수 있다. 입력: id
+3. 어플 관리자는 고객의 고객정보를 볼 수 있다. 입력 : id  출력 : person table
+4. 어플 관리자는 판매자의 정보를 볼 수 있다. 입력: id,  출력 : sell_list
 
 
