@@ -1,0 +1,43 @@
+Insert into PERSONAL (ID,pw,name,age,gender,phone,address,height,weight,points,authority,shop_name,revenue)
+Values(han,123040,hanna, 22, F, 010-4039-2393, konkuk, 169,53,20000,cusomers)
+Values(yih123,159483,ilhwan, 27, M, 010-4339-1253, kangjin, 176,68,30000,cusomers)
+Values(jjj232,12223,janjin, 30, M, 010-2331-2133, US, 180,73,1000,cusomers)
+Values(ddadandu,1244,chanju, 22, F, 010-4039-2393, konkuk, 169,53,20000,cusomers)
+Values(jimm,12231,jimin, 23, F, 010-4009-7788, seoul, 130,40,100000,cusomers)
+Values(xoxo,133329,kei, 27, M, 010-1239-4794, busan, 183,70,1000,cusomers)
+Values(DBseller,12039,hanna, 22, F, 010-4039-2393, konkuk, 169,53,20000,sellers,DB_shop)
+values(ain
+
+
+
+
+p_code  000-00000
+예시 : 아디다스 롱페딩 A01-001
+
+c- code 외투 상의 하의 신발
+
+A외투- 패딩01 코트02, 가디건03 c-code-sub
+B상의- 면티11, 후드티12, 니트13
+C하의 - 반바지21, 긴바지22, 짧은치마23, 긴치마24
+D신발 - 운동화31, 구두32, 센들33
+
+
+addidas 01
+nike 02
+uniqlo 03
+beanpole 04
+lacoste 05
+gucci 06
+fila 07
+DAKS 08
+drmartens 09
+newbalance 10
+spao 11
+Asecond 12
+
+else 00
+
+
+
+
+
