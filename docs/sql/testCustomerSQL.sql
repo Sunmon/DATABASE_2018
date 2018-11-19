@@ -35,13 +35,13 @@ SET points = points + 100
 -- 5. login	//java
 SELECT id, pw
 FROM person
-#WHERE id = "sunmon";
+WHERE id = "sunmon";
 
 
 -- 6. show favorites	//java
 SELECT *
 FROM cart
-#WHERE customer_id = "sunmon";
+WHERE customer_id = "sunmon";
 
 
 -- 7. add favorites	//java
@@ -57,10 +57,60 @@ WHERE p_nickname = "cute t-shirt";
 
 
 
-//TODO: 여기
 -- 8. remove from favorites	//java
-#DELETE FROM favorites
-#where p_code = 
+DELETE FROM favorites
+where p_code = "AAab-12"
+	AND id = "sunmon";
+
+
+-- 9. show cart
+SELECT *
+FROM cart
+WHERE id = "sunmon";
+
+
+-- 10. add to cart	//확실하지 않음!
+INSERT INTO cart
+VALUES("AAbb-12", "sunmon", "seller1", "1", "0");
+
+UPDATE cart
+SET price = 
+(
+SELECT price * 
+	( SELECT p_count
+		FROM cart
+		WHERE customer_ID = "sunmon" AND p_code = "AAbb-12" AND seller_ID = "seller1"
+	)
+FROM sell_list
+WHERE p_code = "AAbb-12" AND seller_ID = "seller1";
+);
+
+
+-- 11. buy items from cart // by 세웅
+
+-- 12.1. search by size
+select *
+from sell_list
+where size = "customer_size";
+
+
+
+-- 12.2 calculate customer's size
+select (특수한 처리문 java로?) as customer_size 
+from customer
+where id = "sunmon";
+
+
+-- 13. search by category //by 한나
+
+-- 14. show customer's log
+SELECT *
+FROM sell_log
+WHERE customer_ID = "sunmon";
+
+
+
+
 
 select *
 from favorites;
