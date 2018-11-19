@@ -24,7 +24,7 @@ select *
 from product;   
 
 
-//상품추가 // p_code는 category에서 가져옴, seller_ID는 로그인창에서 가져옴
+//상품추가 // p_code는 product에서 가져옴, seller_ID는 로그인창에서 가져옴
 
 insert into sell_list(p_code,seller_ID,p_name,price,size,stock)
 	values('????','????','????''????','????','????');
