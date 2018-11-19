@@ -34,6 +34,10 @@ insert into sell_list(p_code,seller_ID,p_name,price,size,stock)
 update sell_list
 set price='????', p_nickname='????';
 
+//상품 제거
+
+delete from sell_list
+where p_code='????' and seller_ID='????';
 
 
 
