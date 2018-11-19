@@ -1,10 +1,10 @@
-//adminstrator 로그인 후
+// 1. adminstrator 로그인
 
 grant 'ID'
 to adminstrator
 
 
-//사용자 추가 및 디비 권한부여(maria db ver)
+// 사용자 추가 및 디비 권한부여(maria db ver)
 
 grant all privileges on dbname.* to 'username'@'%' identified by 'password' with grant option;
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password'; 
@@ -22,17 +22,26 @@ from seller
 grant delet *
 from seller
 
-insert into people
- values( id, pasward, rule, ....)
+insert into person
+ values( id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, authority,)
+
 
 // person table에서 seller를 client로 강등
 
-update people
-set rule = client
+select*
+where person;
+
+update ( id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, authority,)
+set into (id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, client,)
+
+
+
+// sell_list 검색 가능
+
+select *
+from sell_list
 
 
 
 
 
-
-//
