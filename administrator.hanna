@@ -24,12 +24,12 @@ select*
 where person;
 
 update person
-set authority = "customer"
+set authority = "customers"
 where id= 'id_hanna'
 on update cascade
 
 update person
-set authority = "seller"
+set authority = "sellers"
 where id = 'id_hanna'
 on update cascade
 
