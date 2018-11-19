@@ -1,0 +1,38 @@
+//adminstrator 로그인 후
+
+grant 'ID'
+to adminstrator
+
+
+//사용자 추가 및 디비 권한부여(maria db ver)
+
+grant all privileges on dbname.* to 'username'@'%' identified by 'password' with grant option;
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password'; 
+GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'%';
+grant all privileges on dbname.* to 'username'@'localhost' identified by 'password' with grant option;
+flush privileges;
+
+//seller 추가 및 삭제, 검색
+grant select *
+from seller
+
+grant insert *
+from seller
+
+grant delet *
+from seller
+
+insert into people
+ values( id, pasward, rule, ....)
+
+// person table에서 seller를 client로 강등
+
+update people
+set rule = client
+
+
+
+
+
+
+//
