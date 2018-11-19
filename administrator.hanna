@@ -1,7 +1,6 @@
 // 1. adminstrator 로그인
 
-grant 'ID'
-to adminstrator
+
 
 
 // 사용자 추가 및 디비 권한부여(maria db ver)
@@ -13,26 +12,30 @@ grant all privileges on dbname.* to 'username'@'localhost' identified by 'passwo
 flush privileges;
 
 //seller 추가 및 삭제, 검색
-grant select *
-from seller
-
-grant insert *
-from seller
-
-grant delet *
-from seller
 
 insert into person
  values( id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, authority,)
 
 
-// person table에서 seller를 client로 강등
+
+// person table에서 seller를 customer로 강등 , customer에서 seller로 등록 
 
 select*
 where person;
 
-update ( id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, authority,)
-set into (id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, client,)
+update person
+set authority = "customer"
+where id= 'id_hanna'
+on update cascade
+
+update person
+set authority = "seller"
+where id = 'id_hanna'
+on update cascade
+
+insert into ('id_hanna', shop_name, revenue)
+ values( 'id_hanna', 'pretty_shop',null)
+ on update cascade
 
 
 
@@ -40,6 +43,16 @@ set into (id, pasward, name , age, gender, phone, address, height, weight, point
 
 select *
 from sell_list
+
+//sell_log 검색 가능
+
+select*
+from sell_log
+
+
+
+
+
 
 
 
