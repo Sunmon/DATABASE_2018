@@ -1,0 +1,70 @@
+// 1. adminstrator 로그인
+
+
+
+
+// 사용자 추가 및 디비 권한부여(maria db ver)
+
+grant all privileges on dbname.* to 'username'@'%' identified by 'password' with grant option;
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password'; 
+GRANT ALL PRIVILEGES ON dbname.* TO 'username'@'%';
+grant all privileges on dbname.* to 'username'@'localhost' identified by 'password' with grant option;
+flush privileges;
+
+//seller 추가 및 삭제, 검색
+
+insert into person
+ values( id, pasward, name , age, gender, phone, address, height, weight, point, shop_name, revenue, authority,)
+
+
+
+// person table에서 seller를 customer로 강등 , customer에서 seller로 등록 
+
+select*
+where person;
+
+update person
+set authority = "customers"
+where id= 'id_hanna'
+on update cascade
+
+update person
+set authority = "sellers"
+where id = 'id_hanna'
+on update cascade
+
+insert into ('id_hanna', shop_name, revenue)
+ values( 'id_hanna', 'pretty_shop',0)
+ on update cascade
+
+//고객정보 검색
+select *
+from person
+where id = 'id_hanna'
+
+// sell_list 검색 가능
+
+select *
+from sell_list
+where id = 'id_hanna'
+
+//sell_log 검색 가능
+
+select*
+from sell_log
+where id = 'id_hanna'
+
+
+
+
+
+
+//기능사항 명세서
+
+1. 어플관리자는 고객을 판매자로 바꿀 수있다.  입력 : id, shop_name
+2. 어플관리자는 판매자를 고객을 바꿀 수 있다. 입력: id
+3. 어플 관리자는 고객의 고객정보를 볼 수 있다. 입력 : id  출력 : person table
+4. 어플 관리자는 판매자의 정보를 볼 수 있다. 입력: id,  출력 : sell_list
+
+
+
