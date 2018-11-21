@@ -43,12 +43,32 @@ Asecond 12
 else 00
 
 아디다스 검정 롱패딩s A01-01001s
-아디다스 검저 롱패딩m  A01-01001m
+아디다스 검정 롱패딩m  A01-01001m
 아디다스 하얀 롱패딩XL A01-01002XL
 닥스 검정 롱패딩L A01-08001L
 
-INSERT INTO sell_list (p_code,seller_id, price, stock, size, p_nickname )
-values (
+DBseller
+cmseller
+lalaseller
+
+INSERT INTO sell_list (p_code,full_code, seller_id, price, stock, size, p_nickname )
+values ("01" , "A01-01001m" , "DBseller" , "12000" , "30" , 'm',"dB_addidas_longpadingblack_m")
+values ("01" , "A01-01001m" , "cmseller" , "20000" , "10" , 'm',"cm_addidas_longpading_m")
+values ("01" , "A01-01001m" , "lalaseller" , "10000" , "2" , 'm',"la_addidas_blacklongpading_m ")
+values ("01" , "A01-01001s" , "DBseller" , "12000" , "10" , 's',"dB_addidas_longpadingblack_s")
+values ("01" , "A01-01001s" , "cmseller" , "20000" , "10" , 's',"cm_addidas_longpading_s")
+values ("01" , "A01-01001L" , "DBseller" , "12000" , "40" , 'L',"dB_addidas_longpadingblack_l")
+values ("01" , "A01-01001L" , "cmseller" , "20000" , "20" , 'L',"cm_addidas_longpading_l")
+values ("01" , "A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"la_addidas_blacklongpading_l ")
+
+values ("00" , "C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
+values ("00" , "C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
+values ("00" , "C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
+values ("00" , "C22-00001s" , "cmseller" , "20000" , "200" , 'S',"cmlong_cute_pants_s")
+values ("00" , "C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"la_hot_lovely_pants_l")
+
+
+
 
 
 INSERT INTO category (c_code, c_code_sub, c_name)
@@ -67,20 +87,6 @@ values ("D", "31", "dress_shoes");
 values ("D", "31", "sandal");
 
 
-addidas 01
-nike 02
-uniqlo 03
-beanpole 04
-lacoste 05
-gucci 06
-fila 07
-DAKS 08
-drmartens 09
-newbalance 10
-spao 11
-Asecond 12
-
-else 00
 
 insert into product (p_code, p_name, c_code, c_code_sub)
 values ("01","addidas", "A","01")
@@ -254,14 +260,7 @@ values ("00","else","D", "31");
 values ("00","else","D", "31");
 values ("00","else","D", "31");
 
-fila 07
-DAKS 08
-drmartens 09
-newbalance 10
-spao 11
-Asecond 12
 
-else 00
 
 
 
