@@ -47,6 +47,223 @@ else 00
 아디다스 하얀 롱패딩XL A01-01002XL
 닥스 검정 롱패딩L A01-08001L
 
+INSERT INTO sell_list (p_code,seller_id, price, stock, size, p_nickname )
+values (
+
+
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("A", "01", "pading");
+values ("A", "02", "coat");
+values ("A", "03", "cardigan");
+values ("B", "11", "cotton");
+values ("B", "12", "hood");
+values ("B", "13", "knit");
+values ("C", "21", "shorts");
+values ("C", "22", "long_pants");
+values ("C", "23", "mini_skirt");
+values ("C", "24", "long_skirt");
+values ("D", "31", "sneakers");
+values ("D", "31", "dress_shoes");
+values ("D", "31", "sandal");
+
+
+addidas 01
+nike 02
+uniqlo 03
+beanpole 04
+lacoste 05
+gucci 06
+fila 07
+DAKS 08
+drmartens 09
+newbalance 10
+spao 11
+Asecond 12
+
+else 00
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("01","addidas", "A","01")
+values ("01","addidas","A", "01");
+values ("01","addidas","A", "02");
+values ("01","addidas","A", "03");
+values ("01","addidas","B", "11");
+values ("01","addidas","B", "12");
+values ("01","addidas","B", "13");
+values ("01","addidas","C", "21");
+values ("01","addidas","C", "22");
+values ("01","addidas","C", "23");
+values ("01","addidas","C", "24");
+values ("01","addidas","D", "31");
+values ("01","addidas","D", "31");
+values ("01","addidas","D", "31");
+values ("02","nike","A", "01");
+values ("02","nike","A", "02");
+values ("02","nike","A", "03");
+values ("02","nike","B", "11");
+values ("02","nike","B", "12");
+values ("02","nike","B", "13");
+values ("02","nike","C", "21");
+values ("02","nike","C", "22");
+values ("02","nike","C", "23");
+values ("02","nike","C", "24");
+values ("02","nike","D", "31");
+values ("02","nike","D", "31");
+values ("02","nike","D", "31");
+values ("03","uniglo","A", "01");
+values ("03","uniglo","A", "02");
+values ("03","uniglo","A", "03");
+values ("03","uniglo","B", "11");
+values ("03","uniglo","B", "12");
+values ("03","uniglo","B", "13");
+values ("03","uniglo","C", "21");
+values ("03","uniglo","C", "22");
+values ("03","uniglo","C", "23");
+values ("03","uniglo","C", "24");
+values ("03","uniglo","D", "31");
+values ("03","uniglo","D", "31");
+values ("03","uniglo","D", "31");
+values ("04","beanpole","A", "01");
+values ("04","beanpole""A", "02");
+values ("04","beanpole""A", "03");
+values ("04","beanpole","B", "11");
+values ("04","beanpole","B", "12");
+values ("04","beanpole","B", "13");
+values ("04","beanpole","C", "21");
+values ("04","beanpole","C", "22");
+values ("04","beanpole","C", "23");
+values ("04","beanpole","C", "24");
+values ("04","beanpole","D", "31");
+values ("04","beanpole","D", "31");
+values ("04","beanpole","D", "31");
+values ("05","lacoste","A", "01");
+values ("05","lacoste","A", "02");
+values ("05","lacoste","A", "03");
+values ("05","lacoste","B", "11");
+values ("05","lacoste","B", "12");
+values ("05","lacoste","B", "13");
+values ("05","lacoste","C", "21");
+values ("05","lacoste","C", "22");
+values ("05","lacoste","C", "23");
+values ("05","lacoste","C", "24");
+values ("05","lacoste","D", "31");
+values ("05","lacoste","D", "31");
+values ("05","lacoste","D", "31");
+values ("06","gucci","A", "01");
+values ("06","gucci","A", "02");
+values ("06","gucci","A", "03");
+values ("06","gucci","B", "11");
+values ("06","gucci","B", "12");
+values ("06","gucci","B", "13");
+values ("06","gucci","C", "21");
+values ("06","gucci","C", "22");
+values ("06","gucci","C", "23");
+values ("06","gucci","C", "24");
+values ("06","gucci","D", "31");
+values ("06","gucci","D", "31");
+values ("06","gucci","D", "31");
+values ("07","fila","A", "01");
+values ("07","fila","A", "02");
+values ("07","fila","A", "03");
+values ("07","fila","B", "11");
+values ("07","fila","B", "12");
+values ("07","fila","B", "13");
+values ("07","fila","C", "21");
+values ("07","fila","C", "22");
+values ("07","fila","C", "23");
+values ("07","fila","C", "24");
+values ("07","fila","D", "31");
+values ("07","fila","D", "31");
+values ("07","fila","D", "31");
+values ("08","DAKS","A", "01");
+values ("08","DAKS","A", "02");
+values ("08","DAKS","A", "03");
+values ("08","DAKS","B", "11");
+values ("08","DAKS","B", "12");
+values ("08","DAKS","B", "13");
+values ("08","DAKS","C", "21");
+values ("08","DAKS","C", "22");
+values ("08","DAKS","C", "23");
+values ("08","DAKS","C", "24");
+values ("08","DAKS","D", "31");
+values ("08","DAKS","D", "31");
+values ("08","DAKS","D", "31");
+values ("09","drmartens","A", "01");
+values ("09","drmartens","A", "02");
+values ("09","drmartens","A", "03");
+values ("09","drmartens","B", "11");
+values ("09","drmartens","B", "12");
+values ("09","drmartens","B", "13");
+values ("09","drmartens","C", "21");
+values ("09","drmartens","C", "22");
+values ("09","drmartens","C", "23");
+values ("09","drmartens","C", "24");
+values ("09","drmartens","D", "31");
+values ("09","drmartens","D", "31");
+values ("09","drmartens","D", "31");
+values ("10","newbalance","A", "01");
+values ("10","newbalance","A", "02");
+values ("10","newbalance","A", "03");
+values ("10","newbalance","B", "11");
+values ("10","newbalance","B", "12");
+values ("10","newbalance","B", "13");
+values ("10","newbalance","C", "21");
+values ("10","newbalance","C", "22");
+values ("10","newbalance","C", "23");
+values ("10","newbalance","C", "24");
+values ("10","newbalance","D", "31");
+values ("10","newbalance","D", "31");
+values ("10","newbalance","D", "31");
+values ("11","spao","A", "01");
+values ("11","spao","A", "02");
+values ("11","spao","A", "03");
+values ("11","spao","B", "11");
+values ("11","spao","B", "12");
+values ("11","spao","B", "13");
+values ("11","spao","C", "21");
+values ("11","spao","C", "22");
+values ("11","spao","C", "23");
+values ("11","spao","C", "24");
+values ("11","spao","D", "31");
+values ("11","spao","D", "31");
+values ("11","spao","D", "31");
+values ("12","Asecond","A", "01");
+values ("12","Asecond","A", "02");
+values ("12","Asecond","A", "03");
+values ("12","Asecond","B", "11");
+values ("12","Asecond","B", "12");
+values ("12","Asecond","B", "13");
+values ("12","Asecond","C", "21");
+values ("12","Asecond","C", "22");
+values ("12","Asecond","C", "23");
+values ("12","Asecond","C", "24");
+values ("12","Asecond","D", "31");
+values ("12","Asecond","D", "31");
+values ("12","Asecond","D", "31");
+values ("00","else","A", "01");
+values ("00","else","A", "02");
+values ("00","else","A", "03");
+values ("00","else","B", "11");
+values ("00","else","B", "12");
+values ("00","else","B", "13");
+values ("00","else","C", "21");
+values ("00","else","C", "22");
+values ("00","else","C", "23");
+values ("00","else","C", "24");
+values ("00","else","D", "31");
+values ("00","else","D", "31");
+values ("00","else","D", "31");
+
+fila 07
+DAKS 08
+drmartens 09
+newbalance 10
+spao 11
+Asecond 12
+
+else 00
+
+
 
 
 
