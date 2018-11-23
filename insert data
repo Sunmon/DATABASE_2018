@@ -1,0 +1,338 @@
+//person insert data//
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+values("sunmon", "1234", "sunjung", 23, "F", "01045435364", "songpa-gu", 168, 50, 100000, "customers");
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+Values("han","123040","hanna", 22, "F", "01040392393", "konkuk", 169,53,20000,"customers");
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+Values("yih123","159483","ilhwan", 27, "M", "01043391253", "kangjin", 176,68,30000,"customers");
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+Values("jjj232","12223","janjin", 30, "M", "010233312133", "US", 180,73,1000,"customers");
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+Values("ddadandu","1244","chanju", 22, "F", "010403923193", "konkuk", 169,53,20000,"customers");
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+Values("jimm","12231","jimin", 23, "F", "01040097788", "seoul", 130,40,100000,"customers");
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
+Values("xoxo","133329","kei", 27, "M", "01012394794", "busan", 183,70,1000,"customers");
+
+
+//seller insert data
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority,shop_name, revenue,) 
+Values("DBseller","12039","hana", 24, "F", "01049392393", "konkuk", 169,53,20000,"sellers","DB_shop",NULL);
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority,shop_name, revenue,)
+values("cmseller","134522","chunchun",44,"M","02394852029","kungki",173,60,100000,"sellers","Cm_shop",NULL);
+
+INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority,shop_name, revenue,)
+values("lalaseller","14403","sami",30,"F","01029395004","jeju",160, 32, 15000,"sellers","lala_shop",NULL);
+
+
+
+p_code  000-00000
+예시 : 아디다스 롱페딩 A01-001
+
+c- code 외투 상의 하의 신발
+
+A외투- 패딩01 코트02, 가디건03 c-code-sub
+B상의- 면티11, 후드티12, 니트13
+C하의 - 반바지21, 긴바지22, 짧은치마23, 긴치마24
+D신발 - 운동화31, 구두32, 센들33
+
+
+
+addidas 01
+nike 02
+uniqlo 03
+beanpole 04
+lacoste 05
+gucci 06
+fila 07
+DAKS 08
+drmartens 09
+newbalance 10
+spao 11
+Asecond 12
+
+else 00
+
+아디다스 검정 롱패딩s A01-01001s
+아디다스 검정 롱패딩m  A01-01001m
+아디다스 하얀 롱패딩XL A01-01002XL
+닥스 검정 롱패딩L A01-08001L
+
+DBseller
+cmseller
+lalaseller
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001m" , "DBseller" , "12000" , "30" , 'm',"dB_addidas_longpadingblack_m")
+values ("A01-01001m" , "cmseller" , "20000" , "10" , 'm',"cm_addidas_longpading_m")
+values ("A01-01001m" , "lalaseller" , "10000" , "2" , 'm',"la_addidas_blacklongpading_m ")
+values ("A01-01001s" , "DBseller" , "12000" , "10" , 's',"dB_addidas_longpadingblack_s")
+values ("A01-01001s" , "cmseller" , "20000" , "10" , 's',"cm_addidas_longpading_s")
+values ("A01-01001L" , "DBseller" , "12000" , "40" , 'L',"dB_addidas_longpadingblack_l")
+values ("A01-01001L" , "cmseller" , "20000" , "20" , 'L',"cm_addidas_longpading_l")
+values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"la_addidas_blacklongpading_l ")
+values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"dBlong_pretty_addidas_blackcoat_m")
+values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"cm_lovely_addidas_blackcoat_m")
+values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"dBlong_pretty_addidas_whitecoat_m")
+
+values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
+values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
+values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"DB_cute_hot_cotton_M" )
+
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
+values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"cmlong_cute_pants_s")
+values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"la_hot_lovely_pants_l")
+
+
+
+
+
+
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A01-01001m","addidas_longpading_M","A", "01");
+values ("A01-01001s","addidas_longpading_S","A", "01");
+values ("A01-01001L","addidas_longpading_L","A", "01");
+values ("A02-01001M","addidas_black_coat_M","A", "02");
+values ("A02-01002M","addidas_white_coat_M","A", "02");
+
+values ("B11-02001M","nike_cotton_M","B", "11");
+values ("B11-02001L","nike_cotton_L","B", "11");
+
+values ("C22-00001M","else_long_pants_m","C", "22");
+values ("C22-00001s","else_long_pants_S","C", "22");
+values ("C22-00001L","else_long_pants_L","C", "22");
+
+
+
+
+
+
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("A", "01", "pading");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("A", "02", "coat");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("A", "03", "cardigan");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("B", "11", "cotton");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("B", "12", "hood");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("B", "13", "knit");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("C", "21", "shorts");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("C", "22", "long_pants");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("C", "23", "mini_skirt");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("C", "24", "long_skirt");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("D", "31", "sneakers");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("D", "32", "dress_shoes");
+INSERT INTO category (c_code, c_code_sub, c_name)
+values ("D", "33", "sandal");
+
+
+
+
+---------------실패작--------------------
+
+
+
+
+
+values ("01","addidas","A", "02");
+values ("01","addidas","A", "03");
+values ("01","addidas","B", "11");
+values ("01","addidas","B", "12");
+values ("01","addidas","B", "13");
+values ("01","addidas","C", "21");
+values ("01","addidas","C", "22");
+values ("01","addidas","C", "23");
+values ("01","addidas","C", "24");
+values ("01","addidas","D", "31");
+values ("01","addidas","D", "31");
+values ("01","addidas","D", "31");
+values ("02","nike","A", "01");
+values ("02","nike","A", "02");
+values ("02","nike","A", "03");
+values ("02","nike","B", "11");
+values ("02","nike","B", "12");
+values ("02","nike","B", "13");
+values ("02","nike","C", "21");
+values ("02","nike","C", "22");
+values ("02","nike","C", "23");
+values ("02","nike","C", "24");
+values ("02","nike","D", "31");
+values ("02","nike","D", "31");
+values ("02","nike","D", "31");
+values ("03","uniglo","A", "01");
+values ("03","uniglo","A", "02");
+values ("03","uniglo","A", "03");
+values ("03","uniglo","B", "11");
+values ("03","uniglo","B", "12");
+values ("03","uniglo","B", "13");
+values ("03","uniglo","C", "21");
+values ("03","uniglo","C", "22");
+values ("03","uniglo","C", "23");
+values ("03","uniglo","C", "24");
+values ("03","uniglo","D", "31");
+values ("03","uniglo","D", "31");
+values ("03","uniglo","D", "31");
+values ("04","beanpole","A", "01");
+values ("04","beanpole""A", "02");
+values ("04","beanpole""A", "03");
+values ("04","beanpole","B", "11");
+values ("04","beanpole","B", "12");
+values ("04","beanpole","B", "13");
+values ("04","beanpole","C", "21");
+values ("04","beanpole","C", "22");
+values ("04","beanpole","C", "23");
+values ("04","beanpole","C", "24");
+values ("04","beanpole","D", "31");
+values ("04","beanpole","D", "31");
+values ("04","beanpole","D", "31");
+values ("05","lacoste","A", "01");
+values ("05","lacoste","A", "02");
+values ("05","lacoste","A", "03");
+values ("05","lacoste","B", "11");
+values ("05","lacoste","B", "12");
+values ("05","lacoste","B", "13");
+values ("05","lacoste","C", "21");
+values ("05","lacoste","C", "22");
+values ("05","lacoste","C", "23");
+values ("05","lacoste","C", "24");
+values ("05","lacoste","D", "31");
+values ("05","lacoste","D", "31");
+values ("05","lacoste","D", "31");
+values ("06","gucci","A", "01");
+values ("06","gucci","A", "02");
+values ("06","gucci","A", "03");
+values ("06","gucci","B", "11");
+values ("06","gucci","B", "12");
+values ("06","gucci","B", "13");
+values ("06","gucci","C", "21");
+values ("06","gucci","C", "22");
+values ("06","gucci","C", "23");
+values ("06","gucci","C", "24");
+values ("06","gucci","D", "31");
+values ("06","gucci","D", "31");
+values ("06","gucci","D", "31");
+values ("07","fila","A", "01");
+values ("07","fila","A", "02");
+values ("07","fila","A", "03");
+values ("07","fila","B", "11");
+values ("07","fila","B", "12");
+values ("07","fila","B", "13");
+values ("07","fila","C", "21");
+values ("07","fila","C", "22");
+values ("07","fila","C", "23");
+values ("07","fila","C", "24");
+values ("07","fila","D", "31");
+values ("07","fila","D", "31");
+values ("07","fila","D", "31");
+values ("08","DAKS","A", "01");
+values ("08","DAKS","A", "02");
+values ("08","DAKS","A", "03");
+values ("08","DAKS","B", "11");
+values ("08","DAKS","B", "12");
+values ("08","DAKS","B", "13");
+values ("08","DAKS","C", "21");
+values ("08","DAKS","C", "22");
+values ("08","DAKS","C", "23");
+values ("08","DAKS","C", "24");
+values ("08","DAKS","D", "31");
+values ("08","DAKS","D", "31");
+values ("08","DAKS","D", "31");
+values ("09","drmartens","A", "01");
+values ("09","drmartens","A", "02");
+values ("09","drmartens","A", "03");
+values ("09","drmartens","B", "11");
+values ("09","drmartens","B", "12");
+values ("09","drmartens","B", "13");
+values ("09","drmartens","C", "21");
+values ("09","drmartens","C", "22");
+values ("09","drmartens","C", "23");
+values ("09","drmartens","C", "24");
+values ("09","drmartens","D", "31");
+values ("09","drmartens","D", "31");
+values ("09","drmartens","D", "31");
+values ("10","newbalance","A", "01");
+values ("10","newbalance","A", "02");
+values ("10","newbalance","A", "03");
+values ("10","newbalance","B", "11");
+values ("10","newbalance","B", "12");
+values ("10","newbalance","B", "13");
+values ("10","newbalance","C", "21");
+values ("10","newbalance","C", "22");
+values ("10","newbalance","C", "23");
+values ("10","newbalance","C", "24");
+values ("10","newbalance","D", "31");
+values ("10","newbalance","D", "31");
+values ("10","newbalance","D", "31");
+values ("11","spao","A", "01");
+values ("11","spao","A", "02");
+values ("11","spao","A", "03");
+values ("11","spao","B", "11");
+values ("11","spao","B", "12");
+values ("11","spao","B", "13");
+values ("11","spao","C", "21");
+values ("11","spao","C", "22");
+values ("11","spao","C", "23");
+values ("11","spao","C", "24");
+values ("11","spao","D", "31");
+values ("11","spao","D", "31");
+values ("11","spao","D", "31");
+values ("12","Asecond","A", "01");
+values ("12","Asecond","A", "02");
+values ("12","Asecond","A", "03");
+values ("12","Asecond","B", "11");
+values ("12","Asecond","B", "12");
+values ("12","Asecond","B", "13");
+values ("12","Asecond","C", "21");
+values ("12","Asecond","C", "22");
+values ("12","Asecond","C", "23");
+values ("12","Asecond","C", "24");
+values ("12","Asecond","D", "31");
+values ("12","Asecond","D", "31");
+values ("12","Asecond","D", "31");
+values ("00","else","A", "01");
+values ("00","else","A", "02");
+values ("00","else","A", "03");
+values ("00","else","B", "11");
+values ("00","else","B", "12");
+values ("00","else","B", "13");
+values ("00","else","C", "21");
+values ("00","else","C", "22");
+values ("00","else","C", "23");
+values ("00","else","C", "24");
+values ("00","else","D", "31");
+values ("00","else","D", "31");
+values ("00","else","D", "31");
+
+
+
+
+//--------------------------------------------------------
+//cart의 전부 + sell_list에서 상품 이름 같이 print.... cartDTO에 담을거
+select cart.*, sell_list.p_nickname, sell_list.price
+from cart, sell_list
+where cart.p_code = sell_list.p_code
+		AND cart.seller_ID = sell_list.seller_ID;
+		
+		
+
+

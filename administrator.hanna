@@ -55,8 +55,27 @@ from sell_log
 where id = 'id_hanna'
 
 
+*고객은 카테고리별로 옷으 검색할 수 있다. 입력: 카테고리, 서브카테고리 출력: 카테고리 맞는 옷 리스트
+
+select p_name, c_name, seller, price, size,
+from  product natural join category join sell_list using p_code 
+where p_code = ‘code_skirt’;
 
 
+select c_name, c_name, seller, price, size
+from  product natural join category join sell_list using p_code 
+where c_code_sub = ‘code_short’;
+
+
+[natural join 안쓴 ver]
+select p_name, c_name, seller, price, size,
+from  (product join category using c_code) join sell_list using p_code 
+where p_code = ‘code_skirt’;
+
+
+select c_name, c_name, seller, price, size
+from  (product join category using c_code) join sell_list using p_code 
+where c_code_sub = ‘code_short’;
 
 
 //기능사항 명세서
