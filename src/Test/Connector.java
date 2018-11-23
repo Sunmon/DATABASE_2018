@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Connector implements CartDAO{
     //DB와 연결해서 업데이트하거나, 데이터를 가져오는 역할을 해주는 클래스
-    Connection              con;
-    Statement               stmt;
-    PreparedStatement       pstmt;
-    ResultSet               rs;
+    private Connection              con;
+    private Statement               stmt;
+    private PreparedStatement       pstmt;
+    private ResultSet               rs;
 
     //Constructor
     public Connector(String portNum, String dbName, String id, String password)
@@ -167,9 +167,9 @@ public class Connector implements CartDAO{
     }
 
 
-    // insertCartDB(CartDTO cd);
+    // insertCartDB(CartDTO ca);
     @Override
-    public void insertCartDB(){}
+    public void insertCartDB(){}//오버라이드해서 에러뜨니까 일단 남겨둠
 
     public void insertCartDB(String code, String cID, String sID, int pcount, int tprice){
         //cart DB에 집어넣는 메소드
@@ -198,12 +198,28 @@ public class Connector implements CartDAO{
     }
 
 
+
+    // deleteCartDB(CartDTO ca);
     @Override
-    public void deleteCartDB()
+    public void deleteCartDB(){
+    }   //오버라이드해서 에러뜨니까 일단 남겨둠
+
+    public void deleteCartDB(String code, String cID, String sID)
     {
-
-
+        //TODO: parameter DTO로 입력받게 바꾸기.
+        //DB에 있는 cart table에서 특정 tuple 삭제
+        String  sql = "DELETE from cart where p_code = ? AND customer_ID = ? AND seller_ID = ?";
+        try {
+            pstmt                = con.prepareStatement(sql);
+            pstmt.setString(1, code);
+            pstmt.setString(2, cID);
+            pstmt.setString(3, sID);
+            int i = pstmt.executeUpdate();
+            System.out.println("DeleteP 쿼리 수행" + i);
+            pstmt.close();
+        } catch (SQLException e) { System.out.println("Delete 쿼리 수행 실패"); }
     }
+
 
     @Override
     public void updateCartDB() {

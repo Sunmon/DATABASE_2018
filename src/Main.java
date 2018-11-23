@@ -11,5 +11,6 @@ public class Main {
         Test.Connector con = new Test.Connector("3306", "dbtest_1115", "sunmon", "computer");
         con.initialize("sunmon");
 //        con.insertCartDB("A-123", "sunmon", "seller_2", 1, 1000);
+//        con.deleteCartDB("A-123", "sunmon", "seller_2");
     }
 }
