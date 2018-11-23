@@ -131,6 +131,7 @@ public class Connector implements CartDAO{
                 "where cart.p_code = sell_list.p_code " +
                 "AND cart.seller_ID = sell_list.seller_ID";
 
+        //DB에 연결 시도
         try {
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -197,12 +198,10 @@ public class Connector implements CartDAO{
     }
 
 
-
-
-
-
     @Override
-    public void deleteCartDB() {
+    public void deleteCartDB()
+    {
+
 
     }
 
