@@ -325,7 +325,11 @@ values ("00","else","D", "31");
 
 
 
-
+//cart의 전부 + sell_list에서 상품 이름 같이 print
+select cart.*, sell_list.p_nickname
+from cart, sell_list
+where cart.p_code = sell_list.p_code
+		AND cart.seller_ID = sell_list.seller_ID;
 
 
 
