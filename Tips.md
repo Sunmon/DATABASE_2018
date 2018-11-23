@@ -18,3 +18,39 @@ http://allg.tistory.com/25
 
 
 
+### Connection Methods
+
+http://mozi.tistory.com/26
+
+#### 1. executeUpdate()
+
+select빼고 나머지에서 사용.
+
+return값: int
+
+insert/delete/update에서는 반영된 레코드 건수 리턴,
+
+create/ drop에서는 -1 리턴.
+
+
+
+###2. execute()
+
+다 사용 가능
+
+return값: boolean
+
+return할때 resultSet을 반환하면(select 결과) true, 아니면 false 리턴(insert같은거).
+
+
+
+### 3. executeQuery()
+
+select에서 사용
+
+return 값: resultSet
+
+
+
+  
+
