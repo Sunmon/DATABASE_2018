@@ -325,6 +325,8 @@ values ("00","else","D", "31");
 
 
 
+
+//--------------------------------------------------------
 //cart의 전부 + sell_list에서 상품 이름 같이 print
 select cart.*, sell_list.p_nickname
 from cart, sell_list
