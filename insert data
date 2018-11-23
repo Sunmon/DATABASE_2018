@@ -4,22 +4,22 @@ INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,po
 values("sunmon", "1234", "sunjung", 23, "F", "01045435364", "songpa-gu", 168, 50, 100000, "customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-Values("han","123040","hanna", 22, "F", "01040392393", "konkuk", 169,53,20000,"cusomers");
+Values("han","123040","hanna", 22, "F", "01040392393", "konkuk", 169,53,20000,"customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-Values("yih123","159483","ilhwan", 27, "M", "01043391253", "kangjin", 176,68,30000,"cusomers");
+Values("yih123","159483","ilhwan", 27, "M", "01043391253", "kangjin", 176,68,30000,"customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-Values("jjj232","12223","janjin", 30, "M", "010233312133", "US", 180,73,1000,"cusomers");
+Values("jjj232","12223","janjin", 30, "M", "010233312133", "US", 180,73,1000,"customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-Values("ddadandu","1244","chanju", 22, "F", "010403923193", "konkuk", 169,53,20000,"cusomers");
+Values("ddadandu","1244","chanju", 22, "F", "010403923193", "konkuk", 169,53,20000,"customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-Values("jimm","12231","jimin", 23, "F", "01040097788", "seoul", 130,40,100000,"cusomers");
+Values("jimm","12231","jimin", 23, "F", "01040097788", "seoul", 130,40,100000,"customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-Values("xoxo","133329","kei", 27, "M", "01012394794", "busan", 183,70,1000,"cusomers");
+Values("xoxo","133329","kei", 27, "M", "01012394794", "busan", 183,70,1000,"customers");
 
 
 //seller insert data
@@ -79,6 +79,13 @@ values ("A01-01001s" , "cmseller" , "20000" , "10" , 's',"cm_addidas_longpading_
 values ("A01-01001L" , "DBseller" , "12000" , "40" , 'L',"dB_addidas_longpadingblack_l")
 values ("A01-01001L" , "cmseller" , "20000" , "20" , 'L',"cm_addidas_longpading_l")
 values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"la_addidas_blacklongpading_l ")
+values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"dBlong_pretty_addidas_blackcoat_m")
+values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"cm_lovely_addidas_blackcoat_m")
+values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"dBlong_pretty_addidas_whitecoat_m")
+
+values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
+values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
+values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"DB_cute_hot_cotton_M" )
 
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
@@ -86,9 +93,26 @@ values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m"
 values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"cmlong_cute_pants_s")
 values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"la_hot_lovely_pants_l")
 
-values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
-values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
-values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"DB_cute_hot_cotton_M" )
+
+
+
+
+
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A01-01001m","addidas_longpading_M","A", "01");
+values ("A01-01001s","addidas_longpading_S","A", "01");
+values ("A01-01001L","addidas_longpading_L","A", "01");
+values ("A02-01001M","addidas_black_coat_M","A", "02");
+values ("A02-01002M","addidas_white_coat_M","A", "02");
+
+values ("B11-02001M","nike_cotton_M","B", "11");
+values ("B11-02001L","nike_cotton_L","B", "11");
+
+values ("C22-00001M","else_long_pants_m","C", "22");
+values ("C22-00001s","else_long_pants_S","C", "22");
+values ("C22-00001L","else_long_pants_L","C", "22");
+
 
 
 
@@ -123,8 +147,13 @@ values ("D", "33", "sandal");
 
 
 
-insert into product (p_code, p_name, c_code, c_code_sub)
-values ("01","addidas","A", "01");
+
+---------------실패작--------------------
+
+
+
+
+
 values ("01","addidas","A", "02");
 values ("01","addidas","A", "03");
 values ("01","addidas","B", "11");
