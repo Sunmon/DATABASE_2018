@@ -86,6 +86,10 @@ values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m"
 values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"cmlong_cute_pants_s")
 values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"la_hot_lovely_pants_l")
 
+values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
+values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
+values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"DB_cute_hot_cotton_M" )
+
 
 
 
