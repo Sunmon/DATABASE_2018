@@ -2,23 +2,24 @@ package Test;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CartDAO {
-    Connection con;
-    PreparedStatement pstmt;
-    ResultSet rs;
+public class CartDAO extends DAOFactory{
+
     ArrayList<CartDTO> cartList = null;
 
     public CartDAO(Connection con)
     {
-        regist(con);
+        super(con);
+        System.out.println("Cart con완료");
     }
 
-    public void regist(Connection con)
-    {   //Connector와 같은 Connection으로 설정.
-        this.con = con;
-        System.out.println("CartDAO :: connection 완료");
 
+    //FACTORY에서 쓰는거 실험중
+    @Override
+    public void printAttributes()
+    {
+        System.out.println("p_nick \t\t p_count \t\t tot_price \t\t p_code \t\t seller_ID \t\t");
     }
+
 
     public ArrayList<CartDTO> initialize(String _id) {
         //user가 담은 cart목록 + sell_list에서 상품이름 DB에서 가져와서 DTO로 초기화.
@@ -55,7 +56,8 @@ public class CartDAO {
                 String nick = rs.getString("p_nickname");
                 int price = rs.getInt("price");
 
-/*              ID관계없이 모든 cart tablee의 내용을 보여줌.
+/*
+//              ID관계없이 모든 cart tablee의 내용을 보여줌.
 
                 System.out.print(pc + "\t\t");
                 System.out.print(cID + "\t\t\t");
@@ -65,8 +67,8 @@ public class CartDAO {
                 System.out.print(nick + "\t\t");
                 System.out.print(price + "\t\t");
                 System.out.println();
-
 */
+
 
                 //cartList에 cart 새 객체 추가
                 CartDTO c = new CartDTO(pc, cID, sID, pcount, tp, nick, price);

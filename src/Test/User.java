@@ -18,6 +18,16 @@ public class User
 
 
 
+    //TODO: cart, favorite, sell_list, 통합해서 보여주기 (귀찮아서 메소드 하나로 합침)
+    public void showLists(DAOFactory df)
+    {   //테스트중
+        df.printAttributes();
+        showCartList((CartDAO)df);
+
+    }
+
+
+
     //NOTE: cart관련 메소드들
 
     public void removeCart(CartDAO cao, CartDTO cdo)
@@ -41,7 +51,7 @@ public class User
         }*/
 
         //print cartList ... 고객에게 필요한 것 보여줌
-        System.out.println("p_nick \t\t p_count \t\t tot_price \t\t p_code \t\t seller_ID \t\t");
+        cao.printAttributes();
         for (CartDTO cto : cao.cartList)
         {
            printCartItem(cto);
@@ -64,7 +74,8 @@ public class User
 
 
     public void printCartItem(CartDTO cto)
-    {
+    {   //고른 상품을 print해주는 메소드
+        //차후에 '카테고리별 보기' , '판매자별 보기' 등등에 사용
             System.out.print(cto.getP_nick() + "\t\t");
             System.out.print(cto.getP_count() + "\t\t\t");
             System.out.print(cto.getTot_price() + "\t\t\t");
@@ -91,6 +102,13 @@ public class User
         return ct;
     }
 
+
+
+    //NOTE: favorite 관련 메소드들
+
+
+
+    //NOTE: sellList 관련 메소드들
 
 
 
