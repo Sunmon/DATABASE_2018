@@ -2,7 +2,7 @@ package Test;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Connector implements CartDAO{
+public class Connector {
     //DB와 연결해서 업데이트하거나, 데이터를 가져오는 역할을 해주는 클래스
     private Connection              con;
     private Statement               stmt;
@@ -14,6 +14,13 @@ public class Connector implements CartDAO{
     {   //Connector 생성자.
         //db 자체에 연결할 이름/비번
         con = makeConnection(portNum, dbName,id,password);
+    }
+
+
+    //TODO: give connection to other
+    public Connection getCon()
+    {   //다른 객체에서도 동일 connection을 쓰기 위함
+        return con;
     }
 
 
@@ -119,115 +126,5 @@ public class Connector implements CartDAO{
 
     //================================================================
     //================================================================
-    ArrayList<CartDTO> cart;
 
-    @Override
-    public ArrayList<CartDTO> initialize(String _id) {
-        //TODO: 지금은 print만했고, 객체는 생성 안 했음.
-        //user가 담은 cart목록 + sell_list에서 상품이름 DB에서 가져와서 DTO로 초기화.
-
-        String sql = "select cart.*, sell_list.p_nickname, sell_list.price " +
-                "from cart, sell_list " +
-                "where cart.p_code = sell_list.p_code " +
-                "AND cart.seller_ID = sell_list.seller_ID";
-
-        //DB에 연결 시도
-        try {
-            pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-
-            //col 정보 읽어오기
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int cols = rsmd.getColumnCount();
-            System.out.println("Count of column is " + cols);
-            System.out.println("and column name is ");
-            for (int i = 1; i <= cols; i++){
-                System.out.print(rsmd.getColumnLabel(i)+"\t\t");
-            }
-            System.out.println();
-
-            while(rs.next())
-            {
-                System.out.print(rs.getString("p_code") +"\t\t");
-                System.out.print(rs.getString("customer_ID")+"\t\t\t");
-                System.out.print(rs.getString("seller_ID")+"\t\t");
-                System.out.print(rs.getInt("p_count")+"\t\t\t");
-                System.out.print(rs.getInt("tot_price")+"\t\t\t");
-                System.out.print(rs.getString("p_nickname")+"\t\t");
-                System.out.print(rs.getInt("price")+"\t\t");
-                System.out.println();
-            }
-            pstmt.close();
-        } catch (SQLException e) {
-            System.out.println("DB에서 JAVA로 cart 가져오기 실패");
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-
-    // insertCartDB(CartDTO ca);
-    @Override
-    public void insertCartDB(){}//오버라이드해서 에러뜨니까 일단 남겨둠
-
-    public void insertCartDB(String code, String cID, String sID, int pcount, int tprice){
-        //cart DB에 집어넣는 메소드
-        //지금은 그냥 DB에 넣지만, DTO이용해서 넣는걸로 바꾸기.
-        //나중에 그냥 GUI상에서 클릭하면 알아서 parameter들 추가되는걸로.
-        //tot_price는 attribute에서 빼도 된다. 알아서 계산해서 저장해두기.
-
-        String sql = "INSERT INTO cart ";
-        sql = sql + "VALUES (?, ?, ?, ?, ?)";
-        try
-        {
-            pstmt                = con.prepareStatement(sql);
-            pstmt.setString(1, code);
-            pstmt.setString(2, cID);
-            pstmt.setString(3, sID);
-            pstmt.setInt(4, pcount);
-            pstmt.setInt(5, tprice);
-            int i = pstmt.executeUpdate();
-            System.out.println("Insert 쿼리 수행" + i);
-            pstmt.close();
-        } catch (SQLException e)
-        {
-            System.out.println("Insert 쿼리 수행 실패");
-            e.printStackTrace();
-        }
-    }
-
-
-
-    // deleteCartDB(CartDTO ca);
-    @Override
-    public void deleteCartDB(){
-    }   //오버라이드해서 에러뜨니까 일단 남겨둠
-
-    public void deleteCartDB(String code, String cID, String sID)
-    {
-        //TODO: parameter DTO로 입력받게 바꾸기.
-        //DB에 있는 cart table에서 특정 tuple 삭제
-        String  sql = "DELETE from cart where p_code = ? AND customer_ID = ? AND seller_ID = ?";
-        try {
-            pstmt                = con.prepareStatement(sql);
-            pstmt.setString(1, code);
-            pstmt.setString(2, cID);
-            pstmt.setString(3, sID);
-            int i = pstmt.executeUpdate();
-            System.out.println("DeleteP 쿼리 수행" + i);
-            pstmt.close();
-        } catch (SQLException e) { System.out.println("Delete 쿼리 수행 실패"); }
-    }
-
-
-    @Override
-    public void updateCartDB() {
-
-    }
-
-    @Override
-    public void selectCartDB() {
-
-    }
 }

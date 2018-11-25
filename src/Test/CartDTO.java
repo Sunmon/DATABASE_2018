@@ -2,22 +2,20 @@ package Test;
 
 public class CartDTO {
     //cart Table뿐 아니라, 고객이 cart 사용시 필요한 정보들을 다 담는 클래스
+    //cart table + product table
 
     private String p_code = null;
     private String customer_ID = null;
     private String seller_ID = null;
     private int p_count = 0;
     private int tot_price = 0;
-
-    //TODO: nickname 추가 필요 ... DTO에 알아서 join해서 가져오기
-    private String p_nick = null;
-
+    private String p_nick = null;   //product nickname
+    private int p_price = 0;        //1개당 가격
 
 
-    //개당 가격도 가져옴.
-    private int p_price = 0;
 
-
+    //constructor
+    public CartDTO(){}
     public CartDTO(String p_code, String customer_ID, String seller_ID, int p_count, int tot_price, String p_nick, int p_price) {
         this.p_code = p_code;
         this.customer_ID = customer_ID;
