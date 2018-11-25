@@ -19,6 +19,8 @@ public class User
 
 
     //TODO: cart, favorite, sell_list, 통합해서 보여주기 (귀찮아서 메소드 하나로 합침) ::테스트중
+    //없애버릴까 고민중
+
     public void showLists(DAOFactory df)
     {   //테스트중
 //        showCartList((CartDAO)df);
