@@ -8,12 +8,14 @@ public class Main {
 //        Test.CartDAO cao = new CartDAO(con.getCon());
         DAOFactory df = new DAOFactory(con.getCon());
         Test.DAOFactory cao = df.setDAO("cart");
+        Test.DAOFactory slao = df.setDAO("sellList");
 
         cao.initialize("sunmon");
         User customer = new User();
         customer.setID("sunmon");
 //        customer.showCartList(cao);
-        customer.showLists(cao);
+        slao.initialize("sunmon");
+        customer.showLists(slao);
 
 //        System.out.println("고른 상품:");
 //        customer.printCartItem(customer.searchCart(cao, "A-123", "seller_2"));

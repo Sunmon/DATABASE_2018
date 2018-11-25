@@ -1,8 +1,6 @@
 package Test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DAOFactory
@@ -32,9 +30,15 @@ public class DAOFactory
         return null;
     }
 
-    public void printAttributes(){}
-
-
-
+    public void printAttributes() throws SQLException {
+        //col 정보 읽어오기
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int cols = rsmd.getColumnCount();
+        for (int i = 1; i <= cols; i++) {
+            System.out.print(rsmd.getColumnLabel(i) + "\t\t\t");
+        }
+        System.out.println();
 
     }
+
+}
