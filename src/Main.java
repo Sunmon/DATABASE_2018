@@ -1,36 +1,36 @@
 //import java.sql.*;
 import Test.*;
 import View.VLogin;
+import View.VMain;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException
     {
-        //Test package에 있는거 새로 테스트하는거.
+        //Connect to DB
         Test.Connector con = new Test.Connector("3306", "dbtest_1115", "sunmon", "computer");
+
+        //Login GUI
+        VMain vm = new VMain();
+        User user = vm.runVLogin(con);
+        System.out.println("user logined!");                                               //NOTE: remove this println
+
+        //initialize DTOs
         DAOFactory df = new DAOFactory(con.getCon());
         Test.DAOFactory cao = (CartDAO)df.setDAO("cart");
         Test.DAOFactory slao = (SellListDAO)df.setDAO("sellList");
-
-
-        System.out.println();
-        System.out.println();
-
-        User user = con.login("sunmon", "1234");
         cao.initialize(user.getID());
         slao.initialize(user.getID());
 
-        user.showLists(cao);
+
+
+        //show sellList
+        vm.runVsellList(con, user);
 
 
 
-
-
-        /*User customer = new User();
-        customer.setID("sunmon");
-        customer.showLists(slao);
-
+/*
         System.out.println("cart List:");
         customer.showLists(cao);
 

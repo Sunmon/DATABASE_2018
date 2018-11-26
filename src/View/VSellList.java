@@ -2,7 +2,7 @@ package View;
 
 import javax.swing.*;
 
-public class VSellist
+public class VSellList
 {
      JPanel panel1;
 }

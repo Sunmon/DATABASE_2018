@@ -1,39 +1,57 @@
 package View;
 
-import Test.CartDAO;
-import Test.DAOFactory;
-import Test.SellListDAO;
-import Test.User;
-
+import Test.*;
 import javax.swing.*;
-import java.sql.SQLException;
+import java.awt.*;
 
 public class VMain
 {
-
-    public static void main(String[] args)
+    Dimension d = new Dimension(414, 736);
+    public void main(Connector con)
     {
-        //Connector con 연결
-        Test.Connector con = new Test.Connector("3306", "dbtest_1115", "sunmon", "computer");
-        DAOFactory df = new DAOFactory(con.getCon());
-        Test.DAOFactory cao = (CartDAO)df.setDAO("cart");
-        Test.DAOFactory slao = (SellListDAO)df.setDAO("sellList");
+
+    }
 
 
-
+    public User runVLogin(Connector con)
+    {   //login해서 맞는 user 객체 리턴
         JFrame frame = new JFrame("VLogin");
         VLogin vlogin = new VLogin(con);
         frame.setContentPane(vlogin.panel1);
+        frame.setPreferredSize(d);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        User user = vlogin.getUser();
 
-        //FIXME: 화면이 안 사라짐..
-        if(vlogin.getUser() != null)
-        {
-            frame.setVisible(false);    //안보이게 함
-            frame.dispose();            //login frame 삭제
+        synchronized (vlogin.getLoginButton())
+        {   //vlogin의 login button과 sync
+            try
+            {   //login버튼 눌러서 제대로 로그인 될 때까지 기다림
+                vlogin.getLoginButton().wait();
+                System.out.println("button clicked");                                       //NOTE: remove this println
+                frame.setVisible(false);
+                frame.dispose();
+                return vlogin.getUser();
+            } catch (InterruptedException e)
+            {
+                e.printStackTrace();
+                return null;
+            }
         }
+    }
+
+
+
+
+
+    public void runVsellList(Connector con, User user)
+    {
+        JFrame frame = new JFrame("VSellList");
+        VSellList vs = new VSellList();
+        frame.setContentPane(vs.panel1);
+        frame.setPreferredSize(d);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 }

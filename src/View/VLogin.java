@@ -26,65 +26,32 @@ public class VLogin
         {
             @Override
             public void actionPerformed(ActionEvent e)
-            {
-                System.out.println(panel1.getSize());
-                user = con.login(idField.getText(), pwField.getText());
-                if(user == null)
-                    JOptionPane.showMessageDialog(null, "ID/PW를 다시 확인해 주십시오.");
-                else
+            {   //button 누를때까지 기다리기.
+                synchronized (loginButton)
                 {
-                    isLogined = true;
-                    VSellist vs = new VSellist();
-                    JFrame frame = new JFrame("VSellist");
-                    frame.setContentPane(vs.panel1);
-                    frame.setPreferredSize(panel1.getSize());
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.pack();
-                    frame.setVisible(true);
-
+                    tryLogin(con);
                 }
             }
         });
     }
 
 
-
-
-    public boolean getIsLogined()
+    //Login 시도
+    public void tryLogin(Connector con)
     {
-        return isLogined;
-
-
+        user = con.login(idField.getText(), pwField.getText());
+        if(user == null)
+            JOptionPane.showMessageDialog(null, "ID/PW를 다시 확인해 주십시오.");
+        else    //login이 제대로 되었을때 다음 메소드 실행
+            loginButton.notify();
     }
 
+
+    //Getters
+    public JButton getLoginButton(){ return loginButton; }
     public User getUser()
     {
         return user;
     }
-
-
-
-
-
-    public void setData(Connector data)
-    {
-        idField.setText(data.getId());
-        pwField.setText(data.getPw());
-    }
-
-    public void getData(Connector data)
-    {
-        data.setId(idField.getText());
-        data.setPw(pwField.getText());
-    }
-
-    public boolean isModified(Connector data)
-    {
-        if (idField.getText() != null ? !idField.getText().equals(data.getId()) : data.getId() != null) return true;
-        if (pwField.getText() != null ? !pwField.getText().equals(data.getPw()) : data.getPw() != null) return true;
-        return false;
-    }
-
-
 
 }

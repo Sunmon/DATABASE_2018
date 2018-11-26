@@ -20,7 +20,7 @@ public class DAOFactory
     public DAOFactory(Connection con)
     {   //Connector와 같은 Connection으로 설정.
         this.con = con;
-        System.out.println("DAOFACT:: connection 완료");
+        System.out.println("DAOFACT:: connection 완료");      //NOTE: remove this println
 
     }
 
