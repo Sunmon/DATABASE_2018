@@ -9,6 +9,7 @@ public class DAOFactory
     PreparedStatement pstmt;
     ResultSet rs;
 
+    ArrayList dto;
 
 
     public DAOFactory(Connection con)
@@ -27,7 +28,7 @@ public class DAOFactory
     }
 
     public ArrayList initialize(String _id) {
-        return null;
+        return dto;
     }
 
     public void printAttributes() throws SQLException {
@@ -38,7 +39,8 @@ public class DAOFactory
             System.out.print(rsmd.getColumnLabel(i) + "\t\t\t");
         }
         System.out.println();
-
     }
+
+    public void printAllItems(){}
 
 }

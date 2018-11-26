@@ -15,13 +15,32 @@ public class CartDAO extends DAOFactory{
 
     //FACTORY에서 쓰는거 실험중
     @Override
-    public void printAttributes()
-    {
+    public void printAttributes() throws SQLException
+    {   //cart attribute중 일부만 볼 수 있게 override
+        //super.printAttributes쓸거면 printAllItems 값 순서 바꿔야 함. 추가도 필요.
+//        super.printAttributes();
         System.out.println("p_nick \t\t p_count \t\t tot_price \t\t p_code \t\t seller_ID \t\t");
     }
 
+    //print All Items
+    @Override
+    public void printAllItems()
+    {   //cart에 담은 모든 item들 보여줌. (로그인한 ID중)
+        for (CartDTO cto : cartList)
+        {
+            System.out.print(cto.getP_nick() + "\t\t");
+            System.out.print(cto.getP_count() + "\t\t\t");
+            System.out.print(cto.getTot_price() + "\t\t\t");
+            System.out.print(cto.getP_code()+ "\t\t\t");
+            System.out.print(cto.getSeller_ID()+ "\t\t\t");
+            System.out.println();
 
-    public ArrayList<CartDTO> initialize(String _id) {
+        }
+    }
+
+
+    public ArrayList<CartDTO> initialize(String _id)
+    {
         //user가 담은 cart목록 + sell_list에서 상품이름 DB에서 가져와서 DTO로 초기화.
         //list생성
         cartList = new ArrayList<CartDTO>();
@@ -29,11 +48,12 @@ public class CartDAO extends DAOFactory{
         String sql = "select cart.*, sell_list.p_nickname, sell_list.price " +
                 "from cart, sell_list " +
                 "where cart.p_code = sell_list.p_code " +
-                "AND cart.seller_ID = sell_list.seller_ID";
-
+                "AND cart.seller_ID = sell_list.seller_ID " +
+                "AND cart.customer_ID = ?";
         //DB에 연결 시도
         try {
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,_id);
             rs = pstmt.executeQuery();
 
  /*           //col 정보 읽어오기
@@ -79,10 +99,8 @@ public class CartDAO extends DAOFactory{
             System.out.println("DB에서 JAVA로 cart 가져오기 실패");
             e.printStackTrace();
         }
-
         return cartList;
     }
-
 
     public void insertCartDB(CartDTO ct)
     {   //cartDTO에 있는 값을 DB에 업데이트
@@ -105,7 +123,8 @@ public class CartDAO extends DAOFactory{
         }
     }
 
-    public void insertCartDB(String code, String cID, String sID, int pcount, int tprice) {
+    public void insertCartDB(String code, String cID, String sID, int pcount, int tprice)
+    {
         //cart DB에 집어넣는 메소드
         //나중에 그냥 GUI상에서 클릭하면 알아서 parameter들 추가되는걸로.
         //tot_price는 attribute에서 빼도 된다. 알아서 계산해서 저장해두기.
@@ -128,7 +147,6 @@ public class CartDAO extends DAOFactory{
         }
     }
 
-
     public void deleteCartDB(CartDTO ct)
     {   //CartDTO 입력받아서 거기 있는 내용 삭제.
         //DB에서 삭제 및 List에서도 삭제.
@@ -150,7 +168,8 @@ public class CartDAO extends DAOFactory{
         cartList.remove(ct);
     }
 
-    public void deleteCartDB(String code, String cID, String sID) {
+    public void deleteCartDB(String code, String cID, String sID)
+    {
         //DB에 있는 cart table에서 특정 tuple 삭제
         String sql = "DELETE from cart where p_code = ? AND customer_ID = ? AND seller_ID = ?";
         try {
@@ -168,7 +187,8 @@ public class CartDAO extends DAOFactory{
     }
 
 
-    public void updateCartDB(CartDTO ct) {   //CartDTO 객체에 있는 내용대로 DB에서 찾아서 수정.
+    public void updateCartDB(CartDTO ct)
+    {   //CartDTO 객체에 있는 내용대로 DB에서 찾아서 수정.
         //개수, 총금액 수정
         String sql = "UPDATE cart SET p_count = ?, tot_price = ? WHERE p_code = ? AND customer_ID = ? AND seller_ID = ?";  //sql도 바꿔야 함. 알아서 가격이 맞춰지도록.
         try {
@@ -188,7 +208,8 @@ public class CartDAO extends DAOFactory{
         }
     }
 
-    public void updateCartDB(String code, String cID, String sID, int pcount, int tprice) {
+    public void updateCartDB(String code, String cID, String sID, int pcount, int tprice)
+    {
         //cart table(DB)의 내용 바꾸기(개별수량, 총 가격 변동가능. 고객은 수량만 변동 가능). update
         //tprice는 알아서 넣기 전에 계산되게 해야지. DTO를 쓰든가
         String sql = "UPDATE cart SET p_count = ?, tot_price = ? WHERE p_code = ? AND customer_ID = ? AND seller_ID = ?";  //sql도 바꿔야 함. 알아서 가격이 맞춰지도록.
@@ -207,7 +228,6 @@ public class CartDAO extends DAOFactory{
             System.out.println("update 쿼리 수행 실패");
         }
     }
-
 
     public CartDTO selectCartDB(String pc, String cid, String sid)
     {   //DB에서 select해서 새 DTO객체를 만들어서 리턴.

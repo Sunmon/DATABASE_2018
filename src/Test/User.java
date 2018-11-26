@@ -1,4 +1,5 @@
 package Test;
+import java.sql.SQLException;
 import java.util.ListIterator;
 
 public class User
@@ -21,22 +22,27 @@ public class User
     //TODO: cart, favorite, sell_list, 통합해서 보여주기 (귀찮아서 메소드 하나로 합침) ::테스트중
     //없애버릴까 고민중
 
-    public void showLists(DAOFactory df)
-    {   //테스트중
-//        showCartList((CartDAO)df);
-        showSellList((SellListDAO)df);
+    public void showLists(DAOFactory df) throws SQLException
+    {   //list 보여줌.
+        df.printAttributes();
+        df.printAllItems();
+    }
+
+    public void remove(DAOFactory df)
+    {
+
 
     }
 
-    //NOTE: sellList관련 메소드들
-    private void showSellList(SellListDAO slao)
+    /*//NOTE: sellList관련 메소드들
+    private void showSellList(SellListDAO slao) throws SQLException
     {
         slao.printAttributes();
         for (SellListDTO sto : slao.sellList)
         {
             printSellListItem(sto);
         }
-    }
+    }*/
 
 
     //NOTE: cart관련 메소드들
@@ -53,13 +59,13 @@ public class User
         cao.insertCartDB(cdo);
     }
 
-    public void showCartList(CartDAO cao)
+/*    public void showCartList(CartDAO cao) throws SQLException
     {   //cartList에 있는 내용들 print
-        /*ListIterator<CartDTO> li= cao.cartList.listIterator();
+        *//*ListIterator<CartDTO> li= cao.cartList.listIterator();
         while(li.hasNext())
         {
             System.out.println();
-        }*/
+        }*//*
 
         //print cartList ... 고객에게 필요한 것 보여줌
         cao.printAttributes();
@@ -67,7 +73,7 @@ public class User
         {
            printCartItem(cto);
         }
-    }
+    }*/
 
 
 
@@ -84,7 +90,7 @@ public class User
     }
 
 
-    public void printCartItem(CartDTO cto)
+    /*public void printCartItem(CartDTO cto)
     {   //고른 상품을 print해주는 메소드
         //차후에 '카테고리별 보기' , '판매자별 보기' 등등에 사용
             System.out.print(cto.getP_nick() + "\t\t");
@@ -93,7 +99,7 @@ public class User
             System.out.print(cto.getP_code()+ "\t\t\t");
             System.out.print(cto.getSeller_ID()+ "\t\t\t");
             System.out.println();
-    }
+    }*/
 
     public void printSellListItem(SellListDTO sto)
     {   //고른 상품을 print해주는 메소드

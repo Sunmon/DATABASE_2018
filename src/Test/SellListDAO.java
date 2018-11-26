@@ -45,16 +45,19 @@ public class SellListDAO extends DAOFactory
 
     public SellListDAO(Connection con) {super(con);}
 
-    @Override
+ /*   @Override
     public void printAttributes()
     {
-        System.out.print("p_nickname\t\t");
+        super.printAttributes();
+       *//* System.out.print("p_nickname\t\t");
         System.out.print("size\t\t");
         System.out.print("price\t\t");
         System.out.print("stock\t\t");
         System.out.print("seller_ID\t\t");
         System.out.print("p_code\t\t");
-        System.out.println();
-    }
+        System.out.println();*//*
+    }*/
+
+
 
 }
