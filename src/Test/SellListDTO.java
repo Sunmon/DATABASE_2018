@@ -1,6 +1,6 @@
 package Test;
 
-public class SellListDTO
+public class SellListDTO implements DTO
 {
     private String p_code = null;
     private String seller_ID = null;

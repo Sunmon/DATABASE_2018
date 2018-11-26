@@ -7,13 +7,18 @@ import java.util.ArrayList;
 
 public class SellListDAO extends DAOFactory
 {
-    ArrayList<SellListDTO> sellList = null;
+    ArrayList<SellListDTO> dtoList = null;
+//    ArrayList<SellListDTO> dtoList = null;
 
+    public ArrayList<SellListDTO> getDtoList()
+    {
+        return dtoList;
+    }
     @Override
     public ArrayList<SellListDTO> initialize(String _id)
-    {   //sellList table 통째로 가져오기 + sellistDTO로 초기화
+    {   //dtoList table 통째로 가져오기 + sellistDTO로 초기화
         //list생성
-        sellList = new ArrayList<SellListDTO>();
+        dtoList = new ArrayList<SellListDTO>();
 
         String sql = "select * from sell_list";
         //DB에 연결 시도
@@ -32,15 +37,15 @@ public class SellListDAO extends DAOFactory
 
                 //sellList에 sellDTO 새 객체 추가
                 SellListDTO s = new SellListDTO(pc, sID, price, stock, size, nick);
-                sellList.add(s);
+                dtoList.add(s);
             }
             pstmt.close();
         } catch (SQLException e) {
-            System.out.println("DB에서 JAVA로 sellList 가져오기 실패");
+            System.out.println("DB에서 JAVA로 dtoList 가져오기 실패");
             e.printStackTrace();
         }
 
-        return sellList;
+        return dtoList;
     }
 
     public SellListDAO(Connection con) {super(con);}
@@ -57,6 +62,27 @@ public class SellListDAO extends DAOFactory
         System.out.print("p_code\t\t");
         System.out.println();*//*
     }*/
+
+    @Override
+    public void printAllItems()
+    {   //cart에 담은 모든 item들 보여줌. (로그인한 ID중)
+
+        for (SellListDTO sto : dtoList)
+        {
+            printItem(sto);
+        }
+    }
+
+    public void printItem(SellListDTO sto)
+    {
+        System.out.print(sto.getP_nickname() + "\t\t");
+        System.out.print(sto.getSize() + "\t\t\t");
+        System.out.print(sto.getPrice() + "\t\t\t");
+        System.out.print(sto.getStock()+ "\t\t\t");
+        System.out.print(sto.getSeller_ID()+ "\t\t\t");
+        System.out.print(sto.getP_code()+ "\t\t\t");
+        System.out.println();
+    }
 
 
 

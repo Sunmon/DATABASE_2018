@@ -2,15 +2,22 @@ package Test;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CartDAO extends DAOFactory{
+public class CartDAO extends DAOFactory {
 
-    ArrayList<CartDTO> cartList = null;
+    public ArrayList<CartDTO> getDtoList()
+    {
+        return dtoList;
+    }
 
+    ArrayList<CartDTO> dtoList = null;
     public CartDAO(Connection con)
     {
         super(con);
         System.out.println("Cart con완료");
     }
+
+
+
 
 
     //FACTORY에서 쓰는거 실험중
@@ -20,22 +27,28 @@ public class CartDAO extends DAOFactory{
         //super.printAttributes쓸거면 printAllItems 값 순서 바꿔야 함. 추가도 필요.
 //        super.printAttributes();
         System.out.println("p_nick \t\t p_count \t\t tot_price \t\t p_code \t\t seller_ID \t\t");
+
     }
 
     //print All Items
     @Override
     public void printAllItems()
     {   //cart에 담은 모든 item들 보여줌. (로그인한 ID중)
-        for (CartDTO cto : cartList)
-        {
-            System.out.print(cto.getP_nick() + "\t\t");
-            System.out.print(cto.getP_count() + "\t\t\t");
-            System.out.print(cto.getTot_price() + "\t\t\t");
-            System.out.print(cto.getP_code()+ "\t\t\t");
-            System.out.print(cto.getSeller_ID()+ "\t\t\t");
-            System.out.println();
 
+        for (CartDTO cto : dtoList)
+        {
+          printItem(cto);
         }
+    }
+
+    public void printItem(CartDTO cto)
+    {   //TEST용. 지울것!
+        System.out.print(cto.getP_nick() + "\t\t");
+        System.out.print(cto.getP_count() + "\t\t\t");
+        System.out.print(cto.getTot_price() + "\t\t\t");
+        System.out.print(cto.getP_code()+ "\t\t\t");
+        System.out.print(cto.getSeller_ID()+ "\t\t\t");
+        System.out.println();
     }
 
 
@@ -43,7 +56,7 @@ public class CartDAO extends DAOFactory{
     {
         //user가 담은 cart목록 + sell_list에서 상품이름 DB에서 가져와서 DTO로 초기화.
         //list생성
-        cartList = new ArrayList<CartDTO>();
+        dtoList = new ArrayList<CartDTO>();
 
         String sql = "select cart.*, sell_list.p_nickname, sell_list.price " +
                 "from cart, sell_list " +
@@ -92,15 +105,37 @@ public class CartDAO extends DAOFactory{
 
                 //cartList에 cart 새 객체 추가
                 CartDTO c = new CartDTO(pc, cID, sID, pcount, tp, nick, price);
-                cartList.add(c);
+                dtoList.add(c);
             }
             pstmt.close();
         } catch (SQLException e) {
             System.out.println("DB에서 JAVA로 cart 가져오기 실패");
             e.printStackTrace();
         }
-        return cartList;
+
+
+        return dtoList;
     }
+
+
+
+
+    public void insert(DTO dto)
+    {
+        insertCartDB((CartDTO)dto);
+    }
+
+    public void delete(DTO dto)
+    {
+        deleteCartDB((CartDTO)dto);
+    }
+
+    public void update(DTO dto)
+    {
+        updateCartDB((CartDTO)dto);
+    }
+
+
 
     public void insertCartDB(CartDTO ct)
     {   //cartDTO에 있는 값을 DB에 업데이트
@@ -165,7 +200,7 @@ public class CartDAO extends DAOFactory{
         }
 
         //cartList에서 삭제
-        cartList.remove(ct);
+        dtoList.remove(ct);
     }
 
     public void deleteCartDB(String code, String cID, String sID)
@@ -252,7 +287,7 @@ public class CartDAO extends DAOFactory{
                         rs.getInt("tot_price"),
                         rs.getString("p_nickname"),
                         rs.getInt("price"));
-                cartList.add(c);
+                dtoList.add(c);
                 return c;
             }
             pstmt.close();

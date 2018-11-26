@@ -13,16 +13,30 @@ public class Main {
         Test.DAOFactory cao = df.setDAO("cart");
         Test.DAOFactory slao = df.setDAO("sellList");
 
-        cao.initialize("sunmon");
-        slao.initialize("sunmon");
+//        cao.initialize("sunmon");
+//        slao.initialize("sunmon");
+//        System.out.println(cao.dtoList.size());
+//
+        System.out.println();
+        System.out.println();
 
-        User customer = new User();
+        User user = con.login("sunmon", "1234");
+
+
+
+        /*User customer = new User();
         customer.setID("sunmon");
-//        customer.showLists(slao);
+        customer.showLists(slao);
+
+        System.out.println("cart List:");
         customer.showLists(cao);
 
-
-//        System.out.println("고른 상품:");
-//        customer.printCartItem(customer.searchCart(cao, "A-123", "seller_2"));
+        CartDTO c = new CartDTO("C-113", "sunmon", "seller_1", 2, 10000, "product2", 5000);
+        customer.addList(cao, c );
+        System.out.println();
+        System.out.println();
+        System.out.println("insert 후");
+        customer.showLists(cao);
+*/
     }
 }

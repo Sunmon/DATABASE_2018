@@ -17,22 +17,48 @@ public class User
     private int points;
     private String authority;
 
+    DAOFactory df;
 
+    public User(String ID, String pw, String name, int age, String gender, String phone, String address, int height, int weight, int points, String authority)
+    {
+        this.ID = ID;
+        this.pw = pw;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+        this.height = height;
+        this.weight = weight;
+        this.points = points;
+        this.authority = authority;
+    }
 
-    //TODO: cart, favorite, sell_list, 통합해서 보여주기 (귀찮아서 메소드 하나로 합침) ::테스트중
+//TODO: cart, favorite, sell_list, 통합해서 보여주기 (귀찮아서 메소드 하나로 합침) ::테스트중
     //없애버릴까 고민중
 
+    //List 보여주기
     public void showLists(DAOFactory df) throws SQLException
     {   //list 보여줌.
         df.printAttributes();
         df.printAllItems();
     }
 
-    public void remove(DAOFactory df)
+    //List에서 삭제하기. DB까지 적용됨.
+    public void remove(DAOFactory df, DTO dto)
     {
-
-
+        df.delete(dto);
     }
+
+
+    //List에 추가하기. DB까지 적용됨.
+    public void addList(DAOFactory df, DTO dto)
+    {
+        df.getDtoList().add(dto);
+        df.insert(dto);
+    }
+
+
 
     /*//NOTE: sellList관련 메소드들
     private void showSellList(SellListDAO slao) throws SQLException
@@ -45,7 +71,7 @@ public class User
     }*/
 
 
-    //NOTE: cart관련 메소드들
+    /*//NOTE: cart관련 메소드들
 
     public void removeCart(CartDAO cao, CartDTO cdo)
     {   //cartList에서 아이템 삭제 및 DB에서 삭제
@@ -55,9 +81,11 @@ public class User
 
     public void addCart(CartDAO cao, CartDTO cdo)
     {   //cartList에 새로운 아이템 추가 후 DB에도 추가
-        cao.cartList.add(cdo);
-        cao.insertCartDB(cdo);
-    }
+//        cao.cartList.add(cdo);
+//        cao.insertCartDB(cdo);
+        cao.dtoList.add(cdo);
+        cao.insert(cdo);
+    }*/
 
 /*    public void showCartList(CartDAO cao) throws SQLException
     {   //cartList에 있는 내용들 print
@@ -79,7 +107,9 @@ public class User
 
     public CartDTO searchCart(CartDAO cao, String pc, String sID)
     {   //특정 DTO들을 검색해서 리턴.
-        for (CartDTO cto : cao.cartList)
+
+//        for (CartDTO cto : cao.cartList)
+        for(CartDTO cto: cao.dtoList)
         {
             if(cto.getP_code().equals(pc)
                     && cto.getSeller_ID().equals(sID)) return cto;
@@ -101,7 +131,7 @@ public class User
             System.out.println();
     }*/
 
-    public void printSellListItem(SellListDTO sto)
+ /*   public void printSellListItem(SellListDTO sto)
     {   //고른 상품을 print해주는 메소드
         //차후에 '카테고리별 보기' , '판매자별 보기' 등등에 사용
 
@@ -112,7 +142,7 @@ public class User
         System.out.print(sto.getSeller_ID()+ "\t\t\t");
         System.out.print(sto.getP_code()+ "\t\t\t");
         System.out.println();
-    }
+    }*/
 
 
 
@@ -232,4 +262,13 @@ public class User
         this.authority = authority;
     }
 
+    public DAOFactory getDf()
+    {
+        return df;
+    }
+
+    public void setDf(DAOFactory df)
+    {
+        this.df = df;
+    }
 }

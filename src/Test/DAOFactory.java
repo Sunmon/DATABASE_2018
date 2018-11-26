@@ -9,7 +9,12 @@ public class DAOFactory
     PreparedStatement pstmt;
     ResultSet rs;
 
-    ArrayList dto;
+    public ArrayList getDtoList()
+    {
+        return dtoList;
+    }
+
+    ArrayList dtoList;
 
 
     public DAOFactory(Connection con)
@@ -28,7 +33,7 @@ public class DAOFactory
     }
 
     public ArrayList initialize(String _id) {
-        return dto;
+        return dtoList;
     }
 
     public void printAttributes() throws SQLException {
@@ -41,6 +46,20 @@ public class DAOFactory
         System.out.println();
     }
 
-    public void printAllItems(){}
+    public void printAllItems() {}
+
+    public void printItem(DTO dto){}
+
+    public void insert(DTO dto)
+    {   //insert to database
+    }
+
+    public void delete(DTO dto)
+    {   //delete from database
+    }
+
+    public void update(DTO dto){}
+    public void select(DTO dto){}
+
 
 }

@@ -1,6 +1,6 @@
 package Test;
 
-public class CartDTO {
+public class CartDTO implements  DTO{
     //cart Table뿐 아니라, 고객이 cart 사용시 필요한 정보들을 다 담는 클래스
     //cart table + product table
 
@@ -11,6 +11,7 @@ public class CartDTO {
     private int tot_price = 0;
     private String p_nick = null;   //product nickname
     private int p_price = 0;        //1개당 가격
+    private boolean isChecked = false;  //체크. 삭제, 추가 이럴때 chekBox에서 선택했냐.
 
 
 
@@ -81,5 +82,16 @@ public class CartDTO {
     public void setP_price(int p_price) {
         this.p_price = p_price;
     }
+
+    public boolean isChecked()
+    {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked)
+    {
+        isChecked = checked;
+    }
+
 
 }

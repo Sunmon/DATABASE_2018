@@ -2,84 +2,94 @@ package Test;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Connector {
+public class Connector
+{
     //DB와 연결해서 업데이트하거나, 데이터를 가져오는 역할을 해주는 클래스
-    private Connection              con;
-    private Statement               stmt;
-    private PreparedStatement       pstmt;
-    private ResultSet               rs;
+    private Connection con;
+    private Statement stmt;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
 
     //Constructor
     public Connector(String portNum, String dbName, String id, String password)
     {   //Connector 생성자.
         //db 자체에 연결할 이름/비번
-        con = makeConnection(portNum, dbName,id,password);
+        con = makeConnection(portNum, dbName, id, password);
     }
 
-
-    //TODO: give connection to other
     public Connection getCon()
     {   //다른 객체에서도 동일 connection을 쓰기 위함
         return con;
     }
 
 
-
-    public java.sql.Connection makeConnection(String portNum, String dbName, String id, String password) {
+    public java.sql.Connection makeConnection(String portNum, String dbName, String id, String password)
+    {
         //접속하는 url 설정
-        String url = "jdbc:mariadb://localhost:"+portNum+"/"+dbName;
+        String url = "jdbc:mariadb://localhost:" + portNum + "/" + dbName;
 
         //connection 시도
         con = null;
-        try {
+        try
+        {
             Class.forName("org.mariadb.jdbc.Driver");
             System.out.println("드라이버 적재 성공");
             con = DriverManager.getConnection(url, id, password);
             System.out.println("데이터베이스 연결 성공");
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e)
+        {
             System.out.println("드라이버를 찾을 수 없습니다.");
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             System.out.println("데이터베이스 연결 실패");
         }
         return con;
     }
 
-    public Statement makeStatement(Connection con) {
+    public User login(String _id, String _pw)
+    {   //login해서 맞는 user객체 생성
+        String sql = "select *" +
+                "from person " +
+                "where id = ? AND pw = ?";
+        //DB에 연결 시도
+        try
         {
-            Statement stmt = null;
-            try {
-                System.out.println("데이터를 넣으려고 시도중...");
-                stmt = con.createStatement();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, _id);
+            pstmt.setString(2, _pw);
+            rs = pstmt.executeQuery();
 
-/*                //insert data here
-                String sql = "INSERT INTO instructor " + "VALUES ('23411', 'test1031', 'Comp. Sci.', 50000)";
-                stmt.executeUpdate(sql);
-                System.out.println("데이터 insert 완료...");
-*/
+            while (rs.next())
+            {
+                String ID = rs.getString("ID");
+                String pw = rs.getString("pw");
+                String name = rs.getString("name");
+                int age = rs.getInt("age");
+                String gender = rs.getString("gender");
+                String phone = rs.getString("phone");
+                String address = rs.getString("address");
+                int height = rs.getInt("height");
+                int weight = rs.getInt("weight");
+                int points = rs.getInt("points");
+                String authority = rs.getString("authority");
+                String shop_name = rs.getString("shop_name");
+                int revenue = rs.getInt("revenue");
 
-            } catch (SQLException se) {
-                // Handle errors for JDBC
-                se.printStackTrace();
-            } catch (Exception e) {
-                // Handle errors for Class.forName
-                e.printStackTrace();
-            } finally {
-                // finally block used to close resources
-                try {
-                    if (stmt != null) con.close();
-                } catch (SQLException se) {
-                } // do nothing
-                try {
-                    if (con != null) con.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                } // end finally try
-            } // end try
-            System.out.println("Goodbye!");
-            // end JDBCExample
-            return stmt;
+                if (authority.equals("customers"))
+                    return new User(ID, pw, name, age, gender, phone, address, height, weight, points, authority);
+                else if (authority.equals("sellers"))
+                    return new Seller(ID, pw, name, age, gender, phone, address, height, weight, points, authority, shop_name, revenue);
+            }
+            System.out.println("ID 또는 PW를 확인해 주십시오");
+            pstmt.close();
+        } catch (SQLException e)
+        {
+            System.out.println("ID 또는 PW를 확인해 주십시오");
+            e.printStackTrace();
         }
-    }
+    return null;
+
+}
 
     //test for prestsmt
     public void insertData()
