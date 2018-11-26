@@ -9,6 +9,8 @@ public class Connector
     private Statement stmt;
     private PreparedStatement pstmt;
     private ResultSet rs;
+    private String id;
+    private String pw;
 
     //Constructor
     public Connector(String portNum, String dbName, String id, String password)
@@ -131,6 +133,26 @@ public class Connector
             pstmt.close();
         } catch (SQLException e) { System.out.println("select 쿼리 수행 실패"); }
         return rs;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(final String id)
+    {
+        this.id = id;
+    }
+
+    public String getPw()
+    {
+        return pw;
+    }
+
+    public void setPw(final String pw)
+    {
+        this.pw = pw;
     }
 
 

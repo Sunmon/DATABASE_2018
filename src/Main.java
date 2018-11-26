@@ -1,5 +1,6 @@
 //import java.sql.*;
 import Test.*;
+import View.VLogin;
 
 import java.sql.SQLException;
 
@@ -8,19 +9,21 @@ public class Main {
     {
         //Test package에 있는거 새로 테스트하는거.
         Test.Connector con = new Test.Connector("3306", "dbtest_1115", "sunmon", "computer");
-//        Test.CartDAO cao = new CartDAO(con.getCon());
         DAOFactory df = new DAOFactory(con.getCon());
-        Test.DAOFactory cao = df.setDAO("cart");
-        Test.DAOFactory slao = df.setDAO("sellList");
+        Test.DAOFactory cao = (CartDAO)df.setDAO("cart");
+        Test.DAOFactory slao = (SellListDAO)df.setDAO("sellList");
 
-//        cao.initialize("sunmon");
-//        slao.initialize("sunmon");
-//        System.out.println(cao.dtoList.size());
-//
+
         System.out.println();
         System.out.println();
 
         User user = con.login("sunmon", "1234");
+        cao.initialize(user.getID());
+        slao.initialize(user.getID());
+
+        user.showLists(cao);
+
+
 
 
 
