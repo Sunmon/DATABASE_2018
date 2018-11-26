@@ -33,6 +33,18 @@ public class VLogin
                 }
             }
         });
+        forgotPasswordButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+
+                VFindPW dialog = new VFindPW(con,VLogin.this);
+                dialog.setLocationRelativeTo(panel1);                //dialog위치 설정.. 왜 이상한지 모르겠다.
+                dialog.pack();
+                dialog.setVisible(true);
+            }
+        });
     }
 
 

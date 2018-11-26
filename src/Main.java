@@ -11,6 +11,9 @@ public class Main {
         //Connect to DB
         Test.Connector con = new Test.Connector("3306", "dbtest_1115", "sunmon", "computer");
 
+//        con.findPW("sunmon", "010-4543-5364");
+
+
         //Login GUI
         VMain vm = new VMain();
         User user = vm.runVLogin(con);
@@ -25,9 +28,9 @@ public class Main {
 
 
 
+
         //show sellList
         vm.runVsellList(con, user);
-
 
 
 /*
