@@ -96,6 +96,15 @@ values ("A03-06002L" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_
 values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
 values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
 values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"DB_cute_hot_cotton_M" )
+values ("B11-02002L" , "DBseller" , "30000" , "200" , 'L' ,"DB_nike_white_cotton_L" )
+values ("B11-02002L" , "lalaseller" , "12000" , "150" , 'L' ,"la_la_nike_cotton_L" )
+values ("B11-03001L" , "DBseller" , "22000" , "50" , 'L' ,"DB_uniqlo_black_cotton_L" )
+values ("B11-03001L" , "cmseller" , "22000" , "20" , 'L' ,"cm_hot_uniqlo_black_cotton_L" )
+values ("B11-03001S" , "DBseller" , "22000" , "50" , 'S' ,"DB_uniqlo_black_cotton_S" )
+values ("B11-03001S" , "cmseller" , "22000" , "20" , 'S' ,"cm_hot_uniqlo_black_cotton_S" )
+values ("B11-03001M" , "lalaseller" , "12000" , "10" , 'M' ,"la_cute_uniqlo_black_cotton_M" )
+
+
 
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
@@ -122,12 +131,42 @@ values ("A03-06002M","gucci_dote_cardigan_m","A", "03");
 values ("A03-06002L","gucci_dote_cardigan_L","A", "03");
 
 
-values ("B11-02001M","nike_cotton_M","B", "11");
-values ("B11-02001L","nike_cotton_L","B", "11");
+values ("B11-02001M","nike_black_cotton_M","B", "11");
+values ("B11-02001L","nike_black_cotton_L","B", "11");
+values ("B11-02002L","nike_white_cotton_L","B", "11");
+values ("B11-03001L","uniqlo_black_cotton_L","B", "11");
+values ("B11-03001M","uniqlo_black_cotton_M","B", "11");
+values ("B11-03001S","uniqlo_black_cotton_S","B", "11");
+
 
 values ("C22-00001M","else_long_pants_m","C", "22");
 values ("C22-00001s","else_long_pants_S","C", "22");
 values ("C22-00001L","else_long_pants_L","C", "22");
+
+
+---데이터 만들기-----
+
+values ("B11-00001S","else_black_cotton_S","B", "11");
+values ("B11-00001M","else_black_cotton_M","B", "11");
+values ("B11-00002M","else_yellow_cotton_M","B", "11");
+values ("B11-00003M","else_red_cotton_M","B", "11");
+values ("B12-01001M","addidas_black_hood_M","B", "12");
+values ("B12-01001S","addidas_black_hood_S","B", "12");
+values ("B12-01001L","addidas_black_hood_L","B", "12");
+values ("B12-01002M","addidas_bighat_hood_M","B", "12");
+values ("B13-11001M","spao_black_knit_M","B","13");
+values ("B13-11002M","spao_red_knit_M","B","13");
+values ("B13-12001M","Asecond_black_knit_M","B","13");
+values ("B13-12002M","Asecond_blue_knit_M","B","13");
+values ("B13-12001S","Asecond_blue_knit_M","B","13");
+
+
+
+
+
+
+
+
 
 
 
