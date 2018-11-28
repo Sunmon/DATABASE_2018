@@ -86,20 +86,6 @@ public class CartDAO extends DAOFactory {
                 String nick = rs.getString("p_nickname");
                 int price = rs.getInt("price");
 
-/*
-//              ID관계없이 모든 cart tablee의 내용을 보여줌.
-
-                System.out.print(pc + "\t\t");
-                System.out.print(cID + "\t\t\t");
-                System.out.print(sID + "\t\t");
-                System.out.print(pcount + "\t\t\t");
-                System.out.print(tp + "\t\t\t");
-                System.out.print(nick + "\t\t");
-                System.out.print(price + "\t\t");
-                System.out.println();
-*/
-
-
                 //cartList에 cart 새 객체 추가
                 CartDTO c = new CartDTO(pc, cID, sID, pcount, tp, nick, price);
                 dtoList.add(c);
@@ -154,7 +140,7 @@ public class CartDAO extends DAOFactory {
             e.printStackTrace();
         }
     }
-
+/*
     public void insertCartDB(String code, String cID, String sID, int pcount, int tprice)
     {
         //cart DB에 집어넣는 메소드
@@ -177,7 +163,7 @@ public class CartDAO extends DAOFactory {
             System.out.println("Insert 쿼리 수행 실패");
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void deleteCartDB(CartDTO ct)
     {   //CartDTO 입력받아서 거기 있는 내용 삭제.
@@ -191,16 +177,18 @@ public class CartDAO extends DAOFactory {
             int i = pstmt.executeUpdate();
             System.out.println("DeleteP 쿼리 수행" + i);
             pstmt.close();
+
+            //cartList에서 삭제
+            dtoList.remove(ct);
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Delete 쿼리 수행 실패");
         }
 
-        //cartList에서 삭제
-        dtoList.remove(ct);
     }
 
-    public void deleteCartDB(String code, String cID, String sID)
+ /*   public void deleteCartDB(String code, String cID, String sID)
     {
         //DB에 있는 cart table에서 특정 tuple 삭제
         String sql = "DELETE from cart where p_code = ? AND customer_ID = ? AND seller_ID = ?";
@@ -217,7 +205,7 @@ public class CartDAO extends DAOFactory {
             System.out.println("Delete 쿼리 수행 실패");
         }
     }
-
+*/
 
     public void updateCartDB(CartDTO ct)
     {   //CartDTO 객체에 있는 내용대로 DB에서 찾아서 수정.
@@ -239,6 +227,7 @@ public class CartDAO extends DAOFactory {
             System.out.println("update 쿼리 수행 실패");
         }
     }
+/*
 
     public void updateCartDB(String code, String cID, String sID, int pcount, int tprice)
     {
@@ -260,6 +249,7 @@ public class CartDAO extends DAOFactory {
             System.out.println("update 쿼리 수행 실패");
         }
     }
+*/
 
     public CartDTO selectCartDB(String pc, String cid, String sid)
     {   //DB에서 select해서 새 DTO객체를 만들어서 리턴.

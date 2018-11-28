@@ -29,6 +29,7 @@ public class favoriteDAO extends DAOFactory {
                 "where favorites.p_code = sell_list.p_code"+
                 "AND favorites.seller_ID = sell_list.seller_ID "+
                 "AND favorites.customer_ID = ?";
+
         //DB에 연결 시도
         try {
             pstmt = con.prepareStatement(sql);

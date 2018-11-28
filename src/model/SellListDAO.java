@@ -77,6 +77,89 @@ public class SellListDAO extends DAOFactory
     }*/
 
     @Override
+    public void insert(DTO dto)
+    {
+        insertSellListDB((SellListDTO)dto);
+    }
+
+
+    @Override
+    public void delete(DTO dto)
+    {
+        deleteSellListDB((SellListDTO)dto);
+
+    }
+
+
+    @Override
+    public void update(DTO dto)
+    {
+        updateSellListDB((SellListDTO)dto);
+    }
+
+
+    private void insertSellListDB(SellListDTO dto)
+    {
+        //sellListDTO에 있는 값을 DB에 삽입
+        String sql = "INSERT INTO sell_list ";
+        sql = sql + "VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, dto.getP_code());
+            pstmt.setString(2, dto.getSeller_ID());
+            pstmt.setInt(3, dto.getPrice());
+            pstmt.setInt(4, dto.getStock());
+            pstmt.setString(5, dto.getSize());
+            pstmt.setString(6, dto.getP_nickname());
+            int i = pstmt.executeUpdate();
+            System.out.println("Insert 쿼리 수행" + i);
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println("Insert 쿼리 수행 실패");
+            e.printStackTrace();
+        }
+    }
+
+
+    private void deleteSellListDB(SellListDTO dto)
+    {
+        String sql = "DELETE from sell_list where p_code = ? AND seller_ID = ?";
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, dto.getP_code());
+            pstmt.setString(2, dto.getSeller_ID());
+            int i = pstmt.executeUpdate();
+            System.out.println("DeleteP 쿼리 수행" + i);
+            pstmt.close();
+            dtoList.remove(dto);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Delete 쿼리 수행 실패");
+        }
+    }
+
+    public void updateSellListDB(SellListDTO dto)
+    {
+        //sellListDTO 객체에 있는 내용대로 DB에서 찾아서 수정.
+        //재고, 닉네임, 금액 수정
+        String sql = "UPDATE sell_list SET stock = ?, price = ?, p_nickname = ? WHERE p_code = ? AND seller_ID = ?";
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, dto.getStock());
+            pstmt.setInt(2, dto.getPrice());
+            pstmt.setString(3, dto.getP_nickname());
+            int i = pstmt.executeUpdate();
+
+            System.out.println("UpdateP 쿼리 수행" + i);
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("update 쿼리 수행 실패");
+        }
+
+    }
+
+    @Override
     public void printAllItems()
     {   //cart에 담은 모든 item들 보여줌. (로그인한 ID중)
 
@@ -114,4 +197,7 @@ public class SellListDAO extends DAOFactory
             System.out.print(attributes[i] + "\t\t");
         System.out.println();
     }
+
+
+
 }

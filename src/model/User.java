@@ -57,17 +57,12 @@ public class User
     }
 
 
-//TODO: 여기 하기!
-/*    //sell_list에서 category별로 검색하기. ArrayList 반환.
-    public ArrayList searchByCategory(SellListDAO sao, String cName)
-    {
-        ArrayList result = new ArrayList();
-        for(SellListDTO sto : sao.getDtoList())
-        {
-            if(sto)
-        }
 
-    }*/
+
+
+
+
+
 
 
 
@@ -83,6 +78,33 @@ public class User
             printSellListItem(sto);
         }
     }*/
+
+
+
+    //sell_list에서 category별로 검색하기. ArrayList 반환.
+    public ArrayList searchByCategory(SellListDAO sao, String cName)
+    {
+        ArrayList result = new ArrayList();
+        for(SellListDTO sto : sao.getDtoList())
+        {   //category이름이 입력과 일치하면 새 list에 추가.
+            if(sto.getC_name().equals(cName)) result.add(sto);
+        }
+        return result;
+    }
+
+
+    //sell_list에서 pname으로 검색하기... new ArrayList 리턴
+    public ArrayList searchByPname(SellListDAO sao, String pName)
+    {
+        ArrayList result = new ArrayList();
+        for(SellListDTO sto : sao.getDtoList())
+        {   //category이름이 입력과 일치하면 새 list에 추가.
+            if(sto.getP_name().equals(pName)) result.add(sto);
+        }
+        return result;
+    }
+
+
 
 
     /*//NOTE: cart관련 메소드들

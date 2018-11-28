@@ -59,7 +59,10 @@ public class DAOFactory
     {   //delete from database
     }
 
-    public void update(DTO dto){}
+    public void update(DTO dto)
+    {   //update to database
+
+    }
     public void select(DTO dto){}
 
 
