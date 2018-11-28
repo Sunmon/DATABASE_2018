@@ -1,6 +1,6 @@
-package View;
+package view;
 
-import Test.Connector;
+import model.Connector;
 
 import javax.swing.*;
 import java.awt.event.*;

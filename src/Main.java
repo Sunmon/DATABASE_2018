@@ -1,7 +1,6 @@
 //import java.sql.*;
-import Test.*;
-import View.VLogin;
-import View.VMain;
+import model.*;
+import view.VMain;
 
 import java.sql.SQLException;
 
@@ -9,9 +8,8 @@ public class Main {
     public static void main(String[] args) throws SQLException
     {
         //Connect to DB
-        Test.Connector con = new Test.Connector("3306", "dbtest_1115", "sunmon", "computer");
+        model.Connector con = new model.Connector("3306", "dbtest_1115", "sunmon", "computer");
 
-//        con.findPW("sunmon", "010-4543-5364");
 
 
         //Login GUI
@@ -19,12 +17,14 @@ public class Main {
         User user = vm.runVLogin(con);
         System.out.println("user logined!");                                               //NOTE: remove this println
 
+
         //initialize DTOs
         DAOFactory df = new DAOFactory(con.getCon());
-        Test.DAOFactory cao = (CartDAO)df.setDAO("cart");
-        Test.DAOFactory slao = (SellListDAO)df.setDAO("sellList");
+        model.DAOFactory cao = (CartDAO)df.setDAO("cart");
+        model.DAOFactory slao = (SellListDAO)df.setDAO("sellList");
         cao.initialize(user.getID());
         slao.initialize(user.getID());
+
 
 
 

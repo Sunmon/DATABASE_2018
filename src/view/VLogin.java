@@ -1,6 +1,6 @@
-package View;
+package view;
 
-import Test.*;
+import model.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

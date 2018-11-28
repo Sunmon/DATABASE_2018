@@ -1,6 +1,6 @@
-package Test;
+package model;
 import java.sql.SQLException;
-import java.util.ListIterator;
+import java.util.ArrayList;
 
 public class User
 {
@@ -19,7 +19,8 @@ public class User
 
     DAOFactory df;
 
-    public User(String ID, String pw, String name, int age, String gender, String phone, String address, int height, int weight, int points, String authority)
+    public User(String ID, String pw, String name, int age, String gender,
+                String phone, String address, int height, int weight, int points, String authority)
     {
         this.ID = ID;
         this.pw = pw;
@@ -34,29 +35,42 @@ public class User
         this.authority = authority;
     }
 
-//TODO: cart, favorite, sell_list, 통합해서 보여주기 (귀찮아서 메소드 하나로 합침) ::테스트중
-    //없애버릴까 고민중
-
-    //List 보여주기
+//TODO: cart, favorite, sell_list, 통합해서 보여주기 (DAOFactory 이용)
     public void showLists(DAOFactory df) throws SQLException
     {   //list 보여줌.
         df.printAttributes();
         df.printAllItems();
     }
 
-    //List에서 삭제하기. DB까지 적용됨.
+    //...List에서 삭제하기. DB까지 적용됨.
     public void remove(DAOFactory df, DTO dto)
     {
         df.delete(dto);
     }
 
 
-    //List에 추가하기. DB까지 적용됨.
+    //...List에 추가하기. DB까지 적용됨.
     public void addList(DAOFactory df, DTO dto)
     {
         df.getDtoList().add(dto);
         df.insert(dto);
     }
+
+
+//TODO: 여기 하기!
+/*    //sell_list에서 category별로 검색하기. ArrayList 반환.
+    public ArrayList searchByCategory(SellListDAO sao, String cName)
+    {
+        ArrayList result = new ArrayList();
+        for(SellListDTO sto : sao.getDtoList())
+        {
+            if(sto)
+        }
+
+    }*/
+
+
+
 
 
 
@@ -120,6 +134,15 @@ public class User
     }
 
 
+    public CartDTO makeCartDTO(String pc, String sID, int pcount, int price, String nick)
+    {   //CartDTO 객체 생성해서 리턴.
+        CartDTO ct = new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
+        return ct;
+    }
+
+
+
+
     /*public void printCartItem(CartDTO cto)
     {   //고른 상품을 print해주는 메소드
         //차후에 '카테고리별 보기' , '판매자별 보기' 등등에 사용
@@ -155,19 +178,10 @@ public class User
 
 
 
-    public CartDTO makeCartDTO(String pc, String sID, int pcount, int price, String nick)
-    {   //CartDTO 객체 생성해서 리턴.
-        CartDTO ct = new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
-        return ct;
-    }
 
 
 
-    //NOTE: favorite 관련 메소드들
 
-
-
-    //NOTE: sellList 관련 메소드들
 
 
 

@@ -1,4 +1,4 @@
-package Test;
+package model;
 
 public interface DTO
 {

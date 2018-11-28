@@ -1,4 +1,4 @@
-package Test;
+package model;
 
 public class CartDTO implements  DTO{
     //cart Table뿐 아니라, 고객이 cart 사용시 필요한 정보들을 다 담는 클래스

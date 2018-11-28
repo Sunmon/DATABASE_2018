@@ -1,4 +1,4 @@
-package Test;
+package model;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -8,8 +8,12 @@ public class CartDAO extends DAOFactory {
     {
         return dtoList;
     }
-
     ArrayList<CartDTO> dtoList = null;
+
+
+
+    private String attributes[] = {"p_nick", "p_count", "tot_price", "p_code", "seller_ID"};
+
     public CartDAO(Connection con)
     {
         super(con);
@@ -26,23 +30,25 @@ public class CartDAO extends DAOFactory {
     {   //cart attribute중 일부만 볼 수 있게 override
         //super.printAttributes쓸거면 printAllItems 값 순서 바꿔야 함. 추가도 필요.
 //        super.printAttributes();
-        System.out.println("p_nick \t\t p_count \t\t tot_price \t\t p_code \t\t seller_ID \t\t");
-
+        for(int i=0; i<attributes.length; i++)
+            System.out.print(attributes[i] + "\t\t");
+        System.out.println();
     }
 
     //print All Items
     @Override
     public void printAllItems()
-    {   //cart에 담은 모든 item들 보여줌. (로그인한 ID중)
-
+    {   //cart에 담은 모든 item들 보여줌. (로그인한 ID의 카트)
         for (CartDTO cto : dtoList)
         {
           printItem(cto);
         }
     }
 
+
+
     public void printItem(CartDTO cto)
-    {   //TEST용. 지울것!
+    {   //cartDTO 객체 하나에 있는 정보들을 print
         System.out.print(cto.getP_nick() + "\t\t");
         System.out.print(cto.getP_count() + "\t\t\t");
         System.out.print(cto.getTot_price() + "\t\t\t");
@@ -69,15 +75,6 @@ public class CartDAO extends DAOFactory {
             pstmt.setString(1,_id);
             rs = pstmt.executeQuery();
 
- /*           //col 정보 읽어오기
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int cols = rsmd.getColumnCount();
-            System.out.println("Count of column is " + cols);
-            System.out.println("and column name is ");
-            for (int i = 1; i <= cols; i++) {
-                System.out.print(rsmd.getColumnLabel(i) + "\t\t");
-            }
-            System.out.println();*/
 
             while (rs.next()) {
                 //print
@@ -296,5 +293,17 @@ public class CartDAO extends DAOFactory {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    //Getter AND Setter
+    public String[] getAttributes()
+    {
+        return attributes;
+    }
+
+    public void setAttributes(String[] attributes)
+    {
+        this.attributes = attributes;
     }
 }

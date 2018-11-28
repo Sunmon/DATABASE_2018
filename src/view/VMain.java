@@ -1,11 +1,10 @@
-package View;
-
-import Test.*;
+package view;
+import model.*;
 import javax.swing.*;
 import java.awt.*;
 
 public class VMain
-{
+{   //controller 역할
     Dimension d = new Dimension(414, 736);
     public void main(Connector con)
     {
@@ -54,4 +53,6 @@ public class VMain
         frame.pack();
         frame.setVisible(true);
     }
+
+
 }

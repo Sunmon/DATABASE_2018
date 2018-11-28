@@ -1,11 +1,5 @@
-package Test;
-import java.io.InputStream;
-import java.io.Reader;
-import java.math.BigDecimal;
-import java.net.URL;
+package model;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Connector
 {

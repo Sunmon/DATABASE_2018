@@ -1,12 +1,14 @@
-package Test;
+package model;
 
 import java.sql.Connection;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SellListDAO extends DAOFactory
 {
+    private String attributes[] = {"p_code", "seller_ID", "price", "stock", "size", "p_nickname"};
+
+
     ArrayList<SellListDTO> dtoList = null;
 //    ArrayList<SellListDTO> dtoList = null;
 
@@ -20,14 +22,17 @@ public class SellListDAO extends DAOFactory
         //list생성
         dtoList = new ArrayList<SellListDTO>();
 
-        String sql = "select * from sell_list";
+//        String sql = "select * from (sell_list natural join product) natural join ";
+
+        String sql = "select * " +
+                "from (sell_list join product using (p_code)) natural join category";
         //DB에 연결 시도
         try {
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                //print
+                //user에게 보여질 정보 가져오기
                 String pc = rs.getString("p_code");
                 String sID = rs.getString("seller_ID");
                 int stock = rs.getInt("stock");
@@ -35,8 +40,16 @@ public class SellListDAO extends DAOFactory
                 String nick = rs.getString("p_nickname");
                 int price = rs.getInt("price");
 
+                //user에게 보여지진 않지만 검색등에 쓸 정보 가져오기
+                String p_name = rs.getString("p_name");
+                String c_code = rs.getString("c_code");
+                String c_code_sub = rs.getString("c_code_sub");
+                String c_name = rs.getString("c_name");
+
+
+
                 //sellList에 sellDTO 새 객체 추가
-                SellListDTO s = new SellListDTO(pc, sID, price, stock, size, nick);
+                SellListDTO s = new SellListDTO(pc, sID, price, stock, size, nick, p_name, c_code, c_code_sub, c_name);
                 dtoList.add(s);
             }
             pstmt.close();
@@ -85,5 +98,20 @@ public class SellListDAO extends DAOFactory
     }
 
 
+    public String[] getAttributes()
+    {
+        return attributes;
+    }
 
+    public void setAttributes(String[] attributes)
+    {
+        this.attributes = attributes;
+    }
+
+    @Override
+    public void printAttributes() throws SQLException {
+        for(int i=0; i<attributes.length; i++)
+            System.out.print(attributes[i] + "\t\t");
+        System.out.println();
+    }
 }
