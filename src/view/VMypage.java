@@ -2,13 +2,13 @@ package view;
 
 import javax.swing.*;
 
-public class VSellList extends JPanel
+public class VMypage extends JPanel
 {
     private JPanel mainPanel;
-    private JLabel label1;
     private JPanel tempPanel;
+    private JLabel label1;
 
-    public VSellList()
+    public VMypage()
     {
         add(mainPanel);
         setVisible(true);

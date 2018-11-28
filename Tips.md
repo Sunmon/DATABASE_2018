@@ -151,3 +151,12 @@ class Main
 
 \* 실제 코드 짠것의 전부를 가져오면 너무 방대해져서, 임의로 예시를 수정하여 작성했다. 
 
+
+
+
+
+### GUI 다시 띄우기 :: revalidate(), repaint()
+
+`revalidate()` : 재배치하기. 기존 component가 사라지면 할당한 공간자체를 없애버리고 모든 component들을 재 배치한다. component들 위치가 바뀐다.
+
+`repaint()` : component 배치는 바꾸지 않고 그냥 생긴거만 새로고침한다. 있던게 사라져도 그냥 그 자리만 비게 보인다.
