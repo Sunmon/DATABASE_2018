@@ -5,6 +5,7 @@ import model.SellListDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.awt.*;
 
 public class VSellList
 {
@@ -12,7 +13,7 @@ public class VSellList
      private JTable table1;
      private JPanel pagePanel;
 
-/*
+     /*
      private void createUIComponents(SellListDAO sao)
      {
           // TODO: place custom component creation code here

@@ -3,6 +3,7 @@ package view;
 import model.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,7 +40,7 @@ public class VLogin
             public void actionPerformed(ActionEvent e)
             {
 
-                VFindPW dialog = new VFindPW(con,VLogin.this);
+                VFindPW dialog = new VFindPW(con, VLogin.this);
                 dialog.setLocationRelativeTo(panel1);                //dialog위치 설정.. 왜 이상한지 모르겠다.
                 dialog.pack();
                 dialog.setVisible(true);
@@ -52,7 +53,7 @@ public class VLogin
     public void tryLogin(Connector con)
     {
         user = con.login(idField.getText(), pwField.getText());
-        if(user == null)
+        if (user == null)
             JOptionPane.showMessageDialog(null, "ID/PW를 다시 확인해 주십시오.");
         else    //login이 제대로 되었을때 다음 메소드 실행
             loginButton.notify();
@@ -60,7 +61,8 @@ public class VLogin
 
 
     //Getters
-    public JButton getLoginButton(){ return loginButton; }
+    public JButton getLoginButton() { return loginButton; }
+
     public User getUser()
     {
         return user;

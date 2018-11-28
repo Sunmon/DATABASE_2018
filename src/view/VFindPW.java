@@ -3,6 +3,7 @@ package view;
 import model.Connector;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class VFindPW extends JDialog
@@ -63,7 +64,7 @@ public class VFindPW extends JDialog
         dispose();
     }
 
-/*    public static void main(String[] args)
+    /*    public static void main(String[] args)
     {
         VFindPW dialog = new VFindPW(Connector con);
         dialog.pack();
