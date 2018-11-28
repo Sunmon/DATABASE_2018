@@ -1,6 +1,11 @@
 package Test;
+import java.io.InputStream;
+import java.io.Reader;
+import java.math.BigDecimal;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Connector
 {
@@ -9,8 +14,6 @@ public class Connector
     private Statement stmt;
     private PreparedStatement pstmt;
     private ResultSet rs;
-    private String id;
-    private String pw;
 
     //Constructor
     public Connector(String portNum, String dbName, String id, String password)
@@ -93,7 +96,37 @@ public class Connector
 
 }
 
-    //test for prestsmt
+
+    public String findPW(String _id, String _pn)
+    {   //id와 phone number로 pw 찾는 메소드
+        String sql = "SELECT pw "+
+                "FROM person "+
+                "WHERE id = ? AND phone = ?";
+        try
+        {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, _id);
+            pstmt.setString(2, _pn);
+            rs = pstmt.executeQuery();
+            while (rs.next())
+            {
+                String pw = "Password: " + rs.getString("pw");
+                pstmt.close();
+                return pw;
+            }
+            String pw = "일치하는 정보가 없습니다.";
+            pstmt.close();
+            return pw;
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            String pw = "일치하는 정보가 없습니다.";
+            return pw;
+
+        }
+        }
+    }
+   /* //test for prestsmt
     public void insertData()
     {//예시로 맘대로 하나 넣게 만들었음. 이거 고쳐서 써야지.
         //여기 attributes 이름은 실제 table에 있는 attributes이름으로 해야 함..
@@ -116,10 +149,10 @@ public class Connector
             pstmt.close();
         } catch (SQLException e) { System.out.println("Insert 쿼리 수행 실패");
             e.printStackTrace();}
-    }
+    }*/
 
 
-    //update to daatabase
+   /* //update to daatabase
     public ResultSet select(String sql){
         try {
             pstmt                = con.prepareStatement(sql);
@@ -133,30 +166,5 @@ public class Connector
             pstmt.close();
         } catch (SQLException e) { System.out.println("select 쿼리 수행 실패"); }
         return rs;
-    }
+    }*/
 
-    public String getId()
-    {
-        return id;
-    }
-
-    public void setId(final String id)
-    {
-        this.id = id;
-    }
-
-    public String getPw()
-    {
-        return pw;
-    }
-
-    public void setPw(final String pw)
-    {
-        this.pw = pw;
-    }
-
-
-    //================================================================
-    //================================================================
-
-}

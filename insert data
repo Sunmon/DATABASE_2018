@@ -82,6 +82,16 @@ values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"la_addidas_blacklong
 values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"dBlong_pretty_addidas_blackcoat_m")
 values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"cm_lovely_addidas_blackcoat_m")
 values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"dBlong_pretty_addidas_whitecoat_m")
+values ("A02-01002M" , "lalaseller" , "10000" , "40" , 'M',"lala_cute_addidas_whitecoat_m")
+values ("A02-01002M" , "DBseller" , "20000" , "20" , 'M',"DB_addidas_whitecoat_m")
+values ("A03-05001M" , "DBseller" , "100000" , "40" , 'M',"DB_lacoste_fanci_cardigan_m")
+values ("A03-06001M" , "DBseller" , "200000" , "10" , 'M',"DB_gucci_lovely_cardigan_m")
+values ("A03-06001M" , "lalaseller" , "150000" , "12" , 'M',"lala_gucci_black_cardigan_m")
+values ("A03-06001M" , "cmseller" , "220000" , "5" , 'M',"CM_gucci_dark_cardigan_m")
+values ("A03-06002s" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_cardigan_s")
+values ("A03-06002M" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_cardigan_m")
+values ("A03-06002L" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_cardigan_L")
+
 
 values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
 values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
@@ -105,6 +115,12 @@ values ("A01-01001s","addidas_longpading_S","A", "01");
 values ("A01-01001L","addidas_longpading_L","A", "01");
 values ("A02-01001M","addidas_black_coat_M","A", "02");
 values ("A02-01002M","addidas_white_coat_M","A", "02");
+values ("A03-05001M","lacoste_cardigan_m","A", "03");
+values ("A03-06001M","gucci_black_cardigan_m","A", "03");
+values ("A03-06002s","gucci_dote_cardigan_s","A", "03");
+values ("A03-06002M","gucci_dote_cardigan_m","A", "03");
+values ("A03-06002L","gucci_dote_cardigan_L","A", "03");
+
 
 values ("B11-02001M","nike_cotton_M","B", "11");
 values ("B11-02001L","nike_cotton_L","B", "11");

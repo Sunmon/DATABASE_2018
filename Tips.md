@@ -54,3 +54,100 @@ return 값: resultSet
 
   
 
+### GUI와 Main 동기화 :: Sync
+
+로그인 버튼을 눌러서 제대로 로그인 될 때까지 main의 다음 코드가 실행되지 않게 하고 싶을 때
+
+sync이용!
+
+```java
+class Main
+{
+    public static void main()
+    {
+        GUIlogin gLogin = new GUIlogin();	//Login 관련 GUI
+        User user = gLogin.login();			//login하는 메소드
+        if(user != null) System.out.println("LOGINED!");
+        else System.out.println("LOGIN FAILED");
+    }
+}
+```
+
+이렇게 코드를 짜면 gLogin.login() 메소드 실행이 끝날 때까지 7번째 라인은 실행 안 될 줄 알았다.
+
+그리고 로그인이 끝나면 LOGINED라는 말이 나올 줄 알았는데...
+
+main따로 GUI따로 돌아가서 gui에는 상관없이 바로 "LOGIN FAILED"라는 문구가 나왔다..
+
+
+
+GUI에 있는 Login()메소드가 user를 제대로 리턴할 때 까지 main아래쪽에 있는 코드를 실행하지 않도록 하는 barrier가 필요했다. Sync를 맞추거나.
+
+이 해결방법이 바로 `sync`다.
+
+
+
+>  해결
+
+gLogin을 바꿨다. button actionPerformed에 sync를 넣어준다.
+
+```java
+class GUIlogin
+{
+    public GUIlogin()
+    {	//생성자
+	    loginButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {  
+                synchronized (loginButton)				 //loginButton에 대한 sync
+                {
+                    isValid(id,pw);						//id,pw가 맞는지 체크
+                    loginButton.notify();				 //button이 눌렸다고 알림
+                    
+                }
+            }
+        });
+    }
+        
+}
+```
+
+
+
+```java
+class Main
+{
+    public static void main()
+    {
+        GUIlogin gLogin = new GUIlogin();	//Login 관련 GUI
+		synchronized (glogin.loginButton)	//login button과 synchronize
+        {
+             try
+            {   
+                 vlogin.loginButton.wait();			//loginButton.notify()될때까지 기다림
+       			User user = gLogin.login();			//login하는 메소드
+  		    }catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }  
+        
+        if(user != null) System.out.println("LOGINED!");
+        else System.out.println("LOGIN FAILED");
+    }
+}
+
+```
+
+
+
+이렇게 하면 logined만 나온다.
+
+7번째 줄이 실행되지 않고 기다리고 있다가, 로그인 되면 실행되기 때문이다.
+
+
+
+\* 실제 코드 짠것의 전부를 가져오면 너무 방대해져서, 임의로 예시를 수정하여 작성했다. 
+
