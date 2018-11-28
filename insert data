@@ -1,7 +1,7 @@
 //person insert data//
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
-values("sunmon", "1234", "sunjung", 23, "F", "01045435364", "songpa-gu", 168, 50, 100000, "customers");
+values("sunmon", "1234", "sunjung", 23, "F", "01045435364", "songpa-gu", 168, 50, 500000, "customers");
 
 INSERT INTO person (ID, pw, name, age, gender, phone, address, height, weight,points,authority) 
 Values("han","123040","hanna", 22, "F", "01040392393", "konkuk", 169,53,20000,"customers");
