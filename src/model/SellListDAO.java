@@ -149,7 +149,7 @@ public class SellListDAO extends DAOFactory
             pstmt.setInt(2, dto.getPrice());
             pstmt.setString(3, dto.getP_nickname());
             pstmt.setString(4,dto.getP_code());
-            pstmt.setString(5,, dto.getSeller_ID());
+            pstmt.setString(5, dto.getSeller_ID());
             int i = pstmt.executeUpdate();
 
             System.out.println("UpdateP 쿼리 수행" + i);
