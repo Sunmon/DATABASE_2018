@@ -12,11 +12,9 @@ public class Main {
         model.Connector con = new model.Connector("3306", "dbtest_1115", "sunmon", "computer");
 
 
-
         //Login GUI
         VMain vm = new VMain();
         User user = vm.runVLogin(con);
-        System.out.println("user logined!");                                               //NOTE: remove this println
 
 
         //initialize DTOs

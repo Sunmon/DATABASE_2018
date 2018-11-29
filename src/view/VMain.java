@@ -28,7 +28,6 @@ public class VMain
             try
             {   //login버튼 눌러서 제대로 로그인 될 때까지 기다림
                 vlogin.getLoginButton().wait();
-                System.out.println("button clicked");                                       //NOTE: remove this println
                 frame.setVisible(false);
                 frame.dispose();
                 return vlogin.getUser();
@@ -41,7 +40,7 @@ public class VMain
     }
 
     public void runVMainFrame(Connector con, User user)
-    {
+    {   //mainFrame 실행
         vfm = new VMainFrame(con, user);
         vfm.setVisible(true);
 
@@ -64,6 +63,39 @@ public class VMain
 
 
         //VFavorite는 아직 안만들음 ... 만들어서 VMainFrame.form.FavoritePanel에 추가해야 함.
+
+
+
+    }
+
+
+    public void setButtonsTransparent()
+    {   // 버튼 내용 투명하게 만들기 (나중에 쓸데가 있겠지)
+        //투명 test
+
+        //home Button
+        vfm.getHomeButton().setOpaque(false);
+        vfm.getHomeButton().setContentAreaFilled(false);
+        vfm.getHomeButton().setBorderPainted(false);
+        vfm.getHomeButton().setText("    ");
+
+        //favorite Button
+        vfm.getFavoriteButton().setOpaque(false);
+        vfm.getFavoriteButton().setContentAreaFilled(false);
+        vfm.getFavoriteButton().setBorderPainted(false);
+        vfm.getFavoriteButton().setText("    ");
+
+        //cart Button
+        vfm.getCartButton().setOpaque(false);
+        vfm.getCartButton().setContentAreaFilled(false);
+        vfm.getCartButton().setBorderPainted(false);
+        vfm.getCartButton().setText("    ");
+
+        //mypage Button
+        vfm.getMypageButton().setOpaque(false);
+        vfm.getMypageButton().setContentAreaFilled(false);
+        vfm.getMypageButton().setBorderPainted(false);
+        vfm.getMypageButton().setText("    ");
 
     }
 
