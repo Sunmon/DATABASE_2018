@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VLogin
-{
+public class VLogin {
     JPanel panel1;
     private JTextField idField;
     private JLabel PWLabel;
@@ -21,24 +20,18 @@ public class VLogin
     private boolean isLogined = false;
     User user = null;
 
-    public VLogin(Connector con)
-    {
-        loginButton.addActionListener(new ActionListener()
-        {
+    public VLogin(Connector con) {
+        loginButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {   //button 누를때까지 기다리기.
-                synchronized (loginButton)
-                {
+            public void actionPerformed(ActionEvent e) {   //button 누를때까지 기다리기.
+                synchronized (loginButton) {
                     tryLogin(con);
                 }
             }
         });
-        forgotPasswordButton.addActionListener(new ActionListener()
-        {
+        forgotPasswordButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
 
                 VFindPW dialog = new VFindPW(con, VLogin.this);
                 dialog.setLocationRelativeTo(panel1);                //dialog위치 설정.. 왜 이상한지 모르겠다.
@@ -48,10 +41,8 @@ public class VLogin
         });
     }
 
-
     //Login 시도
-    public void tryLogin(Connector con)
-    {
+    public void tryLogin(Connector con) {
         user = con.login(idField.getText(), pwField.getText());
         if (user == null)
             JOptionPane.showMessageDialog(null, "ID/PW를 다시 확인해 주십시오.");
@@ -61,11 +52,13 @@ public class VLogin
 
 
     //Getters
-    public JButton getLoginButton() { return loginButton; }
+    public JButton getLoginButton() {
+        return loginButton;
+    }
 
-    public User getUser()
-    {
+    public User getUser() {
         return user;
+
     }
 
 }

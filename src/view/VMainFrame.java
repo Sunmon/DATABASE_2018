@@ -25,6 +25,7 @@ public class VMainFrame extends JFrame
     private VSellList vsell;
     private VCart vcart;
     private VMypage vmpg;
+    private VFavorite vfavor;
 
     public VMainFrame(Connector con, User user)
     {
