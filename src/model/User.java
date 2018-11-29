@@ -33,6 +33,10 @@ public class User
         this.weight = weight;
         this.points = points;
         this.authority = authority;
+
+
+
+
     }
 
 //TODO: cart, favorite, sell_list, 통합해서 보여주기 (DAOFactory 이용)
@@ -107,6 +111,8 @@ public class User
 
 
 
+
+
     /*//NOTE: cart관련 메소드들
 
     public void removeCart(CartDAO cao, CartDTO cdo)
@@ -161,6 +167,9 @@ public class User
         CartDTO ct = new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
         return ct;
     }
+
+
+
 
 
 

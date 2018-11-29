@@ -30,6 +30,7 @@ public class VLogin
             {   //button 누를때까지 기다리기.
                 synchronized (loginButton)
                 {
+                    //로그인 시도
                     tryLogin(con);
                 }
             }

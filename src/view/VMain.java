@@ -13,6 +13,9 @@ public class VMain
     }
 
 
+
+
+
     public User runVLogin(Connector con)
     {   //login해서 맞는 user 객체 리턴
         JFrame frame = new JFrame("VLogin");

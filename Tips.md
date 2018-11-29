@@ -160,3 +160,25 @@ class Main
 `revalidate()` : 재배치하기. 기존 component가 사라지면 할당한 공간자체를 없애버리고 모든 component들을 재 배치한다. component들 위치가 바뀐다.
 
 `repaint()` : component 배치는 바꾸지 않고 그냥 생긴거만 새로고침한다. 있던게 사라져도 그냥 그 자리만 비게 보인다.
+
+
+
+
+
+### ----------
+
+sell_list에서 선택 -> 카트에 추가(카트에 없는것들만 추가해야겠지?)
+
+
+
+insert into cart (p_code, customer_ID, seller_ID, p_count, tot_price)
+
+select (s.p_code, p.customer_ID, s.seller_ID, 3, 3*s.price)
+
+from (sell_list s, person p)
+
+where 
+
+select ()
+
+from sell_list

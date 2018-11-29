@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class VT0
 {
-    static Dimension d = new Dimension(414, 736);
+    static Dimension d = new Dimension(850, 736);
 
     public static void main(String[] args)
     {
@@ -27,9 +27,8 @@ public class VT0
 
 
 
-
-
-
-
     }
+
+
+
 }

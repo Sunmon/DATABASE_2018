@@ -25,9 +25,11 @@ public class Main {
         slao.initialize(user.getID());
 
 
+
+
+
         //show main frame
         vm.runVMainFrame(con, user);
-
 
 
 
