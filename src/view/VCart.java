@@ -1,7 +1,11 @@
 package view;
 
+import model.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class VCart extends JPanel
 {
@@ -21,21 +25,42 @@ public class VCart extends JPanel
         setVisible(true);
     }
 
-/* TODO:
 
-    void initTable()
+    public VCart(User user, Connector con, DAOFactory dao){}
+
+
+    //...Table(view)에 띄울 데이터 설정
+    void initTable(User user, CartDAO cao) throws SQLException
     {
+        //Column을 cartDAO에서 가져온다
+        String col[] = cao.getAttributes();          //"p_nick", "p_count", "tot_price", "p_code", "seller_ID"
 
-        String tableCol[] = {"col1", "col2", "col3", "col4", "checkbox"};
-        Object rowData[][] = {
-                {1, "get", "from",
-                        //Default DataModel 선언
-                        DefaultTableModel dtm = new DefaultTableModel(rowData,tableCol);
-        cTable = new JTable()
+        //DefaultTableModel 생성
+        DefaultTableModel dtm = new DefaultTableModel(col, 0);
+        dtm.addColumn("check");
 
+        //DefaultTableModel에 값 넣기
+        for(CartDTO c : cao.getDtoList())
+        {
+            Object[] o = {c.getP_nick(), c.getP_count(), c.getTot_price(), c.getP_code(), c.getSeller_ID(), Boolean.TRUE};
+            dtm.addRow(o);
+        }
+
+       ///JTable에 담기
+        cTable.setModel(dtm);
+        dtm.fireTableDataChanged();
+
+
+        //혹시 몰라서 넣어놓음
+//        cTable = new JTable(dtm);
+
+        //혹시 몰라서 넣어놓음
+        repaint();
+        revalidate();
+
+        /* 혹시 몰라서 넣어놓음
+        //scrollPane
+        tablePane = new JScrollPane(cTable);*/
     }
-*/
-
-
 
 }

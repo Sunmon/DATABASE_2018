@@ -45,7 +45,23 @@ public class DAOFactory
         System.out.println();
     }
 
+
+    //col이름들을 string[]으로 리턴.
+    public String[] getAttributes() throws SQLException
+    {
+        String attr[];
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int cols = rsmd.getColumnCount();
+        attr = new String[cols];
+        for (int i = 1; i <= cols; i++) {
+            attr[i] = rsmd.getColumnLabel(i);
+        }
+        return attr;
+    }
+
+
     public void printAllItems() {}
+
 
     public void printItem(DTO dto){}
 

@@ -2,6 +2,7 @@ package view;
 import model.*;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class VMain
 {   //controller 역할
@@ -42,8 +43,15 @@ public class VMain
         }
     }
 
-    public void runVMainFrame(Connector con, User user)
+    public void runVMainFrame(Connector con, User user, DAOFactory dao)
     {   //mainFrame 실행
+
+        //CartDAO 생성 & 초기화
+        model.DAOFactory cao = dao.setDAO("cart");
+        cao.initialize(user.getID());
+
+
+        //mainFrame 실행
         vfm = new VMainFrame(con, user);
         vfm.setVisible(true);
 
@@ -58,10 +66,20 @@ public class VMain
         vfm.getShowPanel().add("mypg", vfm.getMypagePanel());
 
 
-        //button 이벤트 설정
+        //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
         vfm.getHomeButton().addActionListener(e->cards.show(vfm.getShowPanel(), "home"));
         vfm.getFavoriteButton().addActionListener(e->cards.show(vfm.getFavoritePanel(), "favor"));
-        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
+//        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
+        vfm.getCartButton().addActionListener(e->
+        {
+            try
+            {
+                showCartPage(user, (CartDAO)cao, cards);
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+            }
+        });
         vfm.getMypageButton().addActionListener(e->cards.show(vfm.getShowPanel(), "mypg"));
 
 
@@ -69,7 +87,15 @@ public class VMain
 
 
 
+
     }
+
+    public void showCartPage(User user, CartDAO cao, CardLayout cards) throws SQLException
+    {   //cart버튼 누르면 cart page를 보여준다.
+        cards.show(vfm.getShowPanel(), "cart");
+        vfm.getVcart().initTable(user, cao);
+    }
+
 
 
     public void setButtonsTransparent()

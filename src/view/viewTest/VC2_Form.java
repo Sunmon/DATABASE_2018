@@ -1,8 +1,12 @@
 package view.viewTest;
 
+import model.CartDTO;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class VC2_Form extends JPanel
 {   //카트 테이블 예제 만드는중
@@ -27,45 +31,31 @@ public class VC2_Form extends JPanel
     public void initTable()
     {   //custom create해즈어야 한다.
         //NOTE: table 예제
-        String tableCol[] = {"col1", "col2", "col3", "col4", "checkbox"};
-        Object rowData[][] = {
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},{1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},{1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {1, "get", "from", "cartDTO", false},
-                {2, "make", "isChecked", "in CartDTO attributes", true},
-                {3, "just", "connect", "to DAOs", false}
-        };
 
-                        //Default DataModel 선언
-        DefaultTableModel dtm = new DefaultTableModel(rowData,tableCol);
+        //col명 설정
+        String col[] = {"a1", "a2"};
+        DefaultTableModel dtm = new DefaultTableModel(col, 0);
+
+        //넣을 dtoList
+        ArrayList<CartDTO> arr = new ArrayList();
+        CartDTO c = new CartDTO("123","12","1",1,1,"1",1);
+        CartDTO dd = new CartDTO("223","22","2",2,2,"2",2);
+        arr.add(c);
+        arr.add(dd);
+
+        //데이터 한줄씩 table에 넣음
+        for(CartDTO cc : arr)
+        {
+            Object[] data = {cc.getP_code(), cc.getCustomer_ID()};
+            dtm.addRow(data);
+        }
+
+
+
+
+        //Default DataModel 선언
+//        DefaultTableModel dtm = new DefaultTableModel(rowData,tableCol);
+
 
         //JTable에 담기
         table1 = new JTable(dtm);

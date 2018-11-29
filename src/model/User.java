@@ -39,6 +39,7 @@ public class User
 
     }
 
+
 //TODO: cart, favorite, sell_list, 통합해서 보여주기 (DAOFactory 이용)
     public void showLists(DAOFactory df) throws SQLException
     {   //list 보여줌.
