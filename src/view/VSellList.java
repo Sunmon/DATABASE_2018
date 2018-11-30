@@ -1,8 +1,6 @@
 package view;
 
-import model.SellListDAO;
-import model.SellListDTO;
-import model.User;
+import model.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -83,7 +81,39 @@ public class VSellList extends JPanel
         repaint();
         revalidate();
 
+    }
 
+
+    //카트에 Item 추가  ...메소드 오버로딩
+    public void addItems(User user, SellListDAO sao, CartDAO cao)
+    {
+        //임시 리스트 초기화
+        user.initTempArrayList();
+        int row = -1;
+
+        //자주쓸거같아서 변수로 설정
+        SellListDTO s = null;
+        CartDTO c = null;
+
+        while(++row < sTable.getRowCount())
+        {
+            //체크박스 체크한 아이템들 임시리스트에 추가
+            if(!(Boolean)sTable.getValueAt(row, 6)) continue;
+            s = sao.getDtoList().get(row);
+            c = user.makeCartDTO(s.getP_code(), s.getSeller_ID(), 1, s.getPrice(), s.getP_nickname());
+            user.addList(user.getTempSell(), s);
+            user.addList(user.getTempCart(), c);
+        }
+
+
+        //임시리스트에 추가한 것들 DB에 추가
+
+
+    }
+
+    //즐겨찾기에 Item 추가 ... 메소드 오버로딩
+    public void addItems(User user, SellListDAO sao, FavoriteDAO fao)
+    {
 
     }
 

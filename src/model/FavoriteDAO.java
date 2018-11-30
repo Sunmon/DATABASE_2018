@@ -3,7 +3,7 @@ package model;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class favoriteDAO extends DAOFactory {
+public class FavoriteDAO extends DAOFactory {
 
     private String attributes[] = {"customer_ID", "p_code", "seller_ID"};
 
@@ -16,7 +16,7 @@ public class favoriteDAO extends DAOFactory {
 
 
 
-    public favoriteDAO(Connection con) {super(con);}
+    public FavoriteDAO(Connection con) {super(con);}
 
 
 

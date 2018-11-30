@@ -26,7 +26,7 @@ public class DAOFactory
     {
         if(dao.equals("cart")) return new CartDAO(con);
         if(dao.equals("sellList")) return new SellListDAO(con);
-        if(dao.equals("favorites")) return new favoriteDAO(con);
+        if(dao.equals("favorites")) return new FavoriteDAO(con);
         return this;
 
     }
