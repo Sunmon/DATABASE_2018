@@ -81,11 +81,12 @@ public class VFavorite extends JPanel {
                 //favorite>임시 favoite
                 user.addList(user.gettempFavor(), fao.getDtoList().get(row));
                 CartDTO ct=user.makeCartDTO(pc,sid,1,price,nick);
+//                user.addList(user.getTempCart(), ct);
                 cao.insert(ct);
+            }
+        }
 
 
-            }
-            }
     }
 
 

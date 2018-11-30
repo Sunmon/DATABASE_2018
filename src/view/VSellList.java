@@ -112,7 +112,7 @@ public class VSellList extends JPanel
     }
 
     //즐겨찾기에 Item 추가 ... 메소드 오버로딩
-    public void addItems(User user, SellListDAO sao, FavoriteDAO fao)
+    public void addItems(User user, SellListDAO sao, favoriteDAO fao)
     {
 
     }
