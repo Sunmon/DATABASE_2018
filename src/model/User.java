@@ -94,6 +94,14 @@ public class User
         }
     }
 
+    public void removeItems(CartDAO cao, Connector con)
+    {   //tempCart에 있는것들 cart DB에서 삭제
+        for(int i=0; i<tempCart.size(); i++)
+        {
+            cao.delete(tempCart.get(i));
+        }
+    }
+
     public void initTempArrayList()
     {
         tempCart = new ArrayList<CartDTO>();

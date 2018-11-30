@@ -41,6 +41,9 @@ public class VCart extends JPanel
     //...JTable(view)에 띄울 데이터 설정
     void initTable(User user, CartDAO cao) throws SQLException
     {
+        //init
+        cao.initialize(user.getID());
+
         //Column을 cartDAO에서 가져온다
         String col[] = cao.getAttributes();          //"p_nick", "p_count", "tot_price", "p_code", "seller_ID"
 
@@ -150,6 +153,36 @@ public class VCart extends JPanel
     }
 
 
+    //FIXME: 숫자 변경하면 알아서 가격도 변경하게하기!!!!!!!!
+
+
+    //Cart DB에서 제외하기
+    public void removeItems(User user, CartDAO cao, Connector con)
+    {//Buy Items 버튼 누르면 실행.
+
+        int row = -1;
+
+        //임시 cartList 초기화
+        user.initTempArrayList();
+
+        while(++row < cTable.getRowCount())
+        {
+            //체크박스에 체크한애들 임시리스트에 더해줌
+            if(!(Boolean)cTable.getValueAt(row, 5)) continue;
+            user.addList(user.getTempCart(), cao.getDtoList().get(row));
+        }
+
+        //DB에서 삭제
+        user.removeItems(cao,con);
+    }
+
+
+    //TODO: add To Cart -> sellist에 연동?
+    public void addItems(User user, CartDAO cao, Connector con)
+    {
+        //sellList에서 Cart로 아이템 추가하기
+    }
+
 
 
 
@@ -173,7 +206,6 @@ public class VCart extends JPanel
     {
         this.pointLable = pointLable;
     }
-
 
     public JButton getBuyButton()
     {
