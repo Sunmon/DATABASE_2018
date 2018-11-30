@@ -18,18 +18,20 @@ public class Main {
 
 
         //initialize DTOs
+
+
         DAOFactory df = new DAOFactory(con.getCon());
-        model.DAOFactory cao = (CartDAO)df.setDAO("cart");
         model.DAOFactory slao = (SellListDAO)df.setDAO("sellList");
-        cao.initialize(user.getID());
-        slao.initialize(user.getID());
-
-
+//        model.DAOFactory cao = (CartDAO)df.setDAO("cart");                    //vm에서 cartDao만들거.
+//        cao.initialize(user.getID());
+        slao.initialize(user.getID());          //GUI에서 cart누를때마다 할거면 필요없음
 
 
 
         //show main frame
-        vm.runVMainFrame(con, user);
+        vm.runVMainFrame(con,user, df);
+
+
 
 
 

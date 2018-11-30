@@ -24,6 +24,9 @@ public class VMainFrame extends JFrame
     private JPanel mypagePanel;
     private VSellList vsell;
     private VCart vcart;
+
+
+
     private VMypage vmpg;
     private VFavorite vfavor;
 
@@ -132,5 +135,46 @@ public class VMainFrame extends JFrame
     public void setMypagePanel(JPanel mypagePanel)
     {
         this.mypagePanel = mypagePanel;
+    }
+
+
+    public VSellList getVsell()
+    {
+        return vsell;
+    }
+
+    public void setVsell(VSellList vsell)
+    {
+        this.vsell = vsell;
+    }
+
+    public VCart getVcart()
+    {
+        return vcart;
+    }
+
+    public void setVcart(VCart vcart)
+    {
+        this.vcart = vcart;
+    }
+
+    public VMypage getVmpg()
+    {
+        return vmpg;
+    }
+
+    public void setVmpg(VMypage vmpg)
+    {
+        this.vmpg = vmpg;
+    }
+
+    public VFavorite getVfavor()
+    {
+        return vfavor;
+    }
+
+    public void setVfavor(VFavorite vfavor)
+    {
+        this.vfavor = vfavor;
     }
 }
