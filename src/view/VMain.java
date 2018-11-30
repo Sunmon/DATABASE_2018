@@ -64,14 +64,14 @@ public class VMain
         vfm.getShowPanel().setLayout(cards);
 
         //card들(화면) 추가
-        vfm.getShowPanel().add("home", vfm.getHomePanel());
+        vfm.getShowPanel().add("sell", vfm.getSellListPanel());
         vfm.getShowPanel().add("favor", vfm.getFavoritePanel());
         vfm.getShowPanel().add("cart", vfm.getCartPanel());
         vfm.getShowPanel().add("mypg", vfm.getMypagePanel());
 
 
         //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
-        vfm.getHomeButton().addActionListener(e->cards.show(vfm.getShowPanel(), "home"));
+        vfm.getSellListButton().addActionListener(e->cards.show(vfm.getShowPanel(), "sell"));
         vfm.getFavoriteButton().addActionListener(e->cards.show(vfm.getFavoritePanel(), "favor"));
 //        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
         vfm.getCartButton().addActionListener(e->
@@ -119,15 +119,21 @@ public class VMain
     }
 
 
+    public void showSellListPage(User user, SellListDAO sao, Connector con, CardLayout cards)
+    {
+        cards.show(vfm.g)
+    }
+
+
     public void setButtonsTransparent()
     {   // 버튼 내용 투명하게 만들기 (나중에 쓸데가 있겠지)
         //투명 test
 
-        //home Button
-        vfm.getHomeButton().setOpaque(false);
-        vfm.getHomeButton().setContentAreaFilled(false);
-        vfm.getHomeButton().setBorderPainted(false);
-        vfm.getHomeButton().setText("    ");
+        //sell Button
+        vfm.getSellListButton().setOpaque(false);
+        vfm.getSellListButton().setContentAreaFilled(false);
+        vfm.getSellListButton().setBorderPainted(false);
+        vfm.getSellListButton().setText("    ");
 
         //favorite Button
         vfm.getFavoriteButton().setOpaque(false);

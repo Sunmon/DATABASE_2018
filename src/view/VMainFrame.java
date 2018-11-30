@@ -5,20 +5,18 @@ import model.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class VMainFrame extends JFrame
 {   //메뉴바가 있는 메인 프레임
 
     static Dimension d = new Dimension(414, 736);
     private JPanel mainPanel;
-    private JButton homeButton;
+    private JButton sellListButton;
     private JButton favoriteButton;
     private JButton cartButton;
     private JButton mypageButton;
     private JPanel showPanel;
-    private JPanel homePanel;
+    private JPanel sellListPanel;
     private JPanel favoritePanel;
     private JPanel cartPanel;
     private JPanel mypagePanel;
@@ -48,14 +46,14 @@ public class VMainFrame extends JFrame
         this.mainPanel = mainPanel;
     }
 
-    public JButton getHomeButton()
+    public JButton getSellListButton()
     {
-        return homeButton;
+        return sellListButton;
     }
 
-    public void setHomeButton(JButton homeButton)
+    public void setSellListButton(JButton sellListButton)
     {
-        this.homeButton = homeButton;
+        this.sellListButton = sellListButton;
     }
 
     public JButton getFavoriteButton()
@@ -98,14 +96,14 @@ public class VMainFrame extends JFrame
         this.showPanel = showPanel;
     }
 
-    public JPanel getHomePanel()
+    public JPanel getSellListPanel()
     {
-        return homePanel;
+        return sellListPanel;
     }
 
-    public void setHomePanel(JPanel homePanel)
+    public void setSellListPanel(JPanel sellListPanel)
     {
-        this.homePanel = homePanel;
+        this.sellListPanel = sellListPanel;
     }
 
     public JPanel getFavoritePanel()
