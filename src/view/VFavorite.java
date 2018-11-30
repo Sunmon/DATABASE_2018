@@ -22,6 +22,9 @@ public class VFavorite extends JPanel {
     public VFavorite(User user, Connector con, DAOFactory dao){}
 
     void initTable(User user, favoriteDAO cao) throws SQLException {
+
+        cao.initialize(user.getID());
+
         //Column을 cartDAO에서 가져온다
         String col[] = cao.getAttributes();          //"p_nickname", "p_code", "seller_ID", "price"
 
@@ -57,7 +60,7 @@ public class VFavorite extends JPanel {
 
         //DefaultTableModel에 값 넣기
         for (FavoriteDTO c : cao.getDtoList()) {
-            Object[] o = {c.getP_nick(), c.getP_code(), c.getSeller_ID(), c.getprice(), Boolean.TRUE};
+            Object[] o = {c.getP_nick(), c.getP_code(), c.getSeller_ID(), c.getprice(), Boolean.FALSE};
             dtm.addRow(o);
         }
         table1.setModel(dtm);

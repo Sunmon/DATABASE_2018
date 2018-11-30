@@ -28,7 +28,6 @@ public class DAOFactory
         if(dao.equals("sellList")) return new SellListDAO(con);
         if(dao.equals("favorites")) return new favoriteDAO(con);
         return this;
-
     }
 
     public ArrayList initialize(String _id) {

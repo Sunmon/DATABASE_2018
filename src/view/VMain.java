@@ -54,6 +54,10 @@ public class VMain
         model.DAOFactory sao = dao.setDAO("sellList");
         sao.initialize(user.getID());
 
+        //Favorite 생성
+        model.DAOFactory fao = dao.setDAO("favorites");
+//        fao.initialize(user.getID());
+
 
         //mainFrame 실행
         vfm = new VMainFrame(con, user);
@@ -75,7 +79,16 @@ public class VMain
 
         //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
         vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, con, cards));
-        vfm.getFavoriteButton().addActionListener(e->cards.show(vfm.getFavoritePanel(), "favor"));
+        vfm.getFavoriteButton().addActionListener(e->
+        {
+            try
+            {
+                showFavorPage(user, (CartDAO)cao, (favoriteDAO)fao, con, cards);
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+            }
+        });
 //        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
         vfm.getCartButton().addActionListener(e->
         {
@@ -127,6 +140,15 @@ public class VMain
         cards.show(vfm.getShowPanel(), "sell");
         vfm.getVsell().initTable(user, sao);
     }
+
+    public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
+    {   //favor page 보여줌
+        cards.show(vfm.getShowPanel(), "favor");
+        vfm.getVfavor().initTable(user, fao);
+
+
+    }
+
 
 
     public void setButtonsTransparent()

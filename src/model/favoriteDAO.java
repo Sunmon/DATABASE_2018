@@ -26,7 +26,7 @@ public class favoriteDAO extends DAOFactory {
         dtoList = new ArrayList<FavoriteDTO>();
 
         String sql = "select favorites.*,sell_list.p_nickname,sell_list.price from favorites,sell_list "+
-                "where favorites.p_code = sell_list.p_code"+
+                "where favorites.p_code = sell_list.p_code "+
                 "AND favorites.seller_ID = sell_list.seller_ID "+
                 "AND favorites.customer_ID = ?";
 
