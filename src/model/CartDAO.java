@@ -22,8 +22,6 @@ public class CartDAO extends DAOFactory {
 
 
 
-
-
     //FACTORY에서 쓰는거 실험중
     @Override
     public void printAttributes() throws SQLException

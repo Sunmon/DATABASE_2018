@@ -8,12 +8,7 @@ public class SellListDAO extends DAOFactory
 {
     private String attributes[] = {"p_code", "seller_ID", "price", "stock", "size", "p_nickname"};
 
-
     ArrayList<SellListDTO> dtoList = null;
-
-
-
-    ArrayList<SellListDTO> tempList = null;
 
     public ArrayList<SellListDTO> getDtoList()
     {
@@ -246,17 +241,6 @@ public class SellListDAO extends DAOFactory
             System.out.print(attributes[i] + "\t\t");
         System.out.println();
     }
-
-    public ArrayList<SellListDTO> getTempList()
-    {
-        return tempList;
-    }
-
-    public void setTempList(ArrayList<SellListDTO> tempList)
-    {
-        this.tempList = tempList;
-    }
-
 
 
 }
