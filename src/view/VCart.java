@@ -95,6 +95,7 @@ public class VCart extends JPanel
 
     }
 
+
     public void buyItems(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     { //Buy Items 버튼 누르면 실행
 
@@ -102,16 +103,22 @@ public class VCart extends JPanel
         int tpoint = 0;             //선택한 아이템들의 총 가격
         int row = -1;
 
-        ArrayList<CartDTO> templ = new ArrayList<CartDTO>();    //임시로 만들음. 체크한것들 알라고.
-        ArrayList<SellListDTO> temps = new ArrayList<SellListDTO>();
+        //임시 리스트들 초기화
+        user.initTempArrayList();
+
+
         while(++row < cTable.getRowCount())
         {
-
-            //체크박스 아이템들 가격 더해줌
+            //체크박스에 체크한 아이템들 임시리스트에 더해줌
             if((Boolean)cTable.getValueAt(row, 5))
             {
-                templ.add(cao.getDtoList().get(row));   //해당 cto객체 임시 리스트에 추가
-                temps.add(sao.select(con.getCon(), (String)cTable.getValueAt(row, 3), (String)cTable.getValueAt(row, 4) ));
+                //primary key
+                String pc = (String)cTable.getValueAt(row, 3);
+                String sid = (String)cTable.getValueAt(row, 4);
+
+                //해당 cto객체, sao객체 임시 리스트에 추가
+                user.addList(user.getTempCart(), cao.getDtoList().get(row));
+                user.addList(user.getTempSell(), sao.select(con.getCon(), pc, sid));
                 tpoint+= (int)cTable.getValueAt(row, 2);
             }
         }
@@ -126,37 +133,20 @@ public class VCart extends JPanel
             return;
         }
 
+        //구매
+        user.buyItems(cao,sao,con);
 
-        //재고 확인
-        String errormsg = "재고가 부족한 상품 제외하고 구매가 완료되었습니다.";
-        for(int i=0; i<templ.size(); i++)
-        {
-            if(temps.get(i).getStock() > templ.get(i).getP_count())
-            {   //재고 충분하면 DB에서 삭제
-                cao.delete(templ.get(i));
-                int stock = temps.get(i).getStock();
-                temps.get(i).setStock(stock-templ.get(i).getP_count());
-                sao.update(temps.get(i));
-
-                int totprice = templ.get(i).getTot_price();
-                //user point 감소
-                user.setPoints(user.getPoints()-totprice);
-                con.updateUserPoint(user.getID(),-totprice);
-
-                //seller point 증가
-                con.updateUserPoint(temps.get(i).getSeller_ID(), totprice);
-
-            }
-        }
         //cartList 테이블화면초기화
         initTable(user, cao);
 
         //user point label 초기화
         pointLable.setText(Integer.toString(user.getPoints()));
-        JOptionPane.showMessageDialog(this, errormsg);
+
+        //alert
+        String msg = "재고가 부족한 상품 제외하고 구매가 완료되었습니다.";
+        JOptionPane.showMessageDialog(this, msg);
 
         repaint();
-        return;
     }
 
 
