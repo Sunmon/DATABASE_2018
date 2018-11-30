@@ -38,7 +38,7 @@ public class VCart extends JPanel
     public VCart(User user, Connector con, DAOFactory dao){}
 
 
-    //...Table(view)에 띄울 데이터 설정
+    //...JTable(view)에 띄울 데이터 설정
     void initTable(User user, CartDAO cao) throws SQLException
     {
         //Column을 cartDAO에서 가져온다

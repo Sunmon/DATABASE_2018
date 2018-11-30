@@ -80,7 +80,8 @@ public class VMain
                 e1.printStackTrace();
             }
         });
-        vfm.getMypageButton().addActionListener(e->cards.show(vfm.getShowPanel(), "mypg"));
+//        vfm.getMypageButton().addActionListener(e->cards.show(vfm.getShowPanel(), "mypg"));
+        vfm.getMypageButton().addActionListener(e->showMyPage(user,con,cards));
 
 
         //VFavorite는 아직 안만들음 ... 만들어서 VMainFrame.form.FavoritePanel에 추가해야 함.
@@ -96,6 +97,12 @@ public class VMain
         vfm.getVcart().initTable(user, cao);
     }
 
+    public void showMyPage(User user, Connector con, CardLayout cards)
+    {   //mypage보여줌
+        cards.show(vfm.getShowPanel(), "mypg");
+        vfm.getVmpg().initTable(user, con);
+
+    }
 
 
     public void setButtonsTransparent()
