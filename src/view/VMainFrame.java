@@ -33,6 +33,7 @@ public class VMainFrame extends JFrame
     public VMainFrame(Connector con, User user)
     {
         add(mainPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(d);
     }
 

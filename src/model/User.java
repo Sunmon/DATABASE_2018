@@ -19,6 +19,12 @@ public class User
 
     DAOFactory df;
 
+
+    //buyItem할 때 임시로 쓸 객체들.. 여기에 생성해서 이걸로 insert, delete등등 하면 된다.
+    ArrayList<CartDTO> tempCart = null;
+    ArrayList<SellListDTO> tempSell = null;
+
+
     public User(String ID, String pw, String name, int age, String gender,
                 String phone, String address, int height, int weight, int points, String authority)
     {
@@ -33,10 +39,6 @@ public class User
         this.weight = weight;
         this.points = points;
         this.authority = authority;
-
-
-
-
     }
 
 
@@ -60,6 +62,49 @@ public class User
         df.getDtoList().add(dto);
         df.insert(dto);
     }
+
+    //메소드 오버로딩
+    public void addList(ArrayList arr, DTO dto)
+    {
+        arr.add(dto);
+    }
+
+    public void buyItems(CartDAO cao, SellListDAO sao, Connector con)
+    {
+        for(int i=0; i<tempCart.size(); i++)
+        {
+            //재고가 충분한 경우
+            int stock = tempSell.get(i).getStock();
+            if(stock > tempCart.get(i).getP_count())
+            {   //cartDB에서 삭제 / sellList에서 재고 감소
+                cao.delete(tempCart.get(i));
+                tempSell.get(i).setStock(stock-tempCart.get(i).getP_count());
+                sao.update(tempSell.get(i));
+
+                //아이템에 따른 point
+                int totprice = tempCart.get(i).getTot_price();
+
+                //user point 감소
+                setPoints(points-totprice);
+                con.updateUserPoint(ID,-totprice);
+
+                //seller point 증가
+                con.updateUserPoint(tempSell.get(i).getSeller_ID(), totprice);
+            }
+        }
+    }
+
+    public void initTempArrayList()
+    {
+        tempCart = new ArrayList<CartDTO>();
+        tempSell = new ArrayList<SellListDTO>();
+    }
+
+
+
+
+
+
 
 
 
@@ -148,6 +193,7 @@ public class User
 
 
 
+/*
     public CartDTO searchCart(CartDAO cao, String pc, String sID)
     {   //특정 DTO들을 검색해서 리턴.
 
@@ -161,6 +207,7 @@ public class User
         System.out.println("찾는 상품이 장바구니에 없습니다.");
         return null;
     }
+*/
 
 
     public CartDTO makeCartDTO(String pc, String sID, int pcount, int price, String nick)
@@ -316,5 +363,16 @@ public class User
     public void setDf(DAOFactory df)
     {
         this.df = df;
+    }
+
+
+    public ArrayList<CartDTO> getTempCart()
+    {
+        return tempCart;
+    }
+
+    public ArrayList<SellListDTO> getTempSell()
+    {
+        return tempSell;
     }
 }
