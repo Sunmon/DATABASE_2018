@@ -74,13 +74,15 @@ public class VFavorite extends JPanel {
             if((Boolean)table1.getValueAt(row, 4))
             {//"p_nickname", "p_code", "seller_ID", "price"0123
                 //primary key
+                String nick=(String)table1.getValueAt(row,0);
                 String pc = (String)table1.getValueAt(row, 1);
-                String sid = (String)table1.getValueAt(row, 4);
-
+                String sid = (String)table1.getValueAt(row, 2);
+                int price =(int)table1.getValueAt(row, 3);
                 //favorite>임시 favoite
                 user.addList(user.gettempFavor(), fao.getDtoList().get(row));
-                //임시 cart로 옮김
-                user.addList(user.getTempCart(), cao.select(con.getCon(), pc, sid));
+                CartDTO ct=user.makeCartDTO(pc,sid,1,price,nick);
+                cao.insert(ct);
+
 
             }
             }
