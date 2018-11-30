@@ -62,7 +62,29 @@ public class VFavorite extends JPanel {
         }
         table1.setModel(dtm);
     }
+    public void deliverToCart(User user, CartDAO cao, favoriteDAO fao, Connector con) throws SQLException
+    {
+        int row=-1;
 
+        user.initTempArrayList();
+
+        while(++row < table1.getRowCount())
+        {
+            //체크박스에 체크한 아이템들 임시리스트에 더해줌
+            if((Boolean)table1.getValueAt(row, 4))
+            {//"p_nickname", "p_code", "seller_ID", "price"0123
+                //primary key
+                String pc = (String)table1.getValueAt(row, 1);
+                String sid = (String)table1.getValueAt(row, 4);
+
+                //favorite>임시 favoite
+                user.addList(user.gettempFavor(), fao.getDtoList().get(row));
+                //임시 cart로 옮김
+                user.addList(user.getTempCart(), cao.select(con.getCon(), pc, sid));
+
+            }
+            }
+    }
 
 
 }
