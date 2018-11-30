@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class favoriteDAO extends DAOFactory {
 
-    private String attributes[] = {"customer_ID", "p_code", "seller_ID"};
+    private String attributes[] = {"p_nickname", "p_code", "seller_ID", "price"};
 
     public ArrayList<FavoriteDTO> getDtoList()
     {
