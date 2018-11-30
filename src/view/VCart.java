@@ -41,6 +41,9 @@ public class VCart extends JPanel
     //...JTable(view)에 띄울 데이터 설정
     void initTable(User user, CartDAO cao) throws SQLException
     {
+        //init
+        cao.initialize(user.getID());
+
         //Column을 cartDAO에서 가져온다
         String col[] = cao.getAttributes();          //"p_nick", "p_count", "tot_price", "p_code", "seller_ID"
 

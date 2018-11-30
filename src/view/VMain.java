@@ -69,9 +69,12 @@ public class VMain
         vfm.getShowPanel().add("cart", vfm.getCartPanel());
         vfm.getShowPanel().add("mypg", vfm.getMypagePanel());
 
+        //기본홈화면으로 sellList띄워준다
+        showSellListPage(user, (SellListDAO)sao, con, cards);
+
 
         //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
-        vfm.getSellListButton().addActionListener(e->cards.show(vfm.getShowPanel(), "sell"));
+        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, con, cards));
         vfm.getFavoriteButton().addActionListener(e->cards.show(vfm.getFavoritePanel(), "favor"));
 //        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
         vfm.getCartButton().addActionListener(e->
@@ -120,8 +123,9 @@ public class VMain
 
 
     public void showSellListPage(User user, SellListDAO sao, Connector con, CardLayout cards)
-    {
-        cards.show(vfm.g)
+    {   //sellList page 보여줌
+        cards.show(vfm.getShowPanel(), "sell");
+        vfm.getVsell().initTable(user, sao);
     }
 
 

@@ -2,6 +2,7 @@ package view;
 
 import model.SellListDAO;
 import model.SellListDTO;
+import model.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +29,7 @@ public class VSellList extends JPanel
     }
 
     //JTable(view)에 띄울 데이터 설정
-    void initTable(SellListDAO sao)
+    void initTable(User user, SellListDAO sao)
     {
         //column을 sellList DAO에서 가져온다
         String col[] =   sao.getAttributes();       //"p_code", "seller_ID", "price", "stock", "size", "p_nickname"
