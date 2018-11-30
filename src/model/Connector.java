@@ -119,6 +119,25 @@ public class Connector
 
         }
         }
+
+
+    public void updateUserPoint(String _id, int _point)
+    {   //user point 업데이트
+        String sql = "Update person set points = points + ? where id = ?";
+        try
+        {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, _point);
+            pstmt.setString(2, _id);
+            rs = pstmt.executeQuery();
+            pstmt.close();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("point 업데이트를 하지 못했습니다."); ;
+
+        }
+    }
     }
    /* //test for prestsmt
     public void insertData()

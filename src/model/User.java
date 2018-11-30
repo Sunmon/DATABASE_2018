@@ -74,6 +74,8 @@ public class User
 
 
 
+
+
     /*//NOTE: sellList관련 메소드들
     private void showSellList(SellListDAO slao) throws SQLException
     {

@@ -50,6 +50,10 @@ public class VMain
         model.DAOFactory cao = dao.setDAO("cart");
         cao.initialize(user.getID());
 
+        //SellListDAO 생성 & 초기화
+        model.DAOFactory sao = dao.setDAO("sellList");
+        sao.initialize(user.getID());
+
 
         //mainFrame 실행
         vfm = new VMainFrame(con, user);
@@ -74,7 +78,7 @@ public class VMain
         {
             try
             {
-                showCartPage(user, (CartDAO)cao, cards);
+                showCartPage(user, (CartDAO)cao, (SellListDAO)sao, con, cards);
             } catch (SQLException e1)
             {
                 e1.printStackTrace();
@@ -91,10 +95,20 @@ public class VMain
 
     }
 
-    public void showCartPage(User user, CartDAO cao, CardLayout cards) throws SQLException
+    public void showCartPage(User user, CartDAO cao, SellListDAO sao, Connector con, CardLayout cards) throws SQLException
     {   //cart버튼 누르면 cart page를 보여준다.
         cards.show(vfm.getShowPanel(), "cart");
         vfm.getVcart().initTable(user, cao);
+        vfm.getVcart().getBuyButton().addActionListener(e ->
+        {
+            try
+            {
+                vfm.getVcart().buyItems(user, cao, sao, con);
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+            }
+        });
     }
 
     public void showMyPage(User user, Connector con, CardLayout cards)

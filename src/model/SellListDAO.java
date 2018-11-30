@@ -10,12 +10,16 @@ public class SellListDAO extends DAOFactory
 
 
     ArrayList<SellListDTO> dtoList = null;
-//    ArrayList<SellListDTO> dtoList = null;
+
+
+
+    ArrayList<SellListDTO> tempList = null;
 
     public ArrayList<SellListDTO> getDtoList()
     {
         return dtoList;
     }
+
     @Override
     public ArrayList<SellListDTO> initialize(String _id)
     {   //dtoList table 통째로 가져오기 + sellistDTO로 초기화
@@ -62,6 +66,8 @@ public class SellListDAO extends DAOFactory
     }
 
     public SellListDAO(Connection con) {super(con);}
+
+
 
  /*   @Override
     public void printAttributes()
@@ -120,6 +126,45 @@ public class SellListDAO extends DAOFactory
         }
     }
 
+    public SellListDTO select(Connection con, String p_code, String seller_ID)
+    {   //임시적으로 만들어놓은 메소드
+        SellListDTO s = null;
+        String sql = "select * " +
+                "from (sell_list join product using (p_code)) natural join category " +
+                "where p_code = ? AND seller_ID = ?";
+        //DB에 연결 시도
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,p_code);
+            pstmt.setString(2,seller_ID);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                //user에게 보여질 정보 가져오기
+                String pc = rs.getString("p_code");
+                String sID = rs.getString("seller_ID");
+                int stock = rs.getInt("stock");
+                String size = rs.getString("size");
+                String nick = rs.getString("p_nickname");
+                int price = rs.getInt("price");
+
+                //user에게 보여지진 않지만 검색등에 쓸 정보 가져오기
+                String p_name = rs.getString("p_name");
+                String c_code = rs.getString("c_code");
+                String c_code_sub = rs.getString("c_code_sub");
+                String c_name = rs.getString("c_name");
+
+
+                //sellList에 sellDTO 새 객체 추가
+                s = new SellListDTO(pc, sID, price, stock, size, nick, p_name, c_code, c_code_sub, c_name);
+            }
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println("DB에서 JAVA로 dtoList 가져오기 실패");
+            e.printStackTrace();
+        }
+        return s;
+    }
 
     private void deleteSellListDB(SellListDTO dto)
     {
@@ -161,6 +206,8 @@ public class SellListDAO extends DAOFactory
 
     }
 
+
+
     @Override
     public void printAllItems()
     {   //cart에 담은 모든 item들 보여줌. (로그인한 ID중)
@@ -198,6 +245,16 @@ public class SellListDAO extends DAOFactory
         for(int i=0; i<attributes.length; i++)
             System.out.print(attributes[i] + "\t\t");
         System.out.println();
+    }
+
+    public ArrayList<SellListDTO> getTempList()
+    {
+        return tempList;
+    }
+
+    public void setTempList(ArrayList<SellListDTO> tempList)
+    {
+        this.tempList = tempList;
     }
 
 
