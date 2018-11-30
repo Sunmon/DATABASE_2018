@@ -5,8 +5,7 @@ import javax.swing.*;
 public class VMypage extends JPanel
 {
     private JPanel mainPanel;
-    private JPanel tempPanel;
-    private JLabel label1;
+    private JButton button1;
 
     public VMypage()
     {
