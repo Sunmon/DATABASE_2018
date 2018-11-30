@@ -23,7 +23,7 @@ public class User
     //buyItem할 때 임시로 쓸 객체들.. 여기에 생성해서 이걸로 insert, delete등등 하면 된다.
     ArrayList<CartDTO> tempCart = null;
     ArrayList<SellListDTO> tempSell = null;
-
+    ArrayList<FavoriteDTO> tempFavor = null;
 
     public User(String ID, String pw, String name, int age, String gender,
                 String phone, String address, int height, int weight, int points, String authority)
@@ -106,6 +106,7 @@ public class User
     {
         tempCart = new ArrayList<CartDTO>();
         tempSell = new ArrayList<SellListDTO>();
+        tempFavor = new ArrayList<>();
     }
 
 
@@ -382,5 +383,11 @@ public class User
     public ArrayList<SellListDTO> getTempSell()
     {
         return tempSell;
+    }
+
+
+    public ArrayList<FavoriteDTO> gettempFavor()
+    {
+        return tempFavor;
     }
 }

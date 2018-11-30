@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class FavoriteDAO extends DAOFactory {
 
-    private String attributes[] = {"customer_ID", "p_code", "seller_ID"};
+    private String attributes[] = {"p_nickname", "p_code", "seller_ID", "price"};
 
     public ArrayList<FavoriteDTO> getDtoList()
     {
@@ -119,4 +119,19 @@ public class FavoriteDAO extends DAOFactory {
         deletefavoriteDB((FavoriteDTO)dto);
     }
 
+    public String[] getAttributes()
+    {
+        return attributes;
+    }
+
+    public void setAttributes(String[] attributes)
+    {
+        this.attributes = attributes;
+    }
+
+    public void printAttributes() throws SQLException {
+        for(int i=0; i<attributes.length; i++)
+            System.out.print(attributes[i] + "\t\t");
+        System.out.println();
+    }
 }

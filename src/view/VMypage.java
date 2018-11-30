@@ -1,5 +1,4 @@
 package view;
-
 import model.Connector;
 import model.User;
 

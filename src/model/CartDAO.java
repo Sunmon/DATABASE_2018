@@ -97,7 +97,7 @@ public class CartDAO extends DAOFactory {
 
         return dtoList;
     }
-
+    
 
 
 
@@ -121,7 +121,7 @@ public class CartDAO extends DAOFactory {
     public void insertCartDB(CartDTO ct)
     {   //cartDTO에 있는 값을 DB에 업데이트
         //cartList에는 추가 안 함!
-        String sql = "INSERT INTO cart ";
+        String sql = "INSERT IGNORE INTO  cart ";
         sql = sql + "VALUES (?, ?, ?, ?, ?)";
         try {
             pstmt = con.prepareStatement(sql);
