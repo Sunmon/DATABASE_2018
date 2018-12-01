@@ -119,6 +119,7 @@ public class VMain
             try
             {
                 vfm.getVcart().buyItems(user, cao, sao, con);
+
             } catch (SQLException e1)
             {
                 e1.printStackTrace();
@@ -144,6 +145,8 @@ public class VMain
 
     }
 
+
+    //show my page
     public void showMyPage(User user, Connector con, CardLayout cards)
     {   //mypage보여줌
         cards.show(vfm.getShowPanel(), "mypg");
@@ -152,6 +155,7 @@ public class VMain
     }
 
 
+    //show sell list page
     public void showSellListPage(User user, SellListDAO sao, Connector con, CardLayout cards)
     {   //sellList page 보여줌
         cards.show(vfm.getShowPanel(), "sell");
@@ -161,6 +165,7 @@ public class VMain
     }
 
 
+    //show favorite page
     public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
     {   //favor page 보여줌
         cards.show(vfm.getShowPanel(), "favor");
@@ -172,11 +177,17 @@ public class VMain
             try
             {
                 vfm.getVfavor().deliverToCart(user,cao,fao,con);
+                JOptionPane.showMessageDialog(vfm.getVfavor(), "중복된 상품을 제외하고 장바구니에 담았습니다.");
+                vfm.getVfavor().initTable(user,fao);
+
             } catch (SQLException e1)
             {
+                JOptionPane.showMessageDialog(vfm.getVfavor(), "오류: 상품을 장바구니에 담지 못했습니다.");
                 e1.printStackTrace();
             }
         });
+
+
 
 
      /*   //delete button
