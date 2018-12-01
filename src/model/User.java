@@ -82,10 +82,6 @@ public class User
                 int totprice = tempCart.get(i).getTot_price();
 
                 //Log에 추가
-
-                //FIXME: 지금 log에들어간게 cart에서 foreign key가져온다고 해서
-                //로그에 들어가면 카트에서 삭제가 안 된다.
-
                 CartDTO c = tempCart.get(i);
                 insertLog(c.getP_code(), c.getSeller_ID(), totprice, con);
 
