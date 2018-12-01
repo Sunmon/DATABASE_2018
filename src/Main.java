@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) throws SQLException
     {
         //Connect to DB
-        model.Connector con = new model.Connector("3306", "test", "konkuk", "computer");
-//        model.Connector con = new model.Connector("3306", "dbtest_1115", "sunmon", "computer");
+//        model.Connector con = new model.Connector("3306", "test", "konkuk", "computer");
+        model.Connector con = new model.Connector("3306", "dbtest_1115", "sunmon", "computer");
 
         //Login GUI
         VMain vm = new VMain();

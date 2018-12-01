@@ -15,6 +15,14 @@ public class SellListDAO extends DAOFactory
         return dtoList;
     }
 
+
+
+    private String _order = "";     //정렬할때 사용
+
+
+
+    private String _search = "";    //검색할때 사용
+
     @Override
     public ArrayList<SellListDTO> initialize(String _id)
     {   //dtoList table 통째로 가져오기 + sellistDTO로 초기화
@@ -24,7 +32,7 @@ public class SellListDAO extends DAOFactory
 //        String sql = "select * from (sell_list natural join product) natural join ";
 
         String sql = "select * " +
-                "from (sell_list join product using (p_code)) natural join category";
+                "from (sell_list join product using (p_code)) natural join category "+ _search + _order;
         //DB에 연결 시도
         try {
             pstmt = con.prepareStatement(sql);
@@ -59,6 +67,10 @@ public class SellListDAO extends DAOFactory
 
         return dtoList;
     }
+
+
+
+
 
     public SellListDAO(Connection con) {super(con);}
 
@@ -242,5 +254,24 @@ public class SellListDAO extends DAOFactory
         System.out.println();
     }
 
+    public String get_order()
+    {
+        return _order;
+    }
+
+    public void set_order(String _order)
+    {
+        this._order = _order;
+    }
+
+    public String get_search()
+    {
+        return _search;
+    }
+
+    public void set_search(String _search)
+    {
+        this._search = _search;
+    }
 
 }
