@@ -121,8 +121,7 @@ public class VMain
         cards.show(vfm.getShowPanel(), "Card3");
         //띄울 내용 초기화
         vfm.getVcart().initTable(user, cao, sao, con);
-
-
+        vfm.getVcart().getPointLable().setText(Integer.toString(user.getPoints()));
 
     }
 

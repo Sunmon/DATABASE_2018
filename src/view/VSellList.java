@@ -92,14 +92,6 @@ public class VSellList extends JPanel
                     default: return Boolean.class;
                 }
             }
-/*
-            //사용자가 체크박스만 수정할 수 있게 만들기
-            @Override
-            public boolean isCellEditable(int row, int col)
-            {
-                if(col == 6) return true;
-                else return false;
-            }*/
 
         };
 
