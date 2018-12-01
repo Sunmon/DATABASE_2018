@@ -160,7 +160,7 @@ public class VCart extends JPanel
 
 
     //Cart DB에서 제외하기
-    public void removeItems(User user, CartDAO cao, Connector con)
+    public void removeItems(User user, CartDAO cao, Connector con) throws SQLException
     {//Buy Items 버튼 누르면 실행.
 
         int row = -1;
@@ -177,6 +177,13 @@ public class VCart extends JPanel
 
         //DB에서 삭제
         user.removeItems(cao,con);
+
+        //cartList 테이블화면초기화
+        initTable(user, cao);
+        repaint();
+
+
+
     }
 
 

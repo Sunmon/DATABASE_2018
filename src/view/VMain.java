@@ -129,7 +129,14 @@ public class VMain
         // remove from cart button
         vfm.getVcart().getRemoveButton().addActionListener(e->
         {
-            vfm.getVcart().removeItems(user, cao, con);
+            try
+            {
+                vfm.getVcart().removeItems(user, cao, con);
+            } catch (SQLException e1)
+            {
+
+
+            }
         });
 
 
@@ -159,7 +166,7 @@ public class VMain
         cards.show(vfm.getShowPanel(), "favor");
         vfm.getVfavor().initTable(user, fao);
 
-        //buy button
+        //buy (add to cart) button
         vfm.getVfavor().getBuybutton().addActionListener(e ->
         {
             try
@@ -170,6 +177,11 @@ public class VMain
                 e1.printStackTrace();
             }
         });
+
+
+     /*   //delete button
+        vfm.getVfavor().getDeletebutton().addActionListener(e ->
+        vfm.getVfavor().);*/
 
 
     }

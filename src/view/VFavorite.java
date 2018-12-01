@@ -68,6 +68,8 @@ public class VFavorite extends JPanel {
         }
         fTable.setModel(dtm);
     }
+
+
     public void deliverToCart(User user, CartDAO cao, favoriteDAO fao, Connector con) throws SQLException
     {
         int row=-1;
@@ -94,6 +96,9 @@ public class VFavorite extends JPanel {
 
 
     }
+
+    //TODO: delete 메소드 만들기!!!!!!!!!!!!  :: 세웅.
+
 
     public JButton getBuybutton()
     {
