@@ -59,26 +59,39 @@ public class VMain
 //        fao.initialize(user.getID());
 
 
+
         //mainFrame 실행
         vfm = new VMainFrame(con, user);
         vfm.setVisible(true);
 
         //버튼 누를때마다 새로운 화면 띄워주는 레이아웃 : cardLayout
-        CardLayout cards = new CardLayout();
-        vfm.getShowPanel().setLayout(cards);
+        CardLayout cards = (CardLayout)vfm.getShowPanel().getLayout();
 
         //card들(화면) 추가
+/*
+
+        cards.addLayoutComponent("sell", vfm.getSellListPanel());
+        cards.addLayoutComponent("favor", vfm.getFavoritePanel());
+        cards.addLayoutComponent("cart", vfm.getCartPanel());
+        cards.addLayoutComponent("mypg", vfm.getMypagePanel());
+*/
+
+
+        /*
         vfm.getShowPanel().add("sell", vfm.getSellListPanel());
         vfm.getShowPanel().add("favor", vfm.getFavoritePanel());
         vfm.getShowPanel().add("cart", vfm.getCartPanel());
-        vfm.getShowPanel().add("mypg", vfm.getMypagePanel());
+        vfm.getShowPanel().add("mypg", vfm.getMypagePanel());*/
 
         //기본홈화면으로 sellList띄워준다
-        showSellListPage(user, (SellListDAO)sao, con, cards);
+        showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards);
+
+
+
 
 
         //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
-        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, con, cards));
+        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards));
         vfm.getFavoriteButton().addActionListener(e->
         {
             try
@@ -89,22 +102,18 @@ public class VMain
                 e1.printStackTrace();
             }
         });
-//        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
         vfm.getCartButton().addActionListener(e->
         {
             try
             {
                 showCartPage(user, (CartDAO)cao, (SellListDAO)sao, con, cards);
+
             } catch (SQLException e1)
             {
                 e1.printStackTrace();
             }
         });
-//        vfm.getMypageButton().addActionListener(e->cards.show(vfm.getShowPanel(), "mypg"));
         vfm.getMypageButton().addActionListener(e->showMyPage(user,con,cards));
-
-
-        //VFavorite는 아직 안만들음 ... 만들어서 VMainFrame.form.FavoritePanel에 추가해야 함.
 
 
 
@@ -113,38 +122,51 @@ public class VMain
 
     public void showCartPage(User user, CartDAO cao, SellListDAO sao, Connector con, CardLayout cards) throws SQLException
     {   //cart버튼 누르면 cart page를 보여준다.
-        cards.show(vfm.getShowPanel(), "cart");
-        vfm.getVcart().initTable(user, cao);
-        vfm.getVcart().getBuyButton().addActionListener(e ->
-        {
-            try
-            {
-                vfm.getVcart().buyItems(user, cao, sao, con);
-            } catch (SQLException e1)
-            {
-                e1.printStackTrace();
-            }
-        });
+        cards.show(vfm.getShowPanel(), "Card3");
+
+        //띄울 내용 초기화
+        vfm.getVcart().initTable(user, cao, sao, con);
+
+
+
     }
 
     public void showMyPage(User user, Connector con, CardLayout cards)
     {   //mypage보여줌
-        cards.show(vfm.getShowPanel(), "mypg");
+        cards.show(vfm.getShowPanel(), "Card4");
         vfm.getVmpg().initTable(user, con);
 
     }
 
 
-    public void showSellListPage(User user, SellListDAO sao, Connector con, CardLayout cards)
+    public void showSellListPage(User user, SellListDAO sao, CartDAO cao, Connector con, CardLayout cards)
     {   //sellList page 보여줌
-        cards.show(vfm.getShowPanel(), "sell");
+        cards.show(vfm.getShowPanel(), "Card1");
+
+
         vfm.getVsell().initTable(user, sao);
+
+        vfm.getVsell().getAddCartButton().addActionListener(e ->
+        {
+            String msg = vfm.getVsell().addItems(user,sao,cao);
+//            JOptionPane.showMessageDialog(vfm.getShowPanel(), msg);
+
+
+        });
+
     }
+
 
     public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
     {   //favor page 보여줌
-        cards.show(vfm.getShowPanel(), "favor");
-        vfm.getVfavor().initTable(user, fao);
+        cards.show(vfm.getShowPanel(), "Card2");
+        vfm.getVfavor().initTable(user, cao, fao, con);
+
+
+
+     /*   //delete button
+        vfm.getVfavor().getDeletebutton().addActionListener(e ->
+        vfm.getVfavor().);*/
 
 
     }

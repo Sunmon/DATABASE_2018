@@ -17,6 +17,8 @@ public class VCart extends JPanel
 
 
     private JButton buyButton;
+
+
     private JButton removeButton;
     private JLabel totalTextLabel;
     private JLabel pointTextLabel;
@@ -27,11 +29,40 @@ public class VCart extends JPanel
     private JLabel pointLable;
     private JScrollPane tablePane;
 
+
+    User user;
+    SellListDAO sao;
+    CartDAO cao;
+    Connector con;
+
+
     public VCart()
     {
         add(mainPanel);
         setVisible(true);
 
+        buyButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try
+                {
+                    buyItems();
+                } catch (SQLException e1)
+                {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        removeButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                removeItems();
+            }
+        });
     }
 
 
@@ -39,8 +70,14 @@ public class VCart extends JPanel
 
 
     //...JTable(view)에 띄울 데이터 설정
-    void initTable(User user, CartDAO cao) throws SQLException
+    void initTable(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     {
+        this.user = user;
+        this.cao = cao;
+        this.sao = sao;
+        this.con = con;
+
+
         //init
         cao.initialize(user.getID());
 
@@ -98,6 +135,10 @@ public class VCart extends JPanel
 
     }
 
+    public void buyItems() throws SQLException
+    {
+        buyItems(this.user,this.cao, this.sao, this.con);
+    }
 
     public void buyItems(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     { //Buy Items 버튼 누르면 실행
@@ -141,7 +182,7 @@ public class VCart extends JPanel
         user.buyItems(cao,sao,con);
 
         //cartList 테이블화면초기화
-        initTable(user, cao);
+        initTable(user, cao, sao, con);
 
         //user point label 초기화
         pointLable.setText(Integer.toString(user.getPoints()));
@@ -156,9 +197,20 @@ public class VCart extends JPanel
 
     //FIXME: 숫자 변경하면 알아서 가격도 변경하게하기!!!!!!!!
 
+    public void removeItems()
+    {
+        try
+        {
+            removeItems(user, cao, con);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
 
     //Cart DB에서 제외하기
-    public void removeItems(User user, CartDAO cao, Connector con)
+    public void removeItems(User user, CartDAO cao, Connector con) throws SQLException
     {//Buy Items 버튼 누르면 실행.
 
         int row = -1;
@@ -175,6 +227,15 @@ public class VCart extends JPanel
 
         //DB에서 삭제
         user.removeItems(cao,con);
+
+        //cartList 테이블화면초기화
+        initTable(user, cao, sao, con);
+        repaint();
+
+        JOptionPane.showMessageDialog(this, "카트에서 삭제되었습니다.");
+
+
+
     }
 
 
@@ -215,10 +276,13 @@ public class VCart extends JPanel
         return buyButton;
     }
 
-    public void setBuyButton(JButton buyButton)
+
+
+    public JButton getRemoveButton()
     {
-        this.buyButton = buyButton;
+        return removeButton;
     }
+
 
 
 }

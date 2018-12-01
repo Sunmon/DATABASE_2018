@@ -12,6 +12,12 @@ public class VSellList extends JPanel
     private JTable sTable;
     private JComboBox searchCombo;
     private JTextField searchTextField;
+
+    public JButton getAddCartButton()
+    {
+        return addCartButton;
+    }
+
     private JButton addCartButton;
     private JButton addFavoriteButton;
     private JButton searchButton;
@@ -66,7 +72,7 @@ public class VSellList extends JPanel
         //DefaultTableModel에 값 넣기
         for(SellListDTO s : sao.getDtoList())
         {
-            Object[] o = {s.getP_code(), s.getSeller_ID(), s.getPrice(), s.getStock(), s.getSize(), s.getP_nickname()};
+            Object[] o = {s.getP_code(), s.getSeller_ID(), s.getPrice(), s.getStock(), s.getSize(), s.getP_nickname(),false};
             dtm.addRow(o);
         }
 
@@ -85,7 +91,7 @@ public class VSellList extends JPanel
 
 
     //카트에 Item 추가  ...메소드 오버로딩
-    public void addItems(User user, SellListDAO sao, CartDAO cao)
+    public String addItems(User user, SellListDAO sao, CartDAO cao)
     {
         //임시 리스트 초기화
         user.initTempArrayList();
@@ -108,7 +114,11 @@ public class VSellList extends JPanel
 
         //임시리스트에 추가한 것들 DB에 추가
 
-
+        for(CartDTO cto : user.getTempCart())
+        {
+            cao.insert(cto);
+        }
+        return "중복 제외하고 카트에 추가되었습니다.";
     }
 
     //즐겨찾기에 Item 추가 ... 메소드 오버로딩

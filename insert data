@@ -103,16 +103,26 @@ values ("B11-03001L" , "cmseller" , "22000" , "20" , 'L' ,"cm_hot_uniqlo_black_c
 values ("B11-03001S" , "DBseller" , "22000" , "50" , 'S' ,"DB_uniqlo_black_cotton_S" )
 values ("B11-03001S" , "cmseller" , "22000" , "20" , 'S' ,"cm_hot_uniqlo_black_cotton_S" )
 values ("B11-03001M" , "lalaseller" , "12000" , "10" , 'M' ,"la_cute_uniqlo_black_cotton_M" )
-
-
+values ("B11-00001S" , "cmseller" , "30000" , "90" , 'S', "cm_cute_black_loyal_cotton_S")
+values ("B11-00001M" , "cmseller" , "30000" , "90" , 'M', "cm_cute_black_loyal_cotton_M")
+values ("B11-00002M" , "cmseller" , "30000" , "90" , 'M', "cm_cute_yellow_loyal_cotton_M")
+values ("B11-00003M" , "cmseller" , "30000" , "90" , 'M', "cm_cute_red_loyal_cotton_M")
+values ("B12-01001M" , "cmseller" , "20000" , "9" , 'M', "cm_fanci_addidas_black_hood_M")
+values ("B12-01001S" , "cmseller" , "20000" , "10" , 'S', "cm_fanci_addidas_black_hood_S")
+values ("B12-01001L" , "cmseller" , "20000" , "30" , 'L', "cm_fanci_addidas_black_hood_L")
+values ("B12-01002M" , "cmseller" , "20000" , "30" , 'L', "cm_fanci_addidas_bighat_hood_M")
+values ("B13-11001M" , "cmseller" , "10000" , "30" , 'M', "cm_spao_black_knit__M")
+values ("B13-11001M" , "lalaseller" , "10000" , "30" , 'M', "la_pre_spao_black_knit__M")
+values ("B13-11002M" , "cmseller" , "10000" , "30" , 'M', "cm_spao_red_knit__M")
+values ("B13-12001M" , "cmseller" , "13000" , "30" , 'M', "cm_Asecond_black_knit_M")
+values ("B13-12002M" , "cmseller" , "15000" , "30" , 'M', "cm_fanci_Asecond_blue_knit_M")
+values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "cm_fanci_Asecond_blue_knit__M")
 
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
 values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
 values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"cmlong_cute_pants_s")
 values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"la_hot_lovely_pants_l")
-
-
 
 
 
@@ -137,15 +147,6 @@ values ("B11-02002L","nike_white_cotton_L","B", "11");
 values ("B11-03001L","uniqlo_black_cotton_L","B", "11");
 values ("B11-03001M","uniqlo_black_cotton_M","B", "11");
 values ("B11-03001S","uniqlo_black_cotton_S","B", "11");
-
-
-values ("C22-00001M","else_long_pants_m","C", "22");
-values ("C22-00001s","else_long_pants_S","C", "22");
-values ("C22-00001L","else_long_pants_L","C", "22");
-
-
----데이터 만들기-----
-
 values ("B11-00001S","else_black_cotton_S","B", "11");
 values ("B11-00001M","else_black_cotton_M","B", "11");
 values ("B11-00002M","else_yellow_cotton_M","B", "11");
@@ -158,7 +159,12 @@ values ("B13-11001M","spao_black_knit_M","B","13");
 values ("B13-11002M","spao_red_knit_M","B","13");
 values ("B13-12001M","Asecond_black_knit_M","B","13");
 values ("B13-12002M","Asecond_blue_knit_M","B","13");
-values ("B13-12001S","Asecond_blue_knit_M","B","13");
+values ("B13-12001S","Asecond_blue_knit_S","B","13");
+
+values ("C22-00001M","else_long_pants_m","C", "22");
+values ("C22-00001s","else_long_pants_S","C", "22");
+values ("C22-00001L","else_long_pants_L","C", "22");
+
 
 
 
