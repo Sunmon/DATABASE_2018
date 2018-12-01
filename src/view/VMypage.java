@@ -32,8 +32,25 @@ public class VMypage extends JPanel {
                 showLogs();
             }
         });
+        applyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                applychanges();
+            }
+        });
     }
 
+    private void applychanges()
+    {
+        try
+        {
+            applychanges(user,con);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
 
 
     //...JTable(view)에 띄울 데이터 설정
@@ -97,8 +114,9 @@ public class VMypage extends JPanel {
     }
 
     //TODO: 수정 버튼 이벤트
-    public void applychanges(User user, Connector con) {
-
+    public void applychanges(User user, Connector con) throws SQLException {
+        this.user = user;
+        this.con = con;
 
             String pn = (String) mTable.getValueAt(1, 1);
             int age = (int) mTable.getValueAt(3, 1);
