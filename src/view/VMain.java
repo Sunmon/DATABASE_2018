@@ -65,20 +65,32 @@ public class VMain
 
         //버튼 누를때마다 새로운 화면 띄워주는 레이아웃 : cardLayout
         CardLayout cards = new CardLayout();
-        vfm.getShowPanel().setLayout(cards);
+//        vfm.getShowPanel().setLayout(cards);
 
         //card들(화면) 추가
+
+        cards.addLayoutComponent("sell", vfm.getSellListPanel());
+        cards.addLayoutComponent("favor", vfm.getFavoritePanel());
+        cards.addLayoutComponent("cart", vfm.getCartPanel());
+        cards.addLayoutComponent("mypg", vfm.getMypagePanel());
+
+
+        /*
         vfm.getShowPanel().add("sell", vfm.getSellListPanel());
         vfm.getShowPanel().add("favor", vfm.getFavoritePanel());
         vfm.getShowPanel().add("cart", vfm.getCartPanel());
-        vfm.getShowPanel().add("mypg", vfm.getMypagePanel());
+        vfm.getShowPanel().add("mypg", vfm.getMypagePanel());*/
 
+        //NOTE: 홈화면 바꿔보기
         //기본홈화면으로 sellList띄워준다
-        showSellListPage(user, (SellListDAO)sao, con, cards);
+        showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards);
+
+
+
 
 
         //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
-        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, con, cards));
+        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards));
         vfm.getFavoriteButton().addActionListener(e->
         {
             try
@@ -119,7 +131,6 @@ public class VMain
             try
             {
                 vfm.getVcart().buyItems(user, cao, sao, con);
-
             } catch (SQLException e1)
             {
                 e1.printStackTrace();
@@ -145,8 +156,6 @@ public class VMain
 
     }
 
-
-    //show my page
     public void showMyPage(User user, Connector con, CardLayout cards)
     {   //mypage보여줌
         cards.show(vfm.getShowPanel(), "mypg");
@@ -155,17 +164,22 @@ public class VMain
     }
 
 
-    //show sell list page
-    public void showSellListPage(User user, SellListDAO sao, Connector con, CardLayout cards)
+    public void showSellListPage(User user, SellListDAO sao, CartDAO cao, Connector con, CardLayout cards)
     {   //sellList page 보여줌
         cards.show(vfm.getShowPanel(), "sell");
         vfm.getVsell().initTable(user, sao);
 
+        vfm.getVsell().getAddCartButton().addActionListener(e ->
+        {
+            String msg = vfm.getVsell().addItems(user,sao,cao);
+            JOptionPane.showMessageDialog(vfm.getShowPanel(), msg);
+
+
+        });
 
     }
 
 
-    //show favorite page
     public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
     {   //favor page 보여줌
         cards.show(vfm.getShowPanel(), "favor");
@@ -177,17 +191,11 @@ public class VMain
             try
             {
                 vfm.getVfavor().deliverToCart(user,cao,fao,con);
-                JOptionPane.showMessageDialog(vfm.getVfavor(), "중복된 상품을 제외하고 장바구니에 담았습니다.");
-                vfm.getVfavor().initTable(user,fao);
-
             } catch (SQLException e1)
             {
-                JOptionPane.showMessageDialog(vfm.getVfavor(), "오류: 상품을 장바구니에 담지 못했습니다.");
                 e1.printStackTrace();
             }
         });
-
-
 
 
      /*   //delete button
