@@ -63,6 +63,7 @@ public class VSellList extends JPanel
         });
 
 
+        //이름순 정렬(닉네임)
         nameRadioButton.addActionListener(new ActionListener()
         {
             @Override
@@ -74,8 +75,16 @@ public class VSellList extends JPanel
         });
 
 
-
-
+        //가격순 정렬
+        priceRadioButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                sao.set_order("order by price");
+                initTable(user,cao,sao,fao,con);
+            }
+        });
     }
 
     //JTable(view)에 띄울 데이터 설정
