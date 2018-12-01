@@ -64,6 +64,15 @@ public class VFavorite extends JPanel {
             dtm.addRow(o);
         }
         table1.setModel(dtm);
+        dtm.fireTableDataChanged();
+
+        //특정 셀 갱신하기
+        //fireTableCellUpdated (row,col);
+
+        //혹시 몰라서 넣어놓음
+        repaint();
+        revalidate();
+
     }
     public void deliverToCart(User user, CartDAO cao, favoriteDAO fao, Connector con) throws SQLException
     {
