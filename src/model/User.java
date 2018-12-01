@@ -102,6 +102,15 @@ public class User
         }
     }
 
+    public void removeItems(favoriteDAO fao, Connector con)
+    {
+        for(int i=0; i<tempFavor.size(); i++)
+        {
+            fao.delete(tempFavor.get(i));
+        }
+    }
+
+
     public void initTempArrayList()
     {
         tempCart = new ArrayList<CartDTO>();

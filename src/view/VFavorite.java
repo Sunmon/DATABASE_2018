@@ -38,6 +38,15 @@ public class VFavorite extends JPanel {
 
             }
         });
+
+
+        deletebutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                deletefavor();
+            }
+        });
     }
 
     private void deleverToCart()
@@ -52,6 +61,17 @@ public class VFavorite extends JPanel {
 
     }
 
+    private void deletefavor()
+    {
+
+        try
+        {
+            deletefavor(user,fao,con);
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
     public VFavorite(User user, Connector con, DAOFactory dao){}
 
     void initTable(User user, CartDAO cao, favoriteDAO fao, Connector con) throws SQLException {
@@ -136,8 +156,27 @@ public class VFavorite extends JPanel {
     }
 
     //TODO: delete 메소드 만들기!!!!!!!!!!!!  :: 세웅.
+    public void deletefavor(User user,favoriteDAO fao, Connector con) throws SQLException {
+        int row = -1;
+        user.initTempArrayList();
 
-
+        while (++row < fTable.getRowCount()) {
+            //체크박스에 체크한 아이템들 임시리스트에 더해줌
+            if ((Boolean) fTable.getValueAt(row, 4)) {//"p_nickname", "p_code", "seller_ID", "price"0123
+                //primary key
+                String nick = (String) fTable.getValueAt(row, 0);
+                String pc = (String) fTable.getValueAt(row, 1);
+                String sid = (String) fTable.getValueAt(row, 2);
+                int price = (int) fTable.getValueAt(row, 3);
+                //favorite임시favorite
+                user.addList(user.gettempFavor(), fao.getDtoList().get(row));
+            }
+            JOptionPane.showMessageDialog(this, "상품이 카트에서 삭제되었습니다.");
+        }
+        user.removeItems(fao, con);
+        initTable(user, cao, fao, con);
+        repaint();
+    }
     public JButton getBuybutton()
     {
         return buybutton;
