@@ -1,6 +1,7 @@
 package model;
 import java.sql.*;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Connector
 {
@@ -140,36 +141,42 @@ public class Connector
         }
     }
 
-    public void insertLog(String p_code, String seller_id, String id, int point)
+    public void insertLog(String p_code, String id, String seller_id,  int point)
     {
         //log에 추가하는 메소드
         //TODO: 해야함!!!!
 
-
 //        Timestamp t = new Timestamp(System.currentTimeMillis());
-//        Calendar cal = new Calendar();
+        Calendar cal = new GregorianCalendar();
+        Date date = new Date(cal.getTimeInMillis());
+        Time time = new Time(cal.getTimeInMillis());
+        Timestamp ts = new Timestamp(cal.getTimeInMillis());
 
-     /*   String sql = "INSERT INTO sell_log VALUES (?,?,?,?)";
+
+
+        System.out.println(cal);
+        System.out.println(date);
+        System.out.println(time);
+        System.out.println("timestamp : " + ts);
+
+
+        String sql = "INSERT INTO sell_log VALUES (?,?,?,?,?)";
         try {
             pstmt    = con.prepareStatement(sql);
             pstmt.setString(1, p_code);
             pstmt.setString(2, seller_id);
             pstmt.setInt(3, point);
-            pstmt.setDate(4, t);
+//            pstmt.setTimestamp(4, ts, cal);
+            pstmt.setTimestamp(4, ts);
             pstmt.setString(5,id);
             int i = pstmt.executeUpdate();
             System.out.println("InsertP 쿼리 수행" + i);
             pstmt.close();
         } catch (SQLException e) { System.out.println("Insert 쿼리 수행 실패");
             e.printStackTrace();}
-    }
-        System.out.println(t);
-        System.out.println(t.getTime());
         System.out.println("adsf");
-
-
-*/
     }
+
 }
    /* //test for prestsmt
     public void insertData()

@@ -77,13 +77,23 @@ public class User
             //재고가 충분한 경우
             int stock = tempSell.get(i).getStock();
             if(stock > tempCart.get(i).getP_count())
-            {   //cartDB에서 삭제 / sellList에서 재고 감소
-                cao.delete(tempCart.get(i));
+            {
+                //아이템에 따른 point
+                int totprice = tempCart.get(i).getTot_price();
+
+                //Log에 추가
+
+                //FIXME: 지금 log에들어간게 cart에서 foreign key가져온다고 해서
+                //로그에 들어가면 카트에서 삭제가 안 된다.
+
+                CartDTO c = tempCart.get(i);
+                insertLog(c.getP_code(), c.getSeller_ID(), totprice, con);
+
+                //cartDB에서 삭제 / sellList에서 재고 감소
+                cao.delete(c);
                 tempSell.get(i).setStock(stock-tempCart.get(i).getP_count());
                 sao.update(tempSell.get(i));
 
-                //아이템에 따른 point
-                int totprice = tempCart.get(i).getTot_price();
 
                 //user point 감소
                 setPoints(points-totprice);
@@ -92,9 +102,7 @@ public class User
                 //seller point 증가
                 con.updateUserPoint(tempSell.get(i).getSeller_ID(), totprice);
 
-                //Log에 추가
-                CartDTO c = tempCart.get(i);
-                insertLog(c.getP_code(), c.getSeller_ID(), totprice, con);
+
             }
         }
     }
@@ -129,7 +137,7 @@ public class User
     {
 
 
-        con.insertLog(p_code, seller_ID, ID, point);
+        con.insertLog(p_code, ID, seller_ID, point);
 
     }
 
