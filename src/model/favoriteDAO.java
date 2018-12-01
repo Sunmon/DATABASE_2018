@@ -77,7 +77,7 @@ public class favoriteDAO extends DAOFactory {
     }
 
     public void insertfavoriteDB(FavoriteDTO ft)
-    {   String sql = "INSERT INTO favorites ";
+    {   String sql = "INSERT IGNORE INTO favorites ";
         sql = sql + "VALUES (?, ?, ?)";
         try {
             pstmt = con.prepareStatement(sql);
@@ -115,6 +115,7 @@ public class favoriteDAO extends DAOFactory {
     public void insert(DTO dto)
     {   insertfavoriteDB((FavoriteDTO)dto);
     }
+
     public void delete(DTO dto) {
         deletefavoriteDB((FavoriteDTO)dto);
     }

@@ -94,6 +94,10 @@ public class User
         }
     }
 
+
+
+
+
     public void removeItems(CartDAO cao, Connector con)
     {   //tempCart에 있는것들 cart DB에서 삭제
         for(int i=0; i<tempCart.size(); i++)
@@ -109,6 +113,10 @@ public class User
         tempFavor = new ArrayList<>();
     }
 
+    public FavoriteDTO makeFavoriteDTO(String p_code, String seller_ID, String p_nickname, int price)
+    {
+        return new FavoriteDTO(p_code, this.ID, seller_ID, p_nickname, price);
+    }
 
 
 
@@ -221,8 +229,7 @@ public class User
 
     public CartDTO makeCartDTO(String pc, String sID, int pcount, int price, String nick)
     {   //CartDTO 객체 생성해서 리턴.
-        CartDTO ct = new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
-        return ct;
+        return new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
     }
 
 

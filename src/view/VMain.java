@@ -84,14 +84,10 @@ public class VMain
         vfm.getShowPanel().add("mypg", vfm.getMypagePanel());*/
 
         //기본홈화면으로 sellList띄워준다
-        showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards);
-
-
-
-
+        showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, (favoriteDAO)fao, con, cards);
 
         //button 이벤트 설정. 해당 버튼에 따라 화면을 띄워준다.
-        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards));
+        vfm.getSellListButton().addActionListener(e->showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, (favoriteDAO)fao, con, cards));
         vfm.getFavoriteButton().addActionListener(e->
         {
             try
@@ -123,7 +119,6 @@ public class VMain
     public void showCartPage(User user, CartDAO cao, SellListDAO sao, Connector con, CardLayout cards) throws SQLException
     {   //cart버튼 누르면 cart page를 보여준다.
         cards.show(vfm.getShowPanel(), "Card3");
-
         //띄울 내용 초기화
         vfm.getVcart().initTable(user, cao, sao, con);
 
@@ -139,21 +134,10 @@ public class VMain
     }
 
 
-    public void showSellListPage(User user, SellListDAO sao, CartDAO cao, Connector con, CardLayout cards)
+    public void showSellListPage(User user, SellListDAO sao, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards)
     {   //sellList page 보여줌
         cards.show(vfm.getShowPanel(), "Card1");
-
-
-        vfm.getVsell().initTable(user, sao);
-
-        vfm.getVsell().getAddCartButton().addActionListener(e ->
-        {
-            String msg = vfm.getVsell().addItems(user,sao,cao);
-//            JOptionPane.showMessageDialog(vfm.getShowPanel(), msg);
-
-
-        });
-
+        vfm.getVsell().initTable(user, cao, sao, fao, con);
     }
 
 
