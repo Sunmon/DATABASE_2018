@@ -29,20 +29,63 @@ public class VCart extends JPanel
     private JLabel pointLable;
     private JScrollPane tablePane;
 
+
+    User user;
+    SellListDAO sao;
+    CartDAO cao;
+    Connector con;
+
+
     public VCart()
     {
         add(mainPanel);
         setVisible(true);
 
+        buyButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                try
+                {
+                    buyItems();
+                } catch (SQLException e1)
+                {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
+/*
+    // buy cart button
+        vfm.getVcart().getBuyButton().addActionListener(e ->
+    {
+        try
+        {
+            vfm.getVcart().buyItems(user, cao, sao, con);
+        } catch (SQLException e1)
+        {
+            e1.printStackTrace();
+        }
+    });
+*/
+
+
+
 
 
     public VCart(User user, Connector con, DAOFactory dao){}
 
 
     //...JTable(view)에 띄울 데이터 설정
-    void initTable(User user, CartDAO cao) throws SQLException
+    void initTable(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     {
+        this.user = user;
+        this.cao = cao;
+        this.sao = sao;
+        this.con = con;
+
+
         //init
         cao.initialize(user.getID());
 
@@ -100,6 +143,10 @@ public class VCart extends JPanel
 
     }
 
+    public void buyItems() throws SQLException
+    {
+        buyItems(this.user,this.cao, this.sao, this.con);
+    }
 
     public void buyItems(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     { //Buy Items 버튼 누르면 실행
@@ -143,7 +190,7 @@ public class VCart extends JPanel
         user.buyItems(cao,sao,con);
 
         //cartList 테이블화면초기화
-        initTable(user, cao);
+        initTable(user, cao, sao, con);
 
         //user point label 초기화
         pointLable.setText(Integer.toString(user.getPoints()));
@@ -179,7 +226,7 @@ public class VCart extends JPanel
         user.removeItems(cao,con);
 
         //cartList 테이블화면초기화
-        initTable(user, cao);
+        initTable(user, cao, sao, con);
         repaint();
 
 

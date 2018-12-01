@@ -64,15 +64,16 @@ public class VMain
         vfm.setVisible(true);
 
         //버튼 누를때마다 새로운 화면 띄워주는 레이아웃 : cardLayout
-        CardLayout cards = new CardLayout();
-//        vfm.getShowPanel().setLayout(cards);
+        CardLayout cards = (CardLayout)vfm.getShowPanel().getLayout();
 
         //card들(화면) 추가
+/*
 
         cards.addLayoutComponent("sell", vfm.getSellListPanel());
         cards.addLayoutComponent("favor", vfm.getFavoritePanel());
         cards.addLayoutComponent("cart", vfm.getCartPanel());
         cards.addLayoutComponent("mypg", vfm.getMypagePanel());
+*/
 
 
         /*
@@ -81,7 +82,6 @@ public class VMain
         vfm.getShowPanel().add("cart", vfm.getCartPanel());
         vfm.getShowPanel().add("mypg", vfm.getMypagePanel());*/
 
-        //NOTE: 홈화면 바꿔보기
         //기본홈화면으로 sellList띄워준다
         showSellListPage(user, (SellListDAO)sao, (CartDAO)cao, con, cards);
 
@@ -106,6 +106,7 @@ public class VMain
             try
             {
                 showCartPage(user, (CartDAO)cao, (SellListDAO)sao, con, cards);
+
             } catch (SQLException e1)
             {
                 e1.printStackTrace();
@@ -120,23 +121,10 @@ public class VMain
 
     public void showCartPage(User user, CartDAO cao, SellListDAO sao, Connector con, CardLayout cards) throws SQLException
     {   //cart버튼 누르면 cart page를 보여준다.
-        cards.show(vfm.getShowPanel(), "cart");
+        cards.show(vfm.getShowPanel(), "Card3");
 
         //띄울 내용 초기화
-        vfm.getVcart().initTable(user, cao);
-
-        // buy cart button
-        vfm.getVcart().getBuyButton().addActionListener(e ->
-        {
-            try
-            {
-                vfm.getVcart().buyItems(user, cao, sao, con);
-            } catch (SQLException e1)
-            {
-                e1.printStackTrace();
-            }
-        });
-
+        vfm.getVcart().initTable(user, cao, sao, con);
 
         // remove from cart button
         vfm.getVcart().getRemoveButton().addActionListener(e->
@@ -151,14 +139,11 @@ public class VMain
             }
         });
 
-
-
-
     }
 
     public void showMyPage(User user, Connector con, CardLayout cards)
     {   //mypage보여줌
-        cards.show(vfm.getShowPanel(), "mypg");
+        cards.show(vfm.getShowPanel(), "Card4");
         vfm.getVmpg().initTable(user, con);
 
     }
@@ -166,13 +151,15 @@ public class VMain
 
     public void showSellListPage(User user, SellListDAO sao, CartDAO cao, Connector con, CardLayout cards)
     {   //sellList page 보여줌
-        cards.show(vfm.getShowPanel(), "sell");
+        cards.show(vfm.getShowPanel(), "Card1");
+
+
         vfm.getVsell().initTable(user, sao);
 
         vfm.getVsell().getAddCartButton().addActionListener(e ->
         {
             String msg = vfm.getVsell().addItems(user,sao,cao);
-            JOptionPane.showMessageDialog(vfm.getShowPanel(), msg);
+//            JOptionPane.showMessageDialog(vfm.getShowPanel(), msg);
 
 
         });
@@ -182,7 +169,7 @@ public class VMain
 
     public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
     {   //favor page 보여줌
-        cards.show(vfm.getShowPanel(), "favor");
+        cards.show(vfm.getShowPanel(), "Card2");
         vfm.getVfavor().initTable(user, fao);
 
         //buy (add to cart) button
@@ -196,6 +183,7 @@ public class VMain
                 e1.printStackTrace();
             }
         });
+
 
 
      /*   //delete button
