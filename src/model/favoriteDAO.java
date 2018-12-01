@@ -95,7 +95,7 @@ public class favoriteDAO extends DAOFactory {
 
     private void deletefavoriteDB(FavoriteDTO ft)
     {
-        String sql = "DELETE from favorites where p_code = ? AND seller_ID = ? AND Customer_ID=?";
+        String sql = "DELETE from favorites where p_code = ? AND seller_ID = ? AND customer_ID=?";
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, ft.getP_code());
