@@ -1,6 +1,7 @@
 package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class User
 {
@@ -90,6 +91,10 @@ public class User
 
                 //seller point 증가
                 con.updateUserPoint(tempSell.get(i).getSeller_ID(), totprice);
+
+                //Log에 추가
+                CartDTO c = tempCart.get(i);
+                insertLog(c.getP_code(), c.getSeller_ID(), totprice, con);
             }
         }
     }
@@ -119,6 +124,14 @@ public class User
     }
 
 
+
+    public void insertLog(String p_code, String seller_ID, int point, Connector con)
+    {
+
+
+        con.insertLog(p_code, seller_ID, ID, point);
+
+    }
 
 
 
