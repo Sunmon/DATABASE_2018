@@ -155,7 +155,6 @@ public class VFavorite extends JPanel {
 
     }
 
-    //TODO: delete 메소드 만들기!!!!!!!!!!!!  :: 세웅.
     public void deletefavor(User user,favoriteDAO fao, Connector con) throws SQLException {
         int row = -1;
         user.initTempArrayList();
@@ -171,8 +170,8 @@ public class VFavorite extends JPanel {
                 //favorite임시favorite
                 user.addList(user.gettempFavor(), fao.getDtoList().get(row));
             }
-            JOptionPane.showMessageDialog(this, "상품이 카트에서 삭제되었습니다.");
         }
+        JOptionPane.showMessageDialog(this, "상품이 즐겨찾기에서 삭제되었습니다.");
         user.removeItems(fao, con);
         initTable(user, cao, fao, con);
         repaint();
