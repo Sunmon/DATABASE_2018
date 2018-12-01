@@ -17,6 +17,8 @@ public class VCart extends JPanel
 
 
     private JButton buyButton;
+
+
     private JButton removeButton;
     private JLabel totalTextLabel;
     private JLabel pointTextLabel;
@@ -215,10 +217,13 @@ public class VCart extends JPanel
         return buyButton;
     }
 
-    public void setBuyButton(JButton buyButton)
+
+
+    public JButton getRemoveButton()
     {
-        this.buyButton = buyButton;
+        return removeButton;
     }
+
 
 
 }

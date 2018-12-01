@@ -89,7 +89,6 @@ public class VMain
                 e1.printStackTrace();
             }
         });
-//        vfm.getCartButton().addActionListener(e->cards.show(vfm.getShowPanel(), "cart"));
         vfm.getCartButton().addActionListener(e->
         {
             try
@@ -100,11 +99,7 @@ public class VMain
                 e1.printStackTrace();
             }
         });
-//        vfm.getMypageButton().addActionListener(e->cards.show(vfm.getShowPanel(), "mypg"));
         vfm.getMypageButton().addActionListener(e->showMyPage(user,con,cards));
-
-
-        //VFavorite는 아직 안만들음 ... 만들어서 VMainFrame.form.FavoritePanel에 추가해야 함.
 
 
 
@@ -114,7 +109,11 @@ public class VMain
     public void showCartPage(User user, CartDAO cao, SellListDAO sao, Connector con, CardLayout cards) throws SQLException
     {   //cart버튼 누르면 cart page를 보여준다.
         cards.show(vfm.getShowPanel(), "cart");
+
+        //띄울 내용 초기화
         vfm.getVcart().initTable(user, cao);
+
+        // buy cart button
         vfm.getVcart().getBuyButton().addActionListener(e ->
         {
             try
@@ -125,6 +124,17 @@ public class VMain
                 e1.printStackTrace();
             }
         });
+
+
+        // remove from cart button
+        vfm.getVcart().getRemoveButton().addActionListener(e->
+        {
+            vfm.getVcart().removeItems(user, cao, con);
+        });
+
+
+
+
     }
 
     public void showMyPage(User user, Connector con, CardLayout cards)
@@ -139,12 +149,27 @@ public class VMain
     {   //sellList page 보여줌
         cards.show(vfm.getShowPanel(), "sell");
         vfm.getVsell().initTable(user, sao);
+
+
     }
+
 
     public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
     {   //favor page 보여줌
         cards.show(vfm.getShowPanel(), "favor");
         vfm.getVfavor().initTable(user, fao);
+
+        //buy button
+        vfm.getVfavor().getBuybutton().addActionListener(e ->
+        {
+            try
+            {
+                vfm.getVfavor().deliverToCart(user,cao,fao,con);
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+            }
+        });
 
 
     }

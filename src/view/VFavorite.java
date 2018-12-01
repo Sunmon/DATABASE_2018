@@ -8,6 +8,9 @@ import java.sql.SQLException;
 
 public class VFavorite extends JPanel {
     private JPanel mainPanel;
+
+
+
     private JButton buybutton;
     private JButton deletebutton;
     private JScrollPane favorPanel;
@@ -90,6 +93,16 @@ public class VFavorite extends JPanel {
         }
 
 
+    }
+
+    public JButton getBuybutton()
+    {
+        return buybutton;
+    }
+
+    public JButton getDeletebutton()
+    {
+        return deletebutton;
     }
 
 
