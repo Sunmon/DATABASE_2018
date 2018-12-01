@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class VFavorite extends JPanel {
     private JPanel mainPanel;
-    private JButton buybutton;
+    private JButton movetocart;
     private JButton deletebutton;
     private JScrollPane favorPanel;
     private JTable fTable;
