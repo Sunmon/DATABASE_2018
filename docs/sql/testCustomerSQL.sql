@@ -116,6 +116,14 @@ from sell_list s, sell_log l
 where customer_id = "sunmon" AND s.p_code = l.p_code;
 
 
+-- 16. search using name
+select s.p_nickname, l.*
+from sell_list s, sell_log l
+where s.p_name LIKE '%sun%' AND s.p_code = l.p_code
+order by p_nickname;
+
+
+
 
 select *
 from favorites;

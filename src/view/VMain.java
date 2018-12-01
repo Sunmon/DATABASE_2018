@@ -136,7 +136,11 @@ public class VMain
     public void showSellListPage(User user, SellListDAO sao, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards)
     {   //sellList page 보여줌
         cards.show(vfm.getShowPanel(), "Card1");
+        vfm.getVsell().getSearchTextField().setText("");        //search textbox 초기화
+        vfm.getVsell().getSearchCombo().setSelectedIndex(0);    //search combo 초기화
+        vfm.getVsell().getButtonGroup().clearSelection();       //order 초기화
         vfm.getVsell().initTable(user, cao, sao, fao, con);
+        sao.set_search("");
     }
 
 
@@ -144,17 +148,6 @@ public class VMain
     {   //favor page 보여줌
         cards.show(vfm.getShowPanel(), "Card2");
         vfm.getVfavor().initTable(user, cao, fao, con);
-
-
-
-     /*   //delete button
-        vfm.getVfavor().getDeletebutton().addActionListener(e ->
-        vfm.getVfavor().);*/
-
-
-
-
-
 
     }
 

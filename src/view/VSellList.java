@@ -14,6 +14,8 @@ public class VSellList extends JPanel
     private JScrollPane sTablePanel;
     private JTable sTable;
     private JComboBox searchCombo;
+
+
     private JTextField searchTextField;
     public JButton getAddCartButton()
     {
@@ -25,6 +27,11 @@ public class VSellList extends JPanel
     private JLabel orderLabel;
     private JPanel orderPanel;
     private JRadioButton priceRadioButton;
+
+
+    private ButtonGroup buttonGroup;
+
+
     private JRadioButton nameRadioButton;
 
 
@@ -40,6 +47,9 @@ public class VSellList extends JPanel
     {
         add(mainPanel);
         setVisible(true);
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(priceRadioButton);
+        buttonGroup.add(nameRadioButton);
 
         //add cart button
         addCartButton.addActionListener(new ActionListener()
@@ -82,6 +92,18 @@ public class VSellList extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 sao.set_order("order by price");
+                initTable(user,cao,sao,fao,con);
+            }
+        });
+        searchButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String cond = searchTextField.getText();
+                if(searchCombo.getSelectedIndex() == 0) sao.set_search("where p_name LIKE '%" + cond + "%' ");   //이름으로 검색(p_name)
+                if(searchCombo.getSelectedIndex() == 1) sao.set_search("where c_name= \"" + cond + "\" ");   //카테고리 이름으로 검색
+                if(searchCombo.getSelectedIndex() == 2) sao.set_search("where size = \"" + cond + "\" ");   //사이즈 검색
                 initTable(user,cao,sao,fao,con);
             }
         });
@@ -146,8 +168,6 @@ public class VSellList extends JPanel
 
         //검색기능 default 설정
         sao.set_order("");
-
-
     }
 
 
@@ -223,7 +243,40 @@ public class VSellList extends JPanel
         return addFavoriteButton;
     }
 
+    public JRadioButton getPriceRadioButton()
+    {
+        return priceRadioButton;
+    }
+
+    public JRadioButton getNameRadioButton()
+    {
+        return nameRadioButton;
+    }
 
 
+    public ButtonGroup getButtonGroup()
+    {
+        return buttonGroup;
+    }
+
+    public JComboBox getSearchCombo()
+    {
+        return searchCombo;
+    }
+
+    public void setSearchCombo(JComboBox searchCombo)
+    {
+        this.searchCombo = searchCombo;
+    }
+
+    public JTextField getSearchTextField()
+    {
+        return searchTextField;
+    }
+
+    public void setSearchTextField(JTextField searchTextField)
+    {
+        this.searchTextField = searchTextField;
+    }
 
 }
