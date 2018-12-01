@@ -4,6 +4,9 @@ import model.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class VMypage extends JPanel
 {
@@ -12,16 +15,34 @@ public class VMypage extends JPanel
     private JTable mTable;
     private JButton applyButton;
     private JButton pointButton;
+    private JButton showLogButton;
+
+
+    User user;
+    Connector con;
 
     public VMypage()
     {
         add(mainPanel);
         setVisible(true);
+        showLogButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                showLogs();
+            }
+        });
     }
+
+
 
     //...JTable(view)에 띄울 데이터 설정
     public void initTable(User user, Connector con)
     {
+        this.user = user;
+        this.con = con;
+
         //Column 설정
         String col[] = {" ", " "};
         Object[][] data = {{"ID", user.getID()},    //0
@@ -66,7 +87,18 @@ public class VMypage extends JPanel
     }
 
     //FIXME: 내가 구매한 목록 기록 보기
+    private void showLogs()
+    {
+        //내 구매기록을 보여준다.
+        try
+        {
+            VLog.showVLog(user,con);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
 
+    }
 
 
     //TODO: 수정 버튼 이벤트
