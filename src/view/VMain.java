@@ -52,7 +52,7 @@ public class VMain
 
         //SellListDAO 생성 & 초기화
         model.DAOFactory sao = dao.setDAO("sellList");
-        sao.initialize(user.getID());
+//        sao.initialize(user.getID());
 
         //Favorite 생성
         model.DAOFactory fao = dao.setDAO("favorites");

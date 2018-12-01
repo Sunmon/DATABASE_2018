@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 
 public class VSellList extends JPanel
 {
@@ -60,17 +61,35 @@ public class VSellList extends JPanel
 
             }
         });
+
+
+        nameRadioButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+               sao.set_order("order by p_nickname");
+               initTable(user,cao,sao,fao,con);
+            }
+        });
+
+
+
+
     }
 
     //JTable(view)에 띄울 데이터 설정
     void initTable(User user, CartDAO cao, SellListDAO sao, favoriteDAO fao, Connector con)
     {
-
         this.user = user;
         this.cao = cao;
         this.sao = sao;
         this.fao = fao;
         this.con = con;
+
+        //init
+        sao.initialize(user.getID());
+
 
         //column을 sellList DAO에서 가져온다
         String col[] =   sao.getAttributes();       //"p_code", "seller_ID", "price", "stock", "size", "p_nickname"
@@ -115,6 +134,10 @@ public class VSellList extends JPanel
         //혹시 몰라서 넣어놓음
         repaint();
         revalidate();
+
+        //검색기능 default 설정
+        sao.set_order("");
+
 
     }
 

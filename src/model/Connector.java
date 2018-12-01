@@ -89,7 +89,6 @@ public class Connector
             e.printStackTrace();
         }
         return null;
-
     }
 
 
@@ -118,7 +117,6 @@ public class Connector
             e.printStackTrace();
             String pw = "일치하는 정보가 없습니다.";
             return pw;
-
         }
     }
 
