@@ -231,23 +231,11 @@ public class VCart extends JPanel
         initTable(user, cao, sao, con);
         repaint();
 
-        JOptionPane.showMessageDialog(this, "카트에서 삭제되었습니다.");
+        JOptionPane.showMessageDialog(this, "상품이 카트에서 삭제되었습니다.");
 
 
 
     }
-
-
-    //TODO: add To Cart -> sellist에 연동?
-    public void addItems(User user, CartDAO cao, Connector con)
-    {
-        //sellList에서 Cart로 아이템 추가하기
-    }
-
-
-
-
-
 
 
     public JLabel getTotalLabel()

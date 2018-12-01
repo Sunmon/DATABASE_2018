@@ -199,7 +199,7 @@ public class VSellList extends JPanel
         {
             cao.insert(cto);
         }
-        String msg = "중복 제외하고 카트에 추가되었습니다.";
+        String msg = "상품이 카트에 추가되었습니다.";
         JOptionPane.showMessageDialog(this, msg);
     }
 
@@ -231,7 +231,7 @@ public class VSellList extends JPanel
             fao.insert(fto);
         }
 
-        String msg =  "중복 제외하고 즐겨찾기에 추가되었습니다.";
+        String msg =  "상품이 즐겨찾기에 추가되었습니다.";
         JOptionPane.showMessageDialog(this, msg);
 
     }

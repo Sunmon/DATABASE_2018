@@ -86,7 +86,7 @@ public class VMypage extends JPanel
         dtm.fireTableDataChanged();
     }
 
-    //FIXME: 내가 구매한 목록 기록 보기
+
     private void showLogs()
     {
         //내 구매기록을 보여준다.
