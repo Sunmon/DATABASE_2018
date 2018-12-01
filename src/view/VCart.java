@@ -101,6 +101,7 @@ public class VCart extends JPanel
 
     public void buyItems(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     { //Buy Items 버튼 누르면 실행
+        //FIXME: 로그에 추가되어야 한다.
 
         //선택한 아이템들 가격 계산
         int tpoint = 0;             //선택한 아이템들의 총 가격
@@ -182,6 +183,8 @@ public class VCart extends JPanel
     {
         //sellList에서 Cart로 아이템 추가하기
     }
+
+
 
 
 
