@@ -59,6 +59,7 @@ public class VMain
 //        fao.initialize(user.getID());
 
 
+
         //mainFrame 실행
         vfm = new VMainFrame(con, user);
         vfm.setVisible(true);
@@ -126,18 +127,7 @@ public class VMain
         //띄울 내용 초기화
         vfm.getVcart().initTable(user, cao, sao, con);
 
-        // remove from cart button
-        vfm.getVcart().getRemoveButton().addActionListener(e->
-        {
-            try
-            {
-                vfm.getVcart().removeItems(user, cao, con);
-            } catch (SQLException e1)
-            {
 
-
-            }
-        });
 
     }
 
@@ -170,19 +160,7 @@ public class VMain
     public void showFavorPage(User user, CartDAO cao, favoriteDAO fao, Connector con, CardLayout cards) throws SQLException
     {   //favor page 보여줌
         cards.show(vfm.getShowPanel(), "Card2");
-        vfm.getVfavor().initTable(user, fao);
-
-        //buy (add to cart) button
-        vfm.getVfavor().getBuybutton().addActionListener(e ->
-        {
-            try
-            {
-                vfm.getVfavor().deliverToCart(user,cao,fao,con);
-            } catch (SQLException e1)
-            {
-                e1.printStackTrace();
-            }
-        });
+        vfm.getVfavor().initTable(user, cao, fao, con);
 
 
 

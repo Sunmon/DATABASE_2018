@@ -4,6 +4,8 @@ import model.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class VFavorite extends JPanel {
@@ -16,20 +18,55 @@ public class VFavorite extends JPanel {
     private JScrollPane favorPanel;
     private JTable fTable;
 
+    User user;
+    CartDAO cao;
+    favoriteDAO fao;
+    Connector con;
+
     public VFavorite()
     {
         add(mainPanel);
         setVisible(true);
+
+        //buyButton 눌렀을때
+        buybutton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                deleverToCart();
+
+            }
+        });
+    }
+
+    private void deleverToCart()
+    {
+        try
+        {
+            deliverToCart(user,cao,fao,con);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     public VFavorite(User user, Connector con, DAOFactory dao){}
 
-    void initTable(User user, favoriteDAO cao) throws SQLException {
+    void initTable(User user, CartDAO cao, favoriteDAO fao, Connector con) throws SQLException {
 
-        cao.initialize(user.getID());
+
+        //setter
+        this.user = user;
+        this.cao = cao;
+        this.fao = fao;
+        this.con = con;
+
+        fao.initialize(user.getID());
 
         //Column을 cartDAO에서 가져온다
-        String col[] = cao.getAttributes();          //"p_nickname", "p_code", "seller_ID", "price"
+        String col[] = fao.getAttributes();          //"p_nickname", "p_code", "seller_ID", "price"
 
         //DefaultTableModel 생성
         DefaultTableModel dtm = new DefaultTableModel(col, 0){
@@ -62,7 +99,7 @@ public class VFavorite extends JPanel {
         dtm.addColumn("check");
 
         //DefaultTableModel에 값 넣기
-        for (FavoriteDTO c : cao.getDtoList()) {
+        for (FavoriteDTO c : fao.getDtoList()) {
             Object[] o = {c.getP_nick(), c.getP_code(), c.getSeller_ID(), c.getprice(), Boolean.FALSE};
             dtm.addRow(o);
         }
@@ -94,6 +131,7 @@ public class VFavorite extends JPanel {
             }
         }
 
+        JOptionPane.showMessageDialog(this, "상품이 카트에 추가되었습니다.");
 
     }
 

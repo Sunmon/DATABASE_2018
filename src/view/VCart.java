@@ -55,23 +55,15 @@ public class VCart extends JPanel
                 }
             }
         });
+        removeButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                removeItems();
+            }
+        });
     }
-/*
-    // buy cart button
-        vfm.getVcart().getBuyButton().addActionListener(e ->
-    {
-        try
-        {
-            vfm.getVcart().buyItems(user, cao, sao, con);
-        } catch (SQLException e1)
-        {
-            e1.printStackTrace();
-        }
-    });
-*/
-
-
-
 
 
     public VCart(User user, Connector con, DAOFactory dao){}
@@ -205,6 +197,17 @@ public class VCart extends JPanel
 
     //FIXME: 숫자 변경하면 알아서 가격도 변경하게하기!!!!!!!!
 
+    public void removeItems()
+    {
+        try
+        {
+            removeItems(user, cao, con);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
 
     //Cart DB에서 제외하기
     public void removeItems(User user, CartDAO cao, Connector con) throws SQLException
@@ -228,6 +231,8 @@ public class VCart extends JPanel
         //cartList 테이블화면초기화
         initTable(user, cao, sao, con);
         repaint();
+
+        JOptionPane.showMessageDialog(this, "카트에서 삭제되었습니다.");
 
 
 
