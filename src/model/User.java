@@ -1,6 +1,7 @@
 package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class User
 {
@@ -90,9 +91,17 @@ public class User
 
                 //seller point 증가
                 con.updateUserPoint(tempSell.get(i).getSeller_ID(), totprice);
+
+                //Log에 추가
+                CartDTO c = tempCart.get(i);
+                insertLog(c.getP_code(), c.getSeller_ID(), totprice, con);
             }
         }
     }
+
+
+
+
 
     public void removeItems(CartDAO cao, Connector con)
     {   //tempCart에 있는것들 cart DB에서 삭제
@@ -118,8 +127,20 @@ public class User
         tempFavor = new ArrayList<>();
     }
 
+    public FavoriteDTO makeFavoriteDTO(String p_code, String seller_ID, String p_nickname, int price)
+    {
+        return new FavoriteDTO(p_code, this.ID, seller_ID, p_nickname, price);
+    }
 
 
+
+    public void insertLog(String p_code, String seller_ID, int point, Connector con)
+    {
+
+
+        con.insertLog(p_code, seller_ID, ID, point);
+
+    }
 
 
 
@@ -230,8 +251,7 @@ public class User
 
     public CartDTO makeCartDTO(String pc, String sID, int pcount, int price, String nick)
     {   //CartDTO 객체 생성해서 리턴.
-        CartDTO ct = new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
-        return ct;
+        return new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
     }
 
 

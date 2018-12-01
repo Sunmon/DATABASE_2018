@@ -187,6 +187,8 @@ public class VCart extends JPanel
         //user point label 초기화
         pointLable.setText(Integer.toString(user.getPoints()));
 
+
+
         //alert
         String msg = "재고가 부족한 상품 제외하고 구매가 완료되었습니다.";
         JOptionPane.showMessageDialog(this, msg);

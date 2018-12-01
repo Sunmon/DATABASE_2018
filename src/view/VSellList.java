@@ -4,6 +4,8 @@ import model.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VSellList extends JPanel
 {
@@ -12,12 +14,10 @@ public class VSellList extends JPanel
     private JTable sTable;
     private JComboBox searchCombo;
     private JTextField searchTextField;
-
     public JButton getAddCartButton()
     {
         return addCartButton;
     }
-
     private JButton addCartButton;
     private JButton addFavoriteButton;
     private JButton searchButton;
@@ -26,15 +26,52 @@ public class VSellList extends JPanel
     private JRadioButton priceRadioButton;
     private JRadioButton nameRadioButton;
 
+
+
+    User user;
+    SellListDAO sao;
+    CartDAO cao;
+    favoriteDAO fao;
+    Connector con;
+
+
     public VSellList()
     {
         add(mainPanel);
         setVisible(true);
+
+        //add cart button
+        addCartButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                addItems(user, sao, cao);
+            }
+        });
+
+
+        addFavoriteButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                addItems(user, sao, fao);
+
+            }
+        });
     }
 
     //JTable(view)에 띄울 데이터 설정
-    void initTable(User user, SellListDAO sao)
+    void initTable(User user, CartDAO cao, SellListDAO sao, favoriteDAO fao, Connector con)
     {
+
+        this.user = user;
+        this.cao = cao;
+        this.sao = sao;
+        this.fao = fao;
+        this.con = con;
+
         //column을 sellList DAO에서 가져온다
         String col[] =   sao.getAttributes();       //"p_code", "seller_ID", "price", "stock", "size", "p_nickname"
 
@@ -55,14 +92,6 @@ public class VSellList extends JPanel
                     default: return Boolean.class;
                 }
             }
-/*
-            //사용자가 체크박스만 수정할 수 있게 만들기
-            @Override
-            public boolean isCellEditable(int row, int col)
-            {
-                if(col == 6) return true;
-                else return false;
-            }*/
 
         };
 
@@ -91,7 +120,7 @@ public class VSellList extends JPanel
 
 
     //카트에 Item 추가  ...메소드 오버로딩
-    public String addItems(User user, SellListDAO sao, CartDAO cao)
+    public void addItems(User user, SellListDAO sao, CartDAO cao)
     {
         //임시 리스트 초기화
         user.initTempArrayList();
@@ -118,13 +147,48 @@ public class VSellList extends JPanel
         {
             cao.insert(cto);
         }
-        return "중복 제외하고 카트에 추가되었습니다.";
+        String msg = "중복 제외하고 카트에 추가되었습니다.";
+        JOptionPane.showMessageDialog(this, msg);
     }
 
     //즐겨찾기에 Item 추가 ... 메소드 오버로딩
     public void addItems(User user, SellListDAO sao, favoriteDAO fao)
     {
+        //임시 리스트 초기화
+        user.initTempArrayList();
+        int row = -1;
 
+        //자주쓸거같아서 변수로 설정
+        SellListDTO s = null;
+        FavoriteDTO f = null;
+
+        while(++row < sTable.getRowCount())
+        {
+            //체크박스 체크한 아이템들 임시리스트에 추가
+            if(!(Boolean)sTable.getValueAt(row, 6)) continue;
+            s = sao.getDtoList().get(row);
+            f = user.makeFavoriteDTO(s.getP_code(), s.getSeller_ID(), s.getP_nickname(), s.getPrice());
+            user.addList(user.getTempSell(), s);
+            user.addList(user.gettempFavor(), f);
+        }
+
+
+        //임시리스트에 추가한 것들 DB에 추가
+        for(FavoriteDTO fto : user.gettempFavor())
+        {
+            fao.insert(fto);
+        }
+
+        String msg =  "중복 제외하고 즐겨찾기에 추가되었습니다.";
+        JOptionPane.showMessageDialog(this, msg);
+
+    }
+
+
+
+    public JButton getAddFavoriteButton()
+    {
+        return addFavoriteButton;
     }
 
 

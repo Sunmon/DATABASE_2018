@@ -1,5 +1,6 @@
 package model;
 import java.sql.*;
+import java.util.Calendar;
 
 public class Connector
 {
@@ -138,7 +139,38 @@ public class Connector
 
         }
     }
+
+    public void insertLog(String p_code, String seller_id, String id, int point)
+    {
+        //log에 추가하는 메소드
+        //TODO: 해야함!!!!
+
+
+//        Timestamp t = new Timestamp(System.currentTimeMillis());
+//        Calendar cal = new Calendar();
+
+     /*   String sql = "INSERT INTO sell_log VALUES (?,?,?,?)";
+        try {
+            pstmt    = con.prepareStatement(sql);
+            pstmt.setString(1, p_code);
+            pstmt.setString(2, seller_id);
+            pstmt.setInt(3, point);
+            pstmt.setDate(4, t);
+            pstmt.setString(5,id);
+            int i = pstmt.executeUpdate();
+            System.out.println("InsertP 쿼리 수행" + i);
+            pstmt.close();
+        } catch (SQLException e) { System.out.println("Insert 쿼리 수행 실패");
+            e.printStackTrace();}
     }
+        System.out.println(t);
+        System.out.println(t.getTime());
+        System.out.println("adsf");
+
+
+*/
+    }
+}
    /* //test for prestsmt
     public void insertData()
     {//예시로 맘대로 하나 넣게 만들었음. 이거 고쳐서 써야지.
