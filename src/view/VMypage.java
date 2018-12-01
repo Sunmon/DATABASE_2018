@@ -65,6 +65,9 @@ public class VMypage extends JPanel
         dtm.fireTableDataChanged();
     }
 
+    //FIXME: 내가 구매한 목록 기록 보기
+
+
 
     //TODO: 수정 버튼 이벤트
     //TODO: 포인트 추가 버튼 이벤트

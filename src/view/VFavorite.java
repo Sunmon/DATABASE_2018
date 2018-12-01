@@ -10,8 +10,8 @@ public class VFavorite extends JPanel {
     private JPanel mainPanel;
     private JButton buybutton;
     private JButton deletebutton;
-    private JPanel tablepanel;
-    private JTable table1;
+    private JScrollPane favorPanel;
+    private JTable fTable;
 
     public VFavorite()
     {
@@ -63,7 +63,7 @@ public class VFavorite extends JPanel {
             Object[] o = {c.getP_nick(), c.getP_code(), c.getSeller_ID(), c.getprice(), Boolean.FALSE};
             dtm.addRow(o);
         }
-        table1.setModel(dtm);
+        fTable.setModel(dtm);
     }
     public void deliverToCart(User user, CartDAO cao, favoriteDAO fao, Connector con) throws SQLException
     {
@@ -71,16 +71,16 @@ public class VFavorite extends JPanel {
 
         user.initTempArrayList();
 
-        while(++row < table1.getRowCount())
+        while(++row < fTable.getRowCount())
         {
             //체크박스에 체크한 아이템들 임시리스트에 더해줌
-            if((Boolean)table1.getValueAt(row, 4))
+            if((Boolean) fTable.getValueAt(row, 4))
             {//"p_nickname", "p_code", "seller_ID", "price"0123
                 //primary key
-                String nick=(String)table1.getValueAt(row,0);
-                String pc = (String)table1.getValueAt(row, 1);
-                String sid = (String)table1.getValueAt(row, 2);
-                int price =(int)table1.getValueAt(row, 3);
+                String nick=(String) fTable.getValueAt(row,0);
+                String pc = (String) fTable.getValueAt(row, 1);
+                String sid = (String) fTable.getValueAt(row, 2);
+                int price =(int) fTable.getValueAt(row, 3);
                 //favorite>임시 favoite
                 user.addList(user.gettempFavor(), fao.getDtoList().get(row));
                 CartDTO ct=user.makeCartDTO(pc,sid,1,price,nick);
