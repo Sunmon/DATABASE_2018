@@ -27,6 +27,7 @@ public class VMain
         frame.pack();
         frame.setVisible(true);
 
+
         synchronized (vlogin.getLoginButton())
         {   //vlogin의 login button과 sync
             try

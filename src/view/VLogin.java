@@ -14,6 +14,7 @@ public class VLogin {
     private JButton loginButton;
     private JButton registerButton;
     private JButton forgotPasswordButton;
+    private JLabel logo;
 
     private boolean isLogined = false;
     User user = null;
@@ -68,4 +69,11 @@ public class VLogin {
 
     }
 
+    private void createUIComponents()
+    {
+        // TODO: place custom component creation code here
+        logo = new JLabel(new ImageIcon("assets/images/login/logo.png"));
+        System.out.println(logo.getIcon().getIconHeight());
+        ;
+    }
 }
