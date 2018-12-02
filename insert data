@@ -103,8 +103,6 @@ values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"lo_addi_b_coatm");
 INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
 values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"pre_addi_w_coatm");
 
-INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
-values ("A02-01002M" , "lalaseller" , "10000" , "40" , 'M',"cu_addiw_coatm");
 
 INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
 values ("A02-01002M" , "DBseller" , "20000" , "20" , 'M',"addi_w_coatm");
@@ -200,7 +198,7 @@ INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
 values ("B13-12002M" , "cmseller" , "15000" , "30" , 'M', "fanci_b_knit_M");
 
 INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
-values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "fanci_b_knit_M");
+values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "fanci_b_knit_SM");
 
 
 INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
