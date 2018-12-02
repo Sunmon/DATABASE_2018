@@ -5,7 +5,10 @@ import model.*;
 
 import javax.swing.*;
 import javax.swing.event.TableColumnModelListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,11 +17,7 @@ public class VCart extends JPanel
 {
     private JPanel mainPanel;
     private JTable cTable;
-
-
     private JButton buyButton;
-
-
     private JButton removeButton;
     private JLabel totalTextLabel;
     private JLabel pointTextLabel;
@@ -63,6 +62,9 @@ public class VCart extends JPanel
                 removeItems();
             }
         });
+        /*cTable.addComponentListener(new ComponentAdapter()
+        {
+        });*/
     }
 
 
@@ -102,14 +104,30 @@ public class VCart extends JPanel
             }
 
 
+            //editable cells
+            private boolean editable_cells;
+
             //사용자가 체크박스, 개수만 수정할 수 있게 만들기
             @Override
             public boolean isCellEditable(int row, int col)
             {
                 if(col == 1 || col == 5) return true;
                 else return false;
+
+/*                if(col == 1 || col == 5) editable_cells = true;
+                else editable_cells = false;
+                return editable_cells;
+                */
+            }
+
+
+            //사용자가 체크박스 체크하면 개수 수정 못하게 하기
+            public void setCellEditable(int row, int col, boolean value) {
+                editable_cells = value; // set cell true/false
+                this.fireTableCellUpdated(row, col);
             }
         };
+
 
         //체크 열 추가
         dtm.addColumn("check");
@@ -132,6 +150,9 @@ public class VCart extends JPanel
         //혹시 몰라서 넣어놓음
         repaint();
         revalidate();
+
+        //체크박스 리스너 추가
+        dtm.addTableModelListener(this::checkBoxChanged);
 
     }
 
@@ -195,6 +216,45 @@ public class VCart extends JPanel
 
 
     //FIXME: 숫자 변경하면 알아서 가격도 변경하게하기!!!!!!!!
+
+    private void checkBoxChanged(TableModelEvent e)
+    {
+        int row = e.getFirstRow();
+        int column = e.getColumn();
+        if (column == 5)
+        {
+            TableModel model = (TableModel) e.getSource();
+            String columnName = model.getColumnName(column);
+            Boolean checked = (Boolean) model.getValueAt(row, column);
+
+            if (checked)
+            {
+                System.out.println(columnName + ": " + true);
+
+                //선택한 체크박스의 DTO객체 가져옴 (그대로 가져오는거임)
+                CartDTO c = cao.getDtoList().get(row);
+                int price = c.getP_price();
+                int temPc = (int)model.getValueAt(row,1);
+                c.setP_count(temPc);
+                c.setTot_price(temPc * price);
+
+                //화면에 변경된 가격 설정
+                model.setValueAt(c.getTot_price(), row,2);
+
+                //DB에 개수/가격 업데이트
+                cao.updateCartDB(c);
+
+                //TODO: 체크하면 수정 못하게!
+//                model.isCellEditable()
+
+                System.out.println(model.getValueAt(row, 2));
+            } else
+            {
+                System.out.println(columnName + ": " + false);
+            }
+
+        }
+    }
 
     public void removeItems()
     {

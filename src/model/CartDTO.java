@@ -11,8 +11,6 @@ public class CartDTO implements  DTO{
     private int tot_price = 0;
     private String p_nick = null;   //product nickname
     private int p_price = 0;        //1개당 가격
-    private boolean isChecked = false;  //체크. 삭제, 추가 이럴때 chekBox에서 선택했냐.
-
 
 
     //constructor
@@ -83,15 +81,7 @@ public class CartDTO implements  DTO{
         this.p_price = p_price;
     }
 
-    public boolean isChecked()
-    {
-        return isChecked;
-    }
 
-    public void setChecked(boolean checked)
-    {
-        isChecked = checked;
-    }
 
 
 }

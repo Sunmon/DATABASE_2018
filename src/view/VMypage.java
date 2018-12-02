@@ -45,7 +45,6 @@ public class VMypage extends JPanel
     }
 
 
-
     //...JTable(view)에 띄울 데이터 설정
     public void initTable(User user, Connector con)
     {
@@ -106,10 +105,7 @@ public class VMypage extends JPanel
         {
             e.printStackTrace();
         }
-
     }
 
-
     //TODO: 수정 버튼 이벤트
-    //TODO: 포인트 추가 버튼 이벤트
 }

@@ -9,7 +9,9 @@ import java.awt.*;
 public class VMainFrame extends JFrame
 {   //메뉴바가 있는 메인 프레임
 
-    static Dimension d = new Dimension(414, 736);
+//    static Dimension d = new Dimension(414, 736);
+    static Dimension d = new Dimension(1000, 800);
+
     private JPanel mainPanel;
     private JButton sellListButton;
     private JButton favoriteButton;

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class VMain
 {   //controller 역할
-    Dimension d = new Dimension(414, 736);
+    Dimension d = new Dimension(1000, 800);
     VMainFrame vfm;
     public void main(Connector con)
     {
