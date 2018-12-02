@@ -92,9 +92,9 @@ public class Connector
     }
 
     public void updateMypage(String _pn,int age,String gender,String address,int height, int weight, String _id, String phone ){
-        String sql= "UPDATE person"+
-                "SET pw=?, age=?, gender=?, address=?, height=?, weight=?"+
-                "where ID=?,phone=?";
+        String sql= "UPDATE person "+
+                "SET pw=?, age=?, gender=?, address=?, height=?, weight=? "+
+                "where ID=? AND phone = ? ";
         try
         {
             pstmt=con.prepareStatement(sql);

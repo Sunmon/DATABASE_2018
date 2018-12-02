@@ -4,6 +4,7 @@ import model.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -55,6 +56,7 @@ public class VMypage extends JPanel
         try
         {
             applychanges(user,con);
+            initTable(user, con);
         } catch (SQLException e)
         {
             e.printStackTrace();
@@ -125,21 +127,25 @@ public class VMypage extends JPanel
     }
 
 
-    //TODO: 수정 버튼 이벤트
     public void applychanges(User user, Connector con) throws SQLException {
-        this.user = user;
-        this.con = con;
+        //get info from view
+        String pn = (String) mTable.getValueAt(1, 1);       //oassword
+        int age = Integer.parseInt(String.valueOf(mTable.getValueAt(3, 1)));
+        String gen = (String) mTable.getValueAt(4, 1);
+        String adr = (String) mTable.getValueAt(6, 1);
+        int hei = Integer.parseInt(String.valueOf(mTable.getValueAt(7, 1)));
+        int wei = Integer.parseInt(String.valueOf(mTable.getValueAt(8, 1)));
 
-            String pn = (String) mTable.getValueAt(1, 1);
-            int age = (int) mTable.getValueAt(3, 1);
-            String gen = (String) mTable.getValueAt(4, 1);
-            String adr = (String) mTable.getValueAt(6, 1);
-            int hei = (int) mTable.getValueAt(7, 1);
-            int wei = (int) mTable.getValueAt(8, 1);
-            con.updateMypage(pn, age, gen, adr, hei, wei, user.getID(), user.getPhone());
+        //update user
+        user.setPw(pn);
+        user.setAge(age);
+        user.setGender(gen);
+        user.setAddress(adr);
+        user.setHeight(hei);
+        user.setWeight(wei);
 
+        //update db
+        con.updateMypage(pn, age, gen, adr, hei, wei, user.getID(), user.getPhone());
     }
 }
-    //TODO: 포인트 추가 버튼 이벤트
 
-}

@@ -7,8 +7,8 @@ import javax.swing.*;
 import javax.swing.event.TableColumnModelListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+import javax.swing.table.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -104,28 +104,15 @@ public class VCart extends JPanel
             }
 
 
-            //editable cells
-            private boolean editable_cells;
-
             //사용자가 체크박스, 개수만 수정할 수 있게 만들기
             @Override
             public boolean isCellEditable(int row, int col)
             {
-                if(col == 1 || col == 5) return true;
+                if(col == 5) return true;
+                if(col == 1 && !(boolean)getValueAt(row, 5) ) return true;
                 else return false;
-
-/*                if(col == 1 || col == 5) editable_cells = true;
-                else editable_cells = false;
-                return editable_cells;
-                */
             }
 
-
-            //사용자가 체크박스 체크하면 개수 수정 못하게 하기
-            public void setCellEditable(int row, int col, boolean value) {
-                editable_cells = value; // set cell true/false
-                this.fireTableCellUpdated(row, col);
-            }
         };
 
 
@@ -152,6 +139,7 @@ public class VCart extends JPanel
         revalidate();
 
         //체크박스 리스너 추가
+        //FIXME: 체크박스 리스너 추가
         dtm.addTableModelListener(this::checkBoxChanged);
 
     }
@@ -164,7 +152,7 @@ public class VCart extends JPanel
     public void buyItems(User user, CartDAO cao, SellListDAO sao, Connector con) throws SQLException
     { //Buy Items 버튼 누르면 실행
         //선택한 아이템들 가격 계산
-        int tpoint = 0;             //선택한 아이템들의 총 가격
+        int tpoint = Integer.parseInt(totalLabel.getText());             //선택한 아이템들의 총 가격
         int row = -1;
 
         //임시 리스트들 초기화
@@ -182,12 +170,8 @@ public class VCart extends JPanel
                 //해당 cto객체, sao객체 임시 리스트에 추가
                 user.addList(user.getTempCart(), cao.getDtoList().get(row));
                 user.addList(user.getTempSell(), sao.select(con.getCon(), pc, sid));
-                tpoint+= (int)cTable.getValueAt(row, 2);
             }
         }
-
-        //가격 더한것들 총 포인트에 표시
-        totalLabel.setText(Integer.toString(tpoint)+"p");
 
         //user point와 비교
         if(user.getPoints() < tpoint)
@@ -206,16 +190,22 @@ public class VCart extends JPanel
         pointLable.setText(Integer.toString(user.getPoints()));
 
 
-
         //alert
         String msg = "재고가 부족한 상품 제외하고 구매가 완료되었습니다.";
         JOptionPane.showMessageDialog(this, msg);
+        totalLabel.setText("0");
 
         repaint();
     }
 
 
-    //FIXME: 숫자 변경하면 알아서 가격도 변경하게하기!!!!!!!!
+    public void setTotalPrice(int addPoint)
+    {
+        int temp = Integer.parseInt(totalLabel.getText());
+        temp += addPoint;
+        totalLabel.setText(Integer.toString(temp));
+    }
+
 
     private void checkBoxChanged(TableModelEvent e)
     {
@@ -227,12 +217,14 @@ public class VCart extends JPanel
             String columnName = model.getColumnName(column);
             Boolean checked = (Boolean) model.getValueAt(row, column);
 
+            //선택한 체크박스의 DTO객체 가져옴 (그대로 가져오는거임)
+            CartDTO c = cao.getDtoList().get(row);
+
             if (checked)
             {
                 System.out.println(columnName + ": " + true);
 
-                //선택한 체크박스의 DTO객체 가져옴 (그대로 가져오는거임)
-                CartDTO c = cao.getDtoList().get(row);
+
                 int price = c.getP_price();
                 int temPc = (int)model.getValueAt(row,1);
                 c.setP_count(temPc);
@@ -244,13 +236,14 @@ public class VCart extends JPanel
                 //DB에 개수/가격 업데이트
                 cao.updateCartDB(c);
 
-                //TODO: 체크하면 수정 못하게!
-//                model.isCellEditable()
+                //총 가격 설정
+                setTotalPrice(c.getTot_price());
+            }
 
-                System.out.println(model.getValueAt(row, 2));
-            } else
+            else
             {
-                System.out.println(columnName + ": " + false);
+                //총 가격 설정
+                setTotalPrice(-c.getTot_price());
             }
 
         }
