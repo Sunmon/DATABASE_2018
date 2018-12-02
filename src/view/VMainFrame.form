@@ -3,10 +3,10 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="491" height="400"/>
+      <xy x="20" y="20" width="677" height="400"/>
     </constraints>
     <properties>
-      <background color="-141854"/>
+      <background color="-167514"/>
     </properties>
     <border type="none"/>
     <children>
@@ -15,7 +15,12 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <opaque value="true"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <font name="Bahnschrift" size="26"/>
+          <foreground color="-1"/>
+          <hideActionText value="false"/>
+          <opaque value="false"/>
           <text value="HOME"/>
         </properties>
       </component>
@@ -24,6 +29,11 @@
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <font name="Bahnschrift" size="26"/>
+          <foreground color="-1"/>
+          <hideActionText value="false"/>
           <text value="FAVORITE"/>
         </properties>
       </component>
@@ -32,6 +42,11 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <font name="Bahnschrift" size="26"/>
+          <foreground color="-1"/>
+          <hideActionText value="false"/>
           <text value="CART"/>
         </properties>
       </component>
@@ -40,6 +55,11 @@
           <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <font name="Bahnschrift" size="26"/>
+          <foreground color="-1"/>
+          <hideActionText value="false"/>
           <text value="MYPAGE"/>
         </properties>
       </component>
