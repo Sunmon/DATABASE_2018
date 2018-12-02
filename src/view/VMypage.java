@@ -33,6 +33,15 @@ public class VMypage extends JPanel
                 showLogs();
             }
         });
+        pointButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                VChargePoint.showVChargePoint(user, con);
+                initTable(user, con);
+            }
+        });
     }
 
 
