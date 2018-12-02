@@ -121,6 +121,7 @@ public class Connector
 
 
 
+    //비밀번호 찾기
     public String findPW(String _id, String _pn)
     {   //id와 phone number로 pw 찾는 메소드
         String sql = "SELECT pw " +
@@ -150,6 +151,7 @@ public class Connector
     }
 
 
+    //USER point 업데이트
     public void updateUserPoint(String _id, int _point)
     {   //user point 업데이트
         String sql = "Update person set points = points + ? where id = ?";
@@ -169,6 +171,7 @@ public class Connector
 
 
 
+    //LOG 추가
     public void insertLog(String p_code, String id, String seller_id, int point)
     {
         //log에 추가하는 메소드
@@ -214,5 +217,34 @@ public class Connector
             e.printStackTrace();
         }
         return rs;
+    }
+
+
+    //회원가입. 성공시 true리턴
+    public boolean registerUser(User user)
+    {
+        String sql = "INSERT INTO person ";
+        sql = sql + "VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, null, null, ?)";
+        try
+        {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user.getID());
+            pstmt.setString(2, user.getPw());
+            pstmt.setString(3, user.getName());
+            pstmt.setInt(4, user.getAge());
+            pstmt.setString(5, user.getGender());
+            pstmt.setString(6, user.getPhone());
+            pstmt.setString(7, user.getAddress());
+            pstmt.setInt(8, user.getHeight());
+            pstmt.setInt(9, user.getWeight());
+            pstmt.setString(10, user.getAuthority());
+            int i = pstmt.executeUpdate();
+            System.out.println("InsertP 쿼리 수행" + i);
+            pstmt.close();
+            return true;
+        } catch (SQLException e)
+        {
+            return false;
+        }
     }
 }

@@ -39,6 +39,14 @@ public class VLogin {
                 dialog.setVisible(true);
             }
         });
+        registerButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                VRegister.showVRegister(con);
+            }
+        });
     }
 
     //Login 시도
@@ -46,6 +54,7 @@ public class VLogin {
         user = con.login(idField.getText(), pwField.getText());
         if (user == null)
             JOptionPane.showMessageDialog(null, "ID/PW를 다시 확인해 주십시오.");
+        else if(!user.getAuthority().equals("customers")) JOptionPane.showMessageDialog(null, "판매자/관리자 서비스는 준비 중입니다.");
         else    //login이 제대로 되었을때 다음 메소드 실행
             loginButton.notify();
     }
