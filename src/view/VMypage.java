@@ -33,6 +33,12 @@ public class VMypage extends JPanel
                 showLogs();
             }
         });
+        applyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                applychanges();
+            }
+        });
         pointButton.addActionListener(new ActionListener()
         {
             @Override
@@ -44,6 +50,17 @@ public class VMypage extends JPanel
         });
     }
 
+    private void applychanges()
+    {
+        try
+        {
+            applychanges(user,con);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
 
     //...JTable(view)에 띄울 데이터 설정
     public void initTable(User user, Connector con)
@@ -107,5 +124,22 @@ public class VMypage extends JPanel
         }
     }
 
+
     //TODO: 수정 버튼 이벤트
+    public void applychanges(User user, Connector con) throws SQLException {
+        this.user = user;
+        this.con = con;
+
+            String pn = (String) mTable.getValueAt(1, 1);
+            int age = (int) mTable.getValueAt(3, 1);
+            String gen = (String) mTable.getValueAt(4, 1);
+            String adr = (String) mTable.getValueAt(6, 1);
+            int hei = (int) mTable.getValueAt(7, 1);
+            int wei = (int) mTable.getValueAt(8, 1);
+            con.updateMypage(pn, age, gen, adr, hei, wei, user.getID(), user.getPhone());
+
+    }
+}
+    //TODO: 포인트 추가 버튼 이벤트
+
 }

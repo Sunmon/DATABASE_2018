@@ -88,8 +88,37 @@ public class Connector
             System.out.println("ID 또는 PW를 확인해 주십시오");
             e.printStackTrace();
         }
-        return null;
+    return null;
     }
+
+    public void updateMypage(String _pn,int age,String gender,String address,int height, int weight, String _id, String phone ){
+        String sql= "UPDATE person"+
+                "SET pw=?, age=?, gender=?, address=?, height=?, weight=?"+
+                "where ID=?,phone=?";
+        try
+        {
+            pstmt=con.prepareStatement(sql);
+            pstmt.setString(1,_pn);
+            pstmt.setInt(2,age);
+            pstmt.setString(3,gender);
+            pstmt.setString(4,address);
+            pstmt.setInt(5,height);
+            pstmt.setInt(6,weight);
+            pstmt.setString(7,_id);
+            pstmt.setString(8,phone);
+            rs = pstmt.executeQuery();
+            pstmt.close();
+
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("point 업데이트를 하지 못했습니다."); ;
+
+        }
+    }
+
+
+
 
 
     public String findPW(String _id, String _pn)
