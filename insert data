@@ -309,8 +309,6 @@ values ("B13-11002M","spao_r_knit_M","B","13");
 insert into product (p_code, p_name, c_code, c_code_sub)
 values ("B13-12001M","Asec_bu_knit_M","B","13");
 
-insert into product (p_code, p_name, c_code, c_code_sub)
-values ("B13-12002M","Asec_bu_knit_M","B","13");
 
 insert into product (p_code, p_name, c_code, c_code_sub)
 values ("B13-12001S","Asec_bu_knit_S","B","13");
