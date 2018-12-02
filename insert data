@@ -71,99 +71,256 @@ cmseller
 lalaseller
 
 INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
-values ("A01-01001m" , "DBseller" , "12000" , "30" , 'm',"dB_addidas_longpadingblack_m")
-values ("A01-01001m" , "cmseller" , "20000" , "10" , 'm',"cm_addidas_longpading_m")
-values ("A01-01001m" , "lalaseller" , "10000" , "2" , 'm',"la_addidas_blacklongpading_m ")
-values ("A01-01001s" , "DBseller" , "12000" , "10" , 's',"dB_addidas_longpadingblack_s")
-values ("A01-01001s" , "cmseller" , "20000" , "10" , 's',"cm_addidas_longpading_s")
-values ("A01-01001L" , "DBseller" , "12000" , "40" , 'L',"dB_addidas_longpadingblack_l")
-values ("A01-01001L" , "cmseller" , "20000" , "20" , 'L',"cm_addidas_longpading_l")
-values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"la_addidas_blacklongpading_l ")
-values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"dBlong_pretty_addidas_blackcoat_m")
-values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"cm_lovely_addidas_blackcoat_m")
-values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"dBlong_pretty_addidas_whitecoat_m")
-values ("A02-01002M" , "lalaseller" , "10000" , "40" , 'M',"lala_cute_addidas_whitecoat_m")
-values ("A02-01002M" , "DBseller" , "20000" , "20" , 'M',"DB_addidas_whitecoat_m")
-values ("A03-05001M" , "DBseller" , "100000" , "40" , 'M',"DB_lacoste_fanci_cardigan_m")
-values ("A03-06001M" , "DBseller" , "200000" , "10" , 'M',"DB_gucci_lovely_cardigan_m")
-values ("A03-06001M" , "lalaseller" , "150000" , "12" , 'M',"lala_gucci_black_cardigan_m")
-values ("A03-06001M" , "cmseller" , "220000" , "5" , 'M',"CM_gucci_dark_cardigan_m")
-values ("A03-06002s" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_cardigan_s")
-values ("A03-06002M" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_cardigan_m")
-values ("A03-06002L" , "DBseller" , "250000" , "10" , 'M',"DB_gucci_lovely_dote_cardigan_L")
+values ("A01-01001m" , "DBseller" , "12000" , "30" , 'm',"addi_lo_pad_b_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001m" , "cmseller" , "20000" , "10" , 'm',"addi_lo_pad_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001m" , "lalaseller" , "10000" , "2" , 'm',"addi_b_lo_pad_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001s" , "DBseller" , "12000" , "10" , 's',"addi_lo_pad_b_s");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001s" , "cmseller" , "20000" , "10" , 's',"addi_lo_pad_s");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001L" , "DBseller" , "12000" , "40" , 'L',"addi_lo_pad_b_l");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001L" , "cmseller" , "20000" , "20" , 'L',"addi_lo_pad_l");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"addi_b_lo_padl");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"lo_pre_b_coatm");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"lo_addi_b_coatm");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"pre_addi_w_coatm");
 
 
-values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"cm_hot_hot_cotton_M" )
-values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_la_cotton_L" )
-values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"DB_cute_hot_cotton_M" )
-values ("B11-02002L" , "DBseller" , "30000" , "200" , 'L' ,"DB_nike_white_cotton_L" )
-values ("B11-02002L" , "lalaseller" , "12000" , "150" , 'L' ,"la_la_nike_cotton_L" )
-values ("B11-03001L" , "DBseller" , "22000" , "50" , 'L' ,"DB_uniqlo_black_cotton_L" )
-values ("B11-03001L" , "cmseller" , "22000" , "20" , 'L' ,"cm_hot_uniqlo_black_cotton_L" )
-values ("B11-03001S" , "DBseller" , "22000" , "50" , 'S' ,"DB_uniqlo_black_cotton_S" )
-values ("B11-03001S" , "cmseller" , "22000" , "20" , 'S' ,"cm_hot_uniqlo_black_cotton_S" )
-values ("B11-03001M" , "lalaseller" , "12000" , "10" , 'M' ,"la_cute_uniqlo_black_cotton_M" )
-values ("B11-00001S" , "cmseller" , "30000" , "90" , 'S', "cm_cute_black_loyal_cotton_S")
-values ("B11-00001M" , "cmseller" , "30000" , "90" , 'M', "cm_cute_black_loyal_cotton_M")
-values ("B11-00002M" , "cmseller" , "30000" , "90" , 'M', "cm_cute_yellow_loyal_cotton_M")
-values ("B11-00003M" , "cmseller" , "30000" , "90" , 'M', "cm_cute_red_loyal_cotton_M")
-values ("B12-01001M" , "cmseller" , "20000" , "9" , 'M', "cm_fanci_addidas_black_hood_M")
-values ("B12-01001S" , "cmseller" , "20000" , "10" , 'S', "cm_fanci_addidas_black_hood_S")
-values ("B12-01001L" , "cmseller" , "20000" , "30" , 'L', "cm_fanci_addidas_black_hood_L")
-values ("B12-01002M" , "cmseller" , "20000" , "30" , 'L', "cm_fanci_addidas_bighat_hood_M")
-values ("B13-11001M" , "cmseller" , "10000" , "30" , 'M', "cm_spao_black_knit__M")
-values ("B13-11001M" , "lalaseller" , "10000" , "30" , 'M', "la_pre_spao_black_knit__M")
-values ("B13-11002M" , "cmseller" , "10000" , "30" , 'M', "cm_spao_red_knit__M")
-values ("B13-12001M" , "cmseller" , "13000" , "30" , 'M', "cm_Asecond_black_knit_M")
-values ("B13-12002M" , "cmseller" , "15000" , "30" , 'M', "cm_fanci_Asecond_blue_knit_M")
-values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "cm_fanci_Asecond_blue_knit__M")
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A02-01002M" , "DBseller" , "20000" , "20" , 'M',"addi_w_coatm");
 
-values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
-values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
-values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"dBlong_pretty_pants_m")
-values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"cmlong_cute_pants_s")
-values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"la_hot_lovely_pants_l")
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-05001M" , "DBseller" , "100000" , "40" , 'M',"lafan_cardi_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-06001M" , "DBseller" , "200000" , "10" , 'M',"gucci_lov_cardi_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-06001M" , "lalaseller" , "150000" , "12" , 'M',"gucblack_cardi_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-06001M" , "cmseller" , "220000" , "5" , 'M',"gucdarkcardi_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-06002s" , "DBseller" , "250000" , "10" , 'M',"guc_dotecardi_s");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-06002M" , "DBseller" , "250000" , "10" , 'M',"guc_dotecardi_m");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("A03-06002L" , "DBseller" , "250000" , "10" , 'M',"guc_dotecardi_L");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"hot_cott_M" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_cott_L" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"cute_hot_cott_M" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-02002L" , "DBseller" , "30000" , "200" , 'L' ,"nike_w_cott_L" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-02002L" , "lalaseller" , "12000" , "150" , 'L' ,"la_nikecott_L" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-03001L" , "DBseller" , "22000" , "50" , 'L' ,"uniq_b_cott_L" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-03001L" , "cmseller" , "22000" , "20" , 'L' ,"CCuniq_b_cott_L" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-03001S" , "DBseller" , "22000" , "50" , 'S' ,"uniq_b_cott_S" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-03001S" , "cmseller" , "22000" , "20" , 'S' ,"hotuniq_b_cott_S" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-03001M" , "lalaseller" , "12000" , "10" , 'M' ,"la_uniq_b_cott_M" );
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-00001S" , "cmseller" , "30000" , "90" , 'S', "cutloyalcott_S");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-00001M" , "cmseller" , "30000" , "90" , 'M', "cutloyal_cott_M");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-00002M" , "cmseller" , "30000" , "90" , 'M', "cut_y_cott_M");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B11-00003M" , "cmseller" , "30000" , "90" , 'M', "cut_r_cott_M");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B12-01001M" , "cmseller" , "20000" , "9" , 'M', "addi_b_hoodM");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B12-01001S" , "cmseller" , "20000" , "10" , 'S', "addi_b_hoods");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B12-01001L" , "cmseller" , "20000" , "10" , 'L', "addi_b_hoodl");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B12-01002M" , "cmseller" , "20000" , "30" , 'M', "addi_bigh_hoodM");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B13-11001M" , "cmseller" , "10000" , "30" , 'M', "spao_b_knitM");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B13-11001M" , "lalaseller" , "10000" , "30" , 'M', "prespa_b_knitM");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B13-11002M" , "cmseller" , "10000" , "30" , 'M', "spao_r_knitM");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B13-12001M" , "cmseller" , "13000" , "30" , 'M', "b_knit_M");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B13-12002M" , "cmseller" , "15000" , "30" , 'M', "fanci_b_knit_M");
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "fanci_b_knit_SM");
+
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"lo_pre_pantsm");
+
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"lo_pre_pantsm");
+
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"lo_pre_pantsm");
+
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"lo_cut_pantss");
+
+
+INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
+values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"hot_lov_pantsl");
 
 
 
 
 
 insert into product (p_code, p_name, c_code, c_code_sub)
-values ("A01-01001m","addidas_longpading_M","A", "01");
-values ("A01-01001s","addidas_longpading_S","A", "01");
-values ("A01-01001L","addidas_longpading_L","A", "01");
-values ("A02-01001M","addidas_black_coat_M","A", "02");
-values ("A02-01002M","addidas_white_coat_M","A", "02");
-values ("A03-05001M","lacoste_cardigan_m","A", "03");
-values ("A03-06001M","gucci_black_cardigan_m","A", "03");
-values ("A03-06002s","gucci_dote_cardigan_s","A", "03");
-values ("A03-06002M","gucci_dote_cardigan_m","A", "03");
-values ("A03-06002L","gucci_dote_cardigan_L","A", "03");
+values ("A01-01001m","addi_lo_pad_M","A", "01");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A01-01001s","addi_lo_pad_S","A", "01");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A01-01001L","addi_lo_pad_L","A", "01");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A02-01001M","addi_b_coat_M","A", "02");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A02-01002M","addi_w_coat_M","A", "02");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A03-05001M","laco_cardi_m","A", "03");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A03-06001M","gu_b_cardi_m","A", "03");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A03-06002s","gu_dot_cardi_s","A", "03");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A03-06002M","gu_dot_cardi_m","A", "03");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("A03-06002L","gu_dot_cardi_L","A", "03");
 
 
-values ("B11-02001M","nike_black_cotton_M","B", "11");
-values ("B11-02001L","nike_black_cotton_L","B", "11");
-values ("B11-02002L","nike_white_cotton_L","B", "11");
-values ("B11-03001L","uniqlo_black_cotton_L","B", "11");
-values ("B11-03001M","uniqlo_black_cotton_M","B", "11");
-values ("B11-03001S","uniqlo_black_cotton_S","B", "11");
-values ("B11-00001S","else_black_cotton_S","B", "11");
-values ("B11-00001M","else_black_cotton_M","B", "11");
-values ("B11-00002M","else_yellow_cotton_M","B", "11");
-values ("B11-00003M","else_red_cotton_M","B", "11");
-values ("B12-01001M","addidas_black_hood_M","B", "12");
-values ("B12-01001S","addidas_black_hood_S","B", "12");
-values ("B12-01001L","addidas_black_hood_L","B", "12");
-values ("B12-01002M","addidas_bighat_hood_M","B", "12");
-values ("B13-11001M","spao_black_knit_M","B","13");
-values ("B13-11002M","spao_red_knit_M","B","13");
-values ("B13-12001M","Asecond_black_knit_M","B","13");
-values ("B13-12002M","Asecond_blue_knit_M","B","13");
-values ("B13-12001S","Asecond_blue_knit_S","B","13");
 
-values ("C22-00001M","else_long_pants_m","C", "22");
-values ("C22-00001s","else_long_pants_S","C", "22");
-values ("C22-00001L","else_long_pants_L","C", "22");
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-02001M","nik_b_cotton_M","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-02001L","nik_b_cotton_L","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-02002L","nik_w_cotton_L","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-03001L","uniq_b_cotton_L","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-03001M","uniq b_cotton_M","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-03001S","uniq_b_cotton_S","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-00001S","else_b_cotton_S","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-00001M","else_b_cotton_M","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-00002M","else_y_cotton_M","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B11-00003M","else_r_cotton_M","B", "11");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B12-01001M","addi_b_hood_M","B", "12");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B12-01001S","addi_b_hood_S","B", "12");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B12-01001L","addi_b_hood_L","B", "12");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B12-01002M","addi_big_hood_M","B", "12");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B13-11001M","spao_b_knit_M","B","13");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B13-11002M","spao_r_knit_M","B","13");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B13-12001M","Asec_bu_knit_M","B","13");
+
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("B13-12001S","Asec_bu_knit_S","B","13");
+
+
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("C22-00001M","els_lo_pants_m","C", "22");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("C22-00001s","els_lo_pants_S","C", "22");
+
+insert into product (p_code, p_name, c_code, c_code_sub)
+values ("C22-00001L","els_lo_pants_L","C", "22");
 
 
 
