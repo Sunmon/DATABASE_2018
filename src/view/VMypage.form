@@ -3,21 +3,33 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="604" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-141854"/>
+    </properties>
     <border type="none"/>
     <children>
       <scrollpane id="9a34b" binding="tablePanel">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-196618"/>
+          <foreground color="-196618"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="3d78f" class="javax.swing.JTable" binding="mTable">
             <constraints/>
-            <properties/>
+            <properties>
+              <autoResizeMode value="4"/>
+              <background color="-196618"/>
+              <font name="Bahnschrift" size="26"/>
+              <rowHeight value="40"/>
+              <showHorizontalLines value="true"/>
+              <showVerticalLines value="true"/>
+            </properties>
           </component>
         </children>
       </scrollpane>
@@ -26,6 +38,10 @@
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="4" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-196618"/>
+          <borderPainted value="false"/>
+          <font size="22"/>
+          <foreground color="-13487304"/>
           <text value="APPLY CHANGES"/>
         </properties>
       </component>
@@ -44,6 +60,11 @@
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-196618"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="true"/>
+          <font size="22"/>
+          <foreground color="-13487304"/>
           <text value="ADD POINTS"/>
         </properties>
       </component>
@@ -62,6 +83,10 @@
           <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-196618"/>
+          <borderPainted value="false"/>
+          <font size="22"/>
+          <foreground color="-13487304"/>
           <text value="SHOW LOG"/>
         </properties>
       </component>
