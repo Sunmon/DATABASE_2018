@@ -146,6 +146,8 @@ public class VMypage extends JPanel
 
         //update db
         con.updateMypage(pn, age, gen, adr, hei, wei, user.getID(), user.getPhone());
+        JOptionPane.showMessageDialog(this, "회원정보가 수정되었습니다.");
+
     }
 }
 

@@ -93,6 +93,8 @@ public class VRegister extends JDialog
             int points = 0;
             String authority = "customers";
 
+            System.out.println(ID);
+            System.out.println(phone);
             //user 객체 생성
             User user = new User(ID, pw, name, age, gender, phone, address, height, weight, points, authority);
             if(!con.registerUser(user)) JOptionPane.showMessageDialog(this, "이미 가입된 ID 또는 핸드폰 번호입니다.");

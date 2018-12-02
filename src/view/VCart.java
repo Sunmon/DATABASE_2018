@@ -139,7 +139,6 @@ public class VCart extends JPanel
         revalidate();
 
         //체크박스 리스너 추가
-        //FIXME: 체크박스 리스너 추가
         dtm.addTableModelListener(this::checkBoxChanged);
 
     }
@@ -282,6 +281,7 @@ public class VCart extends JPanel
 
         //cartList 테이블화면초기화
         initTable(user, cao, sao, con);
+        totalLabel.setText("0");
         repaint();
 
         JOptionPane.showMessageDialog(this, "상품이 카트에서 삭제되었습니다.");
