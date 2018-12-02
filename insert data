@@ -71,99 +71,99 @@ cmseller
 lalaseller
 
 INSERT INTO sell_list (p_code, seller_id, price, stock, size, p_nickname )
-values ("A01-01001m" , "DBseller" , "12000" , "30" , 'm',"addi_longpadingblackm")
-values ("A01-01001m" , "cmseller" , "20000" , "10" , 'm',"addi_longpadingm")
-values ("A01-01001m" , "lalaseller" , "10000" , "2" , 'm',"addi_blacklongpadingm ")
-values ("A01-01001s" , "DBseller" , "12000" , "10" , 's',"addi_longpadingblacks")
-values ("A01-01001s" , "cmseller" , "20000" , "10" , 's',"addi_longpadings")
-values ("A01-01001L" , "DBseller" , "12000" , "40" , 'L',"addi_longpadingblackl")
-values ("A01-01001L" , "cmseller" , "20000" , "20" , 'L',"addi_longpadingl")
-values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"addi_blacklongpadingl ")
-values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"long_pretty_blackcoatm")
-values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"lov_addi_blackcoatm")
-values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"pre_addi_whitecoatm")
-values ("A02-01002M" , "lalaseller" , "10000" , "40" , 'M',"cuteaddiwhitecoatm")
-values ("A02-01002M" , "DBseller" , "20000" , "20" , 'M',"addiwhitecoatm")
-values ("A03-05001M" , "DBseller" , "100000" , "40" , 'M',"lacfan_cardiganm")
-values ("A03-06001M" , "DBseller" , "200000" , "10" , 'M',"gucci_lov_cardiganm")
-values ("A03-06001M" , "lalaseller" , "150000" , "12" , 'M',"gucblack_cardiganm")
-values ("A03-06001M" , "cmseller" , "220000" , "5" , 'M',"gucdarkcardiganm")
-values ("A03-06002s" , "DBseller" , "250000" , "10" , 'M',"guc_lovdotecardis")
-values ("A03-06002M" , "DBseller" , "250000" , "10" , 'M',"guc_lovdotecardim")
-values ("A03-06002L" , "DBseller" , "250000" , "10" , 'M',"guc_lovdotecardiL")
+values ("A01-01001m" , "DBseller" , "12000" , "30" , 'm',"addi_lo_pad_b_m")
+values ("A01-01001m" , "cmseller" , "20000" , "10" , 'm',"addi_lo_pad_m")
+values ("A01-01001m" , "lalaseller" , "10000" , "2" , 'm',"addi_b_lo_pad_m")
+values ("A01-01001s" , "DBseller" , "12000" , "10" , 's',"addi_lo_pad_b_s")
+values ("A01-01001s" , "cmseller" , "20000" , "10" , 's',"addi_lo_pad_s")
+values ("A01-01001L" , "DBseller" , "12000" , "40" , 'L',"addi_lo_pad_b_l")
+values ("A01-01001L" , "cmseller" , "20000" , "20" , 'L',"addi_lo_pad_l")
+values ("A01-01001L" , "lalaseller" , "10000" , "10" , 'L',"addi_b_lo_padl")
+values ("A02-01001M" , "DBseller" , "13000" , "10" , 'M',"lo_pre_b_coatm")
+values ("A02-01001M" , "cmseller" , "23000" , "20" , 'M',"lo_addi_b_coatm")
+values ("A02-01002M" , "DBseller" , "14000" , "20" , 'M',"pre_addi_w_coatm")
+values ("A02-01002M" , "lalaseller" , "10000" , "40" , 'M',"cu_addiw_coatm")
+values ("A02-01002M" , "DBseller" , "20000" , "20" , 'M',"addi_w_coatm")
+values ("A03-05001M" , "DBseller" , "100000" , "40" , 'M',"lafan_cardi_m")
+values ("A03-06001M" , "DBseller" , "200000" , "10" , 'M',"gucci_lov_cardi_m")
+values ("A03-06001M" , "lalaseller" , "150000" , "12" , 'M',"gucblack_cardi_m")
+values ("A03-06001M" , "cmseller" , "220000" , "5" , 'M',"gucdarkcardi_m")
+values ("A03-06002s" , "DBseller" , "250000" , "10" , 'M',"guc_dotecardi_s")
+values ("A03-06002M" , "DBseller" , "250000" , "10" , 'M',"guc_dotecardi_m")
+values ("A03-06002L" , "DBseller" , "250000" , "10" , 'M',"guc_dotecardi_L")
 
 
-values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"hot_cottonM" )
-values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_cottonL" )
-values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"cute_hot_cottonM" )
-values ("B11-02002L" , "DBseller" , "30000" , "200" , 'L' ,"nike_white_cottonL" )
-values ("B11-02002L" , "lalaseller" , "12000" , "150" , 'L' ,"la_nikecottonL" )
-values ("B11-03001L" , "DBseller" , "22000" , "50" , 'L' ,"uniqblackcottonL" )
-values ("B11-03001L" , "cmseller" , "22000" , "20" , 'L' ,"CCuniqloblackcottonL" )
-values ("B11-03001S" , "DBseller" , "22000" , "50" , 'S' ,"uniq_black_cottonS" )
-values ("B11-03001S" , "cmseller" , "22000" , "20" , 'S' ,"hotuniq_black_cottonS" )
-values ("B11-03001M" , "lalaseller" , "12000" , "10" , 'M' ,"la_uniblackcottonM" )
-values ("B11-00001S" , "cmseller" , "30000" , "90" , 'S', "cuteloyalcottonS")
-values ("B11-00001M" , "cmseller" , "30000" , "90" , 'M', "cuteloyal_cottonM")
-values ("B11-00002M" , "cmseller" , "30000" , "90" , 'M', "cuteyellowcottonM")
-values ("B11-00003M" , "cmseller" , "30000" , "90" , 'M', "cute_red_cottonM")
-values ("B12-01001M" , "cmseller" , "20000" , "9" , 'M', "addiblack_hoodM")
-values ("B12-01001S" , "cmseller" , "20000" , "10" , 'S', "aiddiblack_hoodS")
-values ("B12-01001L" , "cmseller" , "20000" , "30" , 'L', "addiblack_hoodL")
-values ("B12-01002M" , "cmseller" , "20000" , "30" , 'L', "addibighat_hoodM")
-values ("B13-11001M" , "cmseller" , "10000" , "30" , 'M', "spaoblack_knitM")
-values ("B13-11001M" , "lalaseller" , "10000" , "30" , 'M', "prespablack_knitM")
-values ("B13-11002M" , "cmseller" , "10000" , "30" , 'M', "spao_redknitM")
-values ("B13-12001M" , "cmseller" , "13000" , "30" , 'M', "black_knit_M")
-values ("B13-12002M" , "cmseller" , "15000" , "30" , 'M', "fanci_blueknit_M")
-values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "fanci_blueknit_M")
+values ("B11-02001M" , "cmseller" , "21000" , "20" , 'M' ,"hot_cott_M" )
+values ("B11-02001L" , "lalaseller" , "10000" , "50" , 'L' ,"la_cott_L" )
+values ("B11-02001M" , "DBseller" , "21000" , "100" , 'M' ,"cute_hot_cott_M" )
+values ("B11-02002L" , "DBseller" , "30000" , "200" , 'L' ,"nike_w_cott_L" )
+values ("B11-02002L" , "lalaseller" , "12000" , "150" , 'L' ,"la_nikecott_L" )
+values ("B11-03001L" , "DBseller" , "22000" , "50" , 'L' ,"uniq_b_cott_L" )
+values ("B11-03001L" , "cmseller" , "22000" , "20" , 'L' ,"CCuniq_b_cott_L" )
+values ("B11-03001S" , "DBseller" , "22000" , "50" , 'S' ,"uniq_b_cott_S" )
+values ("B11-03001S" , "cmseller" , "22000" , "20" , 'S' ,"hotuniq_b_cott_S" )
+values ("B11-03001M" , "lalaseller" , "12000" , "10" , 'M' ,"la_uniq_b_cott_M" )
+values ("B11-00001S" , "cmseller" , "30000" , "90" , 'S', "cutloyalcott_S")
+values ("B11-00001M" , "cmseller" , "30000" , "90" , 'M', "cutloyal_cott_M")
+values ("B11-00002M" , "cmseller" , "30000" , "90" , 'M', "cut_y_cott_M")
+values ("B11-00003M" , "cmseller" , "30000" , "90" , 'M', "cut_r_cott_M")
+values ("B12-01001M" , "cmseller" , "20000" , "9" , 'M', "addi_b_hoodM")
+values ("B12-01001S" , "cmseller" , "20000" , "10" , 'S', "addi_b_hoods")
+values ("B12-01001L" , "cmseller" , "20000" , "10" , 'L', "addi_b_hoodl")
+values ("B12-01002M" , "cmseller" , "20000" , "30" , 'M', "addi_bigh_hoodM")
+values ("B13-11001M" , "cmseller" , "10000" , "30" , 'M', "spao_b_knitM")
+values ("B13-11001M" , "lalaseller" , "10000" , "30" , 'M', "prespa_b_knitM")
+values ("B13-11002M" , "cmseller" , "10000" , "30" , 'M', "spao_r_knitM")
+values ("B13-12001M" , "cmseller" , "13000" , "30" , 'M', "b_knit_M")
+values ("B13-12002M" , "cmseller" , "15000" , "30" , 'M', "fanci_b_knit_M")
+values ("B13-12001S" , "cmseller" , "15000" , "30" , 'S', "fanci_b_knit_M")
 
-values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"longpretty_pantsm")
-values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"longpretty_pantsm")
-values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"longpretty_pantsm")
-values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"longcute_pantss")
-values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"hotlovely_pantsl")
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"lo_pre_pantsm")
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"lo_pre_pantsm")
+values ("C22-00001M" , "DBseller" , "30000" , "10" , 'M',"lo_pre_pantsm")
+values ("C22-00001s" , "cmseller" , "20000" , "200" , 'S',"lo_cut_pantss")
+values ("C22-00001L" , "lalaseller" , "10000" , "100" , 'L',"hot_lov_pantsl")
 
 
 
 
 
 insert into product (p_code, p_name, c_code, c_code_sub)
-values ("A01-01001m","addi_longpading_M","A", "01");
-values ("A01-01001s","addi_longpading_S","A", "01");
-values ("A01-01001L","addi_longpading_L","A", "01");
-values ("A02-01001M","addi_blackcoat_M","A", "02");
-values ("A02-01002M","addi_whitecoat_M","A", "02");
-values ("A03-05001M","laco_cardigan_m","A", "03");
-values ("A03-06001M","gu_blackcardigan_m","A", "03");
-values ("A03-06002s","gu_dotecardigan_s","A", "03");
-values ("A03-06002M","gu_dotecardigan_m","A", "03");
-values ("A03-06002L","gu_dotecardigan_L","A", "03");
+values ("A01-01001m","addi_lo_pad_M","A", "01");
+values ("A01-01001s","addi_lo_pad_S","A", "01");
+values ("A01-01001L","addi_lo_pad_L","A", "01");
+values ("A02-01001M","addi_b_coat_M","A", "02");
+values ("A02-01002M","addi_w_coat_M","A", "02");
+values ("A03-05001M","laco_cardi_m","A", "03");
+values ("A03-06001M","gu_b_cardi_m","A", "03");
+values ("A03-06002s","gu_dot_cardi_s","A", "03");
+values ("A03-06002M","gu_dot_cardi_m","A", "03");
+values ("A03-06002L","gu_dot_cardi_L","A", "03");
 
 
-values ("B11-02001M","nik_blackcotton_M","B", "11");
-values ("B11-02001L","nik_blackcotton_L","B", "11");
-values ("B11-02002L","nik_whitecotton_L","B", "11");
-values ("B11-03001L","uniq_blackcotton_L","B", "11");
-values ("B11-03001M","uniq blackcotton_M","B", "11");
-values ("B11-03001S","uniq_blackcotton_S","B", "11");
-values ("B11-00001S","else_blackcotton_S","B", "11");
-values ("B11-00001M","else_blackcotton_M","B", "11");
-values ("B11-00002M","else_yellocotton_M","B", "11");
-values ("B11-00003M","else_redcotton_M","B", "11");
-values ("B12-01001M","addi_blackhood_M","B", "12");
-values ("B12-01001S","addi_blackhood_S","B", "12");
-values ("B12-01001L","addi_blackhood_L","B", "12");
-values ("B12-01002M","addi_bighathood_M","B", "12");
-values ("B13-11001M","spao_blackknit_M","B","13");
-values ("B13-11002M","spao_redknit_M","B","13");
-values ("B13-12001M","Asec_blackknit_M","B","13");
-values ("B13-12002M","Asec_blueknit_M","B","13");
-values ("B13-12001S","Asec_blueknit_S","B","13");
+values ("B11-02001M","nik_b_cotton_M","B", "11");
+values ("B11-02001L","nik_b_cotton_L","B", "11");
+values ("B11-02002L","nik_w_cotton_L","B", "11");
+values ("B11-03001L","uniq_b_cotton_L","B", "11");
+values ("B11-03001M","uniq b_cotton_M","B", "11");
+values ("B11-03001S","uniq_b_cotton_S","B", "11");
+values ("B11-00001S","else_b_cotton_S","B", "11");
+values ("B11-00001M","else_b_cotton_M","B", "11");
+values ("B11-00002M","else_y_cotton_M","B", "11");
+values ("B11-00003M","else_r_cotton_M","B", "11");
+values ("B12-01001M","addi_b_hood_M","B", "12");
+values ("B12-01001S","addi_b_hood_S","B", "12");
+values ("B12-01001L","addi_b_hood_L","B", "12");
+values ("B12-01002M","addi_big_hood_M","B", "12");
+values ("B13-11001M","spao_b_knit_M","B","13");
+values ("B13-11002M","spao_r_knit_M","B","13");
+values ("B13-12001M","Asec_bu_knit_M","B","13");
+values ("B13-12002M","Asec_bu_knit_M","B","13");
+values ("B13-12001S","Asec_bu_knit_S","B","13");
 
-values ("C22-00001M","else_longpants_m","C", "22");
-values ("C22-00001s","else_longpants_S","C", "22");
-values ("C22-00001L","else_longpants_L","C", "22");
+values ("C22-00001M","els_lo_pants_m","C", "22");
+values ("C22-00001s","els_lo_pants_S","C", "22");
+values ("C22-00001L","els_lo_pants_L","C", "22");
 
 
 
