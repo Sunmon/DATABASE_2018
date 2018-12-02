@@ -13,12 +13,7 @@ public class favoriteDAO extends DAOFactory {
     }
     ArrayList<FavoriteDTO> dtoList = null;
 
-
-
-
     public favoriteDAO(Connection con) {super(con);}
-
-
 
     @Override
     public ArrayList<FavoriteDTO> initialize(String _id)

@@ -14,13 +14,7 @@ public class SellListDAO extends DAOFactory
     {
         return dtoList;
     }
-
-
-
     private String _order = "";     //정렬할때 사용
-
-
-
     private String _search = "";    //검색할때 사용
 
     @Override
@@ -29,7 +23,6 @@ public class SellListDAO extends DAOFactory
         //list생성
         dtoList = new ArrayList<SellListDTO>();
 
-//        String sql = "select * from (sell_list natural join product) natural join ";
 
         String sql = "select * " +
                 "from (sell_list join product using (p_code)) natural join category "+ _search + _order;
@@ -53,8 +46,6 @@ public class SellListDAO extends DAOFactory
                 String c_code_sub = rs.getString("c_code_sub");
                 String c_name = rs.getString("c_name");
 
-
-
                 //sellList에 sellDTO 새 객체 추가
                 SellListDTO s = new SellListDTO(pc, sID, price, stock, size, nick, p_name, c_code, c_code_sub, c_name);
                 dtoList.add(s);
@@ -64,30 +55,10 @@ public class SellListDAO extends DAOFactory
             System.out.println("DB에서 JAVA로 dtoList 가져오기 실패");
             e.printStackTrace();
         }
-
         return dtoList;
     }
 
-
-
-
-
     public SellListDAO(Connection con) {super(con);}
-
-
-
- /*   @Override
-    public void printAttributes()
-    {
-        super.printAttributes();
-       *//* System.out.print("p_nickname\t\t");
-        System.out.print("size\t\t");
-        System.out.print("price\t\t");
-        System.out.print("stock\t\t");
-        System.out.print("seller_ID\t\t");
-        System.out.print("p_code\t\t");
-        System.out.println();*//*
-    }*/
 
     @Override
     public void insert(DTO dto)
@@ -102,7 +73,6 @@ public class SellListDAO extends DAOFactory
         deleteSellListDB((SellListDTO)dto);
 
     }
-
 
     @Override
     public void update(DTO dto)

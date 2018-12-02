@@ -1,4 +1,5 @@
 package model;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,11 +72,11 @@ public class User
 
     public void buyItems(CartDAO cao, SellListDAO sao, Connector con)
     {
-        for(int i=0; i<tempCart.size(); i++)
+        for (int i = 0; i < tempCart.size(); i++)
         {
             //재고가 충분한 경우
             int stock = tempSell.get(i).getStock();
-            if(stock > tempCart.get(i).getP_count())
+            if (stock > tempCart.get(i).getP_count())
             {
                 //아이템에 따른 point
                 int totprice = tempCart.get(i).getTot_price();
@@ -86,29 +87,24 @@ public class User
 
                 //cartDB에서 삭제 / sellList에서 재고 감소
                 cao.delete(c);
-                tempSell.get(i).setStock(stock-tempCart.get(i).getP_count());
+                tempSell.get(i).setStock(stock - tempCart.get(i).getP_count());
                 sao.update(tempSell.get(i));
 
 
                 //user point 감소
-                setPoints(points-totprice);
-                con.updateUserPoint(ID,-totprice);
+                setPoints(points - totprice);
+                con.updateUserPoint(ID, -totprice);
 
                 //seller point 증가
                 con.updateUserPoint(tempSell.get(i).getSeller_ID(), totprice);
-
-
             }
         }
     }
 
 
-
-
-
     public void removeItems(CartDAO cao, Connector con)
     {   //tempCart에 있는것들 cart DB에서 삭제
-        for(int i=0; i<tempCart.size(); i++)
+        for (int i = 0; i < tempCart.size(); i++)
         {
             cao.delete(tempCart.get(i));
         }
@@ -116,7 +112,7 @@ public class User
 
     public void removeItems(favoriteDAO fao, Connector con)
     {
-        for(int i=0; i<tempFavor.size(); i++)
+        for (int i = 0; i < tempFavor.size(); i++)
         {
             fao.delete(tempFavor.get(i));
         }
@@ -136,24 +132,19 @@ public class User
     }
 
 
-
     public void insertLog(String p_code, String seller_ID, int point, Connector con)
     {
-
-
         con.insertLog(p_code, ID, seller_ID, point);
-
     }
-
 
 
     //sell_list에서 category별로 검색하기. ArrayList 반환.
     public ArrayList searchByCategory(SellListDAO sao, String cName)
     {
         ArrayList result = new ArrayList();
-        for(SellListDTO sto : sao.getDtoList())
+        for (SellListDTO sto : sao.getDtoList())
         {   //category이름이 입력과 일치하면 새 list에 추가.
-            if(sto.getC_name().equals(cName)) result.add(sto);
+            if (sto.getC_name().equals(cName)) result.add(sto);
         }
         return result;
     }
@@ -163,132 +154,131 @@ public class User
     public ArrayList searchByPname(SellListDAO sao, String pName)
     {
         ArrayList result = new ArrayList();
-        for(SellListDTO sto : sao.getDtoList())
+        for (SellListDTO sto : sao.getDtoList())
         {   //category이름이 입력과 일치하면 새 list에 추가.
-            if(sto.getP_name().equals(pName)) result.add(sto);
+            if (sto.getP_name().equals(pName)) result.add(sto);
         }
         return result;
     }
 
 
-
     //NOTE: cart관련 메소드들
     public CartDTO makeCartDTO(String pc, String sID, int pcount, int price, String nick)
     {   //CartDTO 객체 생성해서 리턴.
-        return new CartDTO(pc, ID, sID, pcount, pcount*price, nick, price);
+        return new CartDTO(pc, ID, sID, pcount, pcount * price, nick, price);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     //Getter and Setter
-    public String getID() {
+    public String getID()
+    {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(String ID)
+    {
         this.ID = ID;
     }
 
-    public String getPw() {
+    public String getPw()
+    {
         return pw;
     }
 
-    public void setPw(String pw) {
+    public void setPw(String pw)
+    {
         this.pw = pw;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getAge() {
+    public int getAge()
+    {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age)
+    {
         this.age = age;
     }
 
-    public String getGender() {
+    public String getGender()
+    {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(String gender)
+    {
         this.gender = gender;
     }
 
-    public String getPhone() {
+    public String getPhone()
+    {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(String phone)
+    {
         this.phone = phone;
     }
 
-    public String getAddress() {
+    public String getAddress()
+    {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address)
+    {
         this.address = address;
     }
 
-    public int getHeight() {
+    public int getHeight()
+    {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(int height)
+    {
         this.height = height;
     }
 
-    public int getWeight() {
+    public int getWeight()
+    {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(int weight)
+    {
         this.weight = weight;
     }
 
-    public int getPoints() {
+    public int getPoints()
+    {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(int points)
+    {
         this.points = points;
     }
 
-    public String getAuthority() {
+    public String getAuthority()
+    {
         return authority;
     }
 
-    public void setAuthority(String authority) {
+    public void setAuthority(String authority)
+    {
         this.authority = authority;
     }
-
-    public DAOFactory getDf()
-    {
-        return df;
-    }
-
-    public void setDf(DAOFactory df)
-    {
-        this.df = df;
-    }
-
 
     public ArrayList<CartDTO> getTempCart()
     {

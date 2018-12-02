@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 public class VLogin {
     JPanel panel1;
     private JTextField idField;
-    private JLabel PWLabel;
-    private JLabel IDLabel;
     private JPasswordField pwField;
     private JButton loginButton;
     private JButton registerButton;
